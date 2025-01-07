@@ -30,7 +30,7 @@
                                             </button>
                                         </div>
                                     @endif
-                                    <form action="{{route('post.login.penjual')}}" method="POST">
+                                    <form action="{{route('post.login.pembeli')}}" method="POST">
                                         @csrf
                                         <div class="form-group">
                                             <label class="mb-1"><strong>Email</strong></label>
@@ -56,7 +56,7 @@
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">
-                                        <p>Don't have an account? <a class="text-primary" href="{{route('register.penjual')}}">Sign up</a></p>
+                                        <p>Don't have an account? <a class="text-primary" href="{{route('register.pembeli')}}">Sign up</a></p>
                                     </div>
                                 </div>
                             </div>

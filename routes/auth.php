@@ -21,6 +21,13 @@ Route::middleware('guest')->group(function () {
         ->name('login.penjual');
     Route::post('/catering/login', [AuthenticatedSessionController::class, 'storePenjual'])->name('post.login.penjual');
 
+    // Login Register pembeli
+    Route::get('/user/register', [RegisteredUserController::class, 'createPembeli'])
+        ->name('register.pembeli');
+    Route::post('/user/register', [RegisteredUserController::class, 'storePembeli'])->name('post.register.pembeli');
+    Route::get('/user/login', [AuthenticatedSessionController::class, 'createPembeli'])
+        ->name('login.pembeli');
+    Route::post('/user/login', [AuthenticatedSessionController::class, 'storePembeli'])->name('post.login.pembeli');
 
 
 

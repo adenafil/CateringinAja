@@ -27,6 +27,15 @@ class AuthenticatedSessionController extends Controller
         return view('dashboard.penjual.login');
     }
 
+    /**
+     * Display the login view Pembeli.
+     */
+    public function createPembeli(): View
+    {
+        return view('dashboard.pembeli.login');
+    }
+
+
 
     /**
      * Handle an incoming authentication request.
@@ -51,6 +60,19 @@ class AuthenticatedSessionController extends Controller
 
         return redirect()->intended(route('dashboard', absolute: false));
     }
+
+    /**
+     * Handle an incoming authentication request for pembeli.
+     */
+    public function storePembeli(LoginRequest $request): RedirectResponse
+    {
+        $request->authenticate();
+
+        $request->session()->regenerate();
+
+        return redirect()->intended(route('dashboard', absolute: false));
+    }
+
 
 
     /**

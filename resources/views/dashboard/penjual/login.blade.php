@@ -30,7 +30,7 @@
                                             </button>
                                         </div>
                                     @endif
-                                    <form action="{{route('post.login.penjual')}}" method="POST">
+                                    <form action="{{route('post.login.pembeli')}}" method="POST">
                                         @csrf
                                         <div class="form-group">
                                             <label class="mb-1"><strong>Email</strong></label>

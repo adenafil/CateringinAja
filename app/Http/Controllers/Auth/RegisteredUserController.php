@@ -30,6 +30,14 @@ class RegisteredUserController extends Controller
         return view('dashboard.penjual.register');
     }
 
+    /**
+     * Display the registration Pembeli view.
+     */
+    public function createPembeli(): View
+    {
+        return view('dashboard.pembeli.register');
+    }
+
 
     /**
      * Handle an incoming registration request.
@@ -84,5 +92,34 @@ class RegisteredUserController extends Controller
 
         return redirect(route('dashboard', absolute: false));
     }
+
+    /**
+     * Handle an incoming registration request for Pembeli role.
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function storePembeli(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'username' => ['required', 'string', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required'],
+        ]);
+
+        $user = User::create([
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => 'pembeli',
+        ]);
+
+
+        event(new Registered($user));
+
+        Auth::login($user);
+
+        return redirect(route('dashboard', absolute: false));
+    }
+
 
 }
