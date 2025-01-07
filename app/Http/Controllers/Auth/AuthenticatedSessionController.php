@@ -20,6 +20,15 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
+     * Display the login view Penjual.
+     */
+    public function createPenjual(): View
+    {
+        return view('dashboard.penjual.login');
+    }
+
+
+    /**
      * Handle an incoming authentication request.
      */
     public function store(LoginRequest $request): RedirectResponse
@@ -30,6 +39,19 @@ class AuthenticatedSessionController extends Controller
 
         return redirect()->intended(route('dashboard', absolute: false));
     }
+
+    /**
+     * Handle an incoming authentication request for penjual.
+     */
+    public function storePenjual(LoginRequest $request): RedirectResponse
+    {
+        $request->authenticate();
+
+        $request->session()->regenerate();
+
+        return redirect()->intended(route('dashboard', absolute: false));
+    }
+
 
     /**
      * Destroy an authenticated session.

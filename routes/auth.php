@@ -12,6 +12,18 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
+    // Login Register Jasa Catering
+
+    Route::get('/catering/register', [RegisteredUserController::class, 'createPenjual'])
+        ->name('register.penjual');
+    Route::post('/catering/register', [RegisteredUserController::class, 'storePenjual'])->name('post.register.penjual');
+    Route::get('/catering/login', [AuthenticatedSessionController::class, 'createPenjual'])
+        ->name('login.penjual');
+    Route::post('/catering/login', [AuthenticatedSessionController::class, 'storePenjual'])->name('post.login.penjual');
+
+
+
+
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 
