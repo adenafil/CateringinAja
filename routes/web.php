@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\LandingPage;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::controller(LandingPage::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('/find', 'find');
+    Route::get('/about', 'about');
 });
 
 Route::get('/dashboard', function () {
