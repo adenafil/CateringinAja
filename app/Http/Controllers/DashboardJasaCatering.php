@@ -31,4 +31,14 @@ class DashboardJasaCatering extends Controller
     {
         return response()->view('dashboard.penjual.order');
     }
+
+    public function widthdrawalForm()
+    {
+        return response()->view('dashboard.penjual.withdrawal-form');
+    }
+
+    public function widthdrawalHistory()
+    {
+        return response()->view('dashboard.penjual.withdrawal-history');
+    }
 }
