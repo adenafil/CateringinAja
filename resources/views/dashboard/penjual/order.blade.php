@@ -7,15 +7,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Eatio - Restaurant Food Order Bootstrap Admin Dashboard</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
-    <!-- Custom Stylesheet -->
-    	<link href="/dashboard-template/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="/dashboard-template/images/favicon.png">
+	<link href="/dashboard-template/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="/dashboard-template/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="/dashboard-template/css/style.css" rel="stylesheet">
-    <link href="/dashboard-template/vendor/summernote/summernote.css" rel="stylesheet">
-
+	<link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
 
 </head>
-
 <body>
 
     <!--*******************
@@ -31,7 +29,6 @@
     <!--*******************
         Preloader end
     ********************-->
-
 
     <!--**********************************
         Main wrapper start
@@ -560,10 +557,7 @@
             Chat box End
         ***********************************-->
 
-
-
-
-        <!--**********************************
+		<!--**********************************
             Header start
         ***********************************-->
         <div class="header">
@@ -571,16 +565,16 @@
                 <nav class="navbar navbar-expand">
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="header-left">
-                            {{--                            <div class="search_bar dropdown show">--}}
-                            {{--                                <div class="dropdown-menu p-0 m-0 show">--}}
-                            {{--                                    <form>--}}
-                            {{--                                        <input class="form-control" type="search" placeholder="Search Here" aria-label="Search">--}}
-                            {{--                                    </form>--}}
-                            {{--                                </div>--}}
-                            {{--								<span class="search_icon p-3 c-pointer" data-toggle="dropdown">--}}
-                            {{--                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.7871 22.7761L17.9548 16.9437C19.5193 15.145 20.4665 12.7982 20.4665 10.2333C20.4665 4.58714 15.8741 0 10.2333 0C4.58714 0 0 4.59246 0 10.2333C0 15.8741 4.59246 20.4665 10.2333 20.4665C12.7982 20.4665 15.145 19.5193 16.9437 17.9548L22.7761 23.7871C22.9144 23.9255 23.1007 24 23.2816 24C23.4625 24 23.6488 23.9308 23.7871 23.7871C24.0639 23.5104 24.0639 23.0528 23.7871 22.7761ZM1.43149 10.2333C1.43149 5.38004 5.38004 1.43681 10.2279 1.43681C15.0812 1.43681 19.0244 5.38537 19.0244 10.2333C19.0244 15.0812 15.0812 19.035 10.2279 19.035C5.38004 19.035 1.43149 15.0865 1.43149 10.2333Z" fill="#A4A4A4"/></svg>--}}
-                            {{--                                </span>--}}
-                            {{--                            </div>--}}
+                                                        <div class="search_bar dropdown show">
+                                                            <div class="dropdown-menu p-0 m-0 show">
+                                                                <form>
+                                                                    <input class="form-control" type="search" placeholder="Search Here" aria-label="Search">
+                                                                </form>
+                                                            </div>
+                            								<span class="search_icon p-3 c-pointer" data-toggle="dropdown">
+                                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.7871 22.7761L17.9548 16.9437C19.5193 15.145 20.4665 12.7982 20.4665 10.2333C20.4665 4.58714 15.8741 0 10.2333 0C4.58714 0 0 4.59246 0 10.2333C0 15.8741 4.59246 20.4665 10.2333 20.4665C12.7982 20.4665 15.145 19.5193 16.9437 17.9548L22.7761 23.7871C22.9144 23.9255 23.1007 24 23.2816 24C23.4625 24 23.6488 23.9308 23.7871 23.7871C24.0639 23.5104 24.0639 23.0528 23.7871 22.7761ZM1.43149 10.2333C1.43149 5.38004 5.38004 1.43681 10.2279 1.43681C15.0812 1.43681 19.0244 5.38537 19.0244 10.2333C19.0244 15.0812 15.0812 19.035 10.2279 19.035C5.38004 19.035 1.43149 15.0865 1.43149 10.2333Z" fill="#A4A4A4"/></svg>
+                                                            </span>
+                                                        </div>
                         </div>
 
                         <ul class="navbar-nav header-right">
@@ -630,10 +624,17 @@
                         </a>
                     </li>
 
+                    <li class="">
+                        <a class="" href="javascript:void()" aria-expanded="false">
+                            <i class=""><img src="/helper/profile.png" style="width: 23px; height: 23px;"></i>
+                            <span class="nav-text">Profile</span>
+                        </a>
+                    </li>
+
                     <li class="mm-active">
                         <a class="" href="javascript:void()" aria-expanded="false">
-                            <i class=""><img src="/helper/profile-hover.png" style="width: 23px; height: 23px;"></i>
-                            <span class="nav-text">Profile</span>
+                            <i class=""><img src="/helper/order-hover.png" style="width: 23px; height: 23px;"></i>
+                            <span class="nav-text">Order</span>
                         </a>
                     </li>
 
@@ -650,82 +651,64 @@
             Sidebar end
         ***********************************-->
 
-        <!--**********************************
+		<!--**********************************
             Content body start
         ***********************************-->
         <div class="content-body">
-            <div class="container-fluid">
-                <div class="row page-titles mx-0">
-                    <div class="col-sm-6 p-md-0">
-                        <div class="welcome-text">
-                            <h4>Profile Toko</h4>
-                            <span>Element</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- row -->
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Profile Toko Anda</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="basic-form">
-                                    <form>
-                                        <img src="https://img.foodspot.co.id/restaurant//bebekbkb/2024/oct/nasi-tempong-ayam-negeri.jpg" class="img-thumbnail my-4" style="width: 400px; height: 300px; object-fit: cover;">
-
-                                        <div class="form-group">
-                                            <div class="custom-file">
-                                                <input style="font-size: 16px;" type="file" class="custom-file-input" id="customFile">
-                                                <label class="custom-file-label" for="customFile">Upload Photo Toko</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input style="font-size: 16px;" type="text" class="form-control input-default " placeholder="Nama Toko">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input style="font-size: 16px;" type="text" class="form-control input-default " placeholder="Kisaran Harga">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input style="font-size: 16px;" type="text" class="form-control input-default " placeholder="Area Antar">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input style="font-size: 16px;" type="text" class="form-control input-default " placeholder="No Handphone">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input style="font-size: 16px;" type="text" class="form-control input-default " placeholder="No Whatsapp">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input style="font-size: 16px;" type="text" class="form-control input-default " placeholder="Email">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input style="font-size: 16px;" class="summernote form-control input-default"></input>
-                                        </div>
-
-
-                                        <button type="button" class="btn btn-sm btn-primary">Tambah</button>
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+            <!-- row -->
+			<div class="container-fluid">
+				<div class="form-head d-flex mb-3 align-items-start">
+					<div class="mr-auto d-none d-lg-block">
+						<h2 class="text-black font-w600 mb-0">Orders</h2>
+						<p class="mb-0">Kelola Orderan Anda</p>
 					</div>
-                </div>
+				</div>
+                <div class="row">
+					<div class="col-12">
+						<div class="table-responsive">
+							<table id="example5" class="display mb-4 dataTablesCard" style="min-width: 845px;">
+								<thead>
+									<tr>
+										<th>ID Order</th>
+										<th>Tanngal</th>
+										<th>Nama Customer</th>
+										<th>Alamat</th>
+										<th>Nominal</th>
+										<th>Status Order</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>#5552351</td>
+										<td>26 March 2020, 12:42 AM</td>
+										<td>James WItcwicky</td>
+										<td>Corner Street 5th London</td>
+										<td>$164.52</td>
+										<td><span class="btn btn-sm light btn-warning fs-16">New Order</span></td>
+										<td>
+											<div class="dropdown ml-auto text-right">
+												<div class="btn-link" data-toggle="dropdown">
+													<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
+												</div>
+												<div class="dropdown-menu dropdown-menu-right">
+													<a class="dropdown-item" href="#"><i class="las la-check-square scale5 text-primary mr-2"></i> Accept Order</a>
+													<a class="dropdown-item" href="#"><i class="las la-times-circle scale5 text-danger mr-2"></i> Reject Order</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+                    </div>
+				</div>
             </div>
         </div>
         <!--**********************************
             Content body end
         ***********************************-->
-
-
 
 
     </div>
@@ -739,32 +722,30 @@
     <!-- Required vendors -->
     <script src="/dashboard-template/vendor/global/global.min.js"></script>
 	<script src="/dashboard-template/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-    <script src="/dashboard-template/vendor/chart.js/Chart.bundle.min.js"></script>
     <script src="/dashboard-template/js/custom.min.js"></script>
 	<script src="/dashboard-template/js/deznav-init.js"></script>
-	<!-- Apex Chart -->
-	<script src="/dashboard-template/vendor/apexchart/apexchart.js"></script>
 
-    <!-- Summernote -->
-    <script src="/dashboard-template/vendor/summernote/js/summernote.min.js"></script>
-    <!-- Summernote init -->
-    <script src="/dashboard-template/js/plugins-init/summernote-init.js"></script>
+	<!-- Datatable -->
+    <script src="/dashboard-template/vendor/datatables/js/jquery.dataTables.min.js"></script>
 
+	<script>
+	(function($) {
 
-    <script>
-        document.querySelector('.custom-file-input').addEventListener('change', function (e) {
-            // Ambil nama file
-            let fileName = e.target.files[0] ? e.target.files[0].name : 'Choose file';
-            // Temukan label terkait dan perbarui teksnya
-            let label = e.target.nextElementSibling;
-            if (label && label.classList.contains('custom-file-label')) {
-                label.textContent = fileName;
-            }
-        });
+		var table = $('#example5').DataTable({
+			searching: false,
+			paging:true,
+			select: false,
+			//info: false,
+			lengthChange:false
 
-    </script>
+		});
+		$('#example tbody').on('click', 'tr', function () {
+			var data = table.row( this ).data();
 
+		});
+
+	})(jQuery);
+	</script>
 
 </body>
-
 </html>
