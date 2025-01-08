@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/catering/dashboard/withdrawal/history', [DashboardJasaCatering::class, 'widthdrawalHistory'])->name('dashboard.widthdrawalHistory');
 
     Route::get('/user/dashboard/overview', [DashboardPembeliCatering::class, 'index'])->name('dashboard.pembeli.overview');
+    Route::get('/user/dashboard/profile', [DashboardPembeliCatering::class, 'profile'])->name('dashboard.pembeli.profile');
 
 //    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
