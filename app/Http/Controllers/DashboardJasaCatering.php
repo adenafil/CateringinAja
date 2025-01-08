@@ -21,4 +21,9 @@ class DashboardJasaCatering extends Controller
     {
         return response()->view('dashboard.penjual.table-menu');
     }
+
+    public function profile(): Response
+    {
+        return response()->view('dashboard.penjual.profile');
+    }
 }
