@@ -28,6 +28,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/user/dashboard/overview', [DashboardPembeliCatering::class, 'index'])->name('dashboard.pembeli.overview');
     Route::get('/user/dashboard/profile', [DashboardPembeliCatering::class, 'profile'])->name('dashboard.pembeli.profile');
+    Route::get('/user/dashboard/catering', [DashboardPembeliCatering::class, 'catering'])->name('dashboard.pembeli.catering');
+    Route::get('/user/dashboard/catering/namaToko', [DashboardPembeliCatering::class, 'cateringDetail'])->name('dashboard.pembeli.catering.detailToko');
+    Route::get('/user/dashboard/catering/namaToko/namaProduct', [DashboardPembeliCatering::class, 'addToCartView'])->name('dashboard.pembeli.catering.detailToko.addToCart');
+    Route::get('/user/dashboard/catering/cart', [DashboardPembeliCatering::class, 'cartView'])->name('dashboard.pembeli.catering.cart');
+    Route::get('/user/dashboard/catering/checkout', [DashboardPembeliCatering::class, 'checkoutView'])->name('dashboard.pembeli.catering.checkout');
+    Route::get('/user/dashboard/catering/order', [DashboardPembeliCatering::class, 'orderView'])->name('dashboard.pembeli.catering.order');
+    Route::get('/user/dashboard/catering/order/detail', [DashboardPembeliCatering::class, 'orderDetailView'])->name('dashboard.pembeli.catering.order.detail');
 
 //    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

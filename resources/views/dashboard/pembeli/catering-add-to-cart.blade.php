@@ -654,75 +654,86 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Caterings</h4>
+                            <h4>Catering!</h4>
                             <p class="mb-0">Your business dashboard template</p>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Caterings</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0)">List Of Caterings</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Catering</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Tambah Ke Keranjang</a></li>
                         </ol>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+                    <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="new-arrival-product">
-                                    <div class="new-arrivals-img-contnent">
-                                        <img class="img-fluid" src="https://img.foodspot.co.id/restaurant//bebekbkb/logo.jpg" alt="">
+                                <div class="row">
+                                    <div class="col-xl-3 ">
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane fade show active" id="first">
+                                                <img class="img-fluid" src="https://img.foodspot.co.id/restaurant//bebekbkb/logo.jpg" alt="">
+                                            </div>
+{{--                                            <div role="tabpanel" class="tab-pane fade" id="second">--}}
+{{--                                                <img class="img-fluid" src="https://img.foodspot.co.id/restaurant//bebekbkb/logo.jpg" alt="">--}}
+{{--                                            </div>--}}
+{{--                                            <div role="tabpanel" class="tab-pane fade" id="third">--}}
+{{--                                                <img class="img-fluid" src="images/product/3.jpg" alt="">--}}
+{{--                                            </div>--}}
+{{--											<div role="tabpanel" class="tab-pane fade" id="for">--}}
+{{--                                                <img class="img-fluid" src="images/product/4.jpg" alt="">--}}
+{{--                                            </div>--}}
+                                        </div>
                                     </div>
-                                    <div class="new-arrival-content text-center mt-3">
-                                        <p class="text-truncate"
-                                           data-bs-toggle="tooltip"
-                                           data-bs-placement="top"
-                                           title="Berencana menjadikan bebek sebagai lauk utama di acara Anda? Jika iya, BKB bisa jadi pilihan yang tepat. BKB atau Bebek Kepahiang Babase menyediakan sajian bebek khas Bengkulu. Berbeda dari restoran bebek lainnya yang cenderung kering dan krispi, bebek khas BKB sangatlah lembut, empuk, dan juicy. Tidak hanya tekstur, tampilan bebek BKB pun sangat khas, berwarna kehitaman dengan proses memasak hampir 24 jam. Proses memasak yang lama khas daerah Kepahiang ditambah aneka rempah dan bumbu menjadikan rasa bebek BKB gurih dan meresap hingga ke tulang.."
-                                        >
-                                            Berencana menjadikan bebek sebagai lauk utama di acara Anda? Jika iya, BKB bisa jadi pilihan yang tepat. BKB atau Bebek Kepahiang Babase menyediakan sajian bebek khas Bengkulu. Berbeda dari restoran bebek lainnya yang cenderung kering dan krispi, bebek khas BKB sangatlah lembut, empuk, dan juicy. Tidak hanya tekstur, tampilan bebek BKB pun sangat khas, berwarna kehitaman dengan proses memasak hampir 24 jam. Proses memasak yang lama khas daerah Kepahiang ditambah aneka rempah dan bumbu menjadikan rasa bebek BKB gurih dan meresap hingga ke tulang..
-                                        </p>
-                                    </div>
-                                    <div class="new-arrival-content text-center mt-3">
-                                        <h4>Bebek BKB</h4>
-                                        <ul class="star-rating">
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star-half-empty"></i></li>
-                                            <li><i class="fa fa-star-half-empty"></i></li>
-                                        </ul>
-{{--                                        <span class="price">$761.00</span>--}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="new-arrival-product">
-                                    <div class="new-arrivals-img-contnent">
-                                        <img class="img-fluid" src="https://img.foodspot.co.id/restaurant//bebekbkb/logo.jpg" alt="">
-                                    </div>
-                                    <div class="new-arrival-content text-center mt-3">
-                                        <p class="text-truncate"
-                                           data-bs-toggle="tooltip"
-                                           data-bs-placement="top"
-                                           title="Berencana menjadikan bebek sebagai lauk utama di acara Anda? Jika iya, BKB bisa jadi pilihan yang tepat. BKB atau Bebek Kepahiang Babase menyediakan sajian bebek khas Bengkulu. Berbeda dari restoran bebek lainnya yang cenderung kering dan krispi, bebek khas BKB sangatlah lembut, empuk, dan juicy. Tidak hanya tekstur, tampilan bebek BKB pun sangat khas, berwarna kehitaman dengan proses memasak hampir 24 jam. Proses memasak yang lama khas daerah Kepahiang ditambah aneka rempah dan bumbu menjadikan rasa bebek BKB gurih dan meresap hingga ke tulang.."
-                                        >
-                                            Berencana menjadikan bebek sebagai lauk utama di acara Anda? Jika iya, BKB bisa jadi pilihan yang tepat. BKB atau Bebek Kepahiang Babase menyediakan sajian bebek khas Bengkulu. Berbeda dari restoran bebek lainnya yang cenderung kering dan krispi, bebek khas BKB sangatlah lembut, empuk, dan juicy. Tidak hanya tekstur, tampilan bebek BKB pun sangat khas, berwarna kehitaman dengan proses memasak hampir 24 jam. Proses memasak yang lama khas daerah Kepahiang ditambah aneka rempah dan bumbu menjadikan rasa bebek BKB gurih dan meresap hingga ke tulang..
-                                        </p>
-                                    </div>
-                                    <div class="new-arrival-content text-center mt-3">
-                                        <h4>Bebek BKB</h4>
-                                        <ul class="star-rating">
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star-half-empty"></i></li>
-                                            <li><i class="fa fa-star-half-empty"></i></li>
-                                        </ul>
-{{--                                        <span class="price">$761.00</span>--}}
+                                    <!--Tab slider End-->
+                                    <div class="col-xl-9 col-sm-12">
+                                        <div class="product-detail-content">
+                                            <!--Product details-->
+                                            <div class="new-arrival-content pr">
+                                                <h4>Bebek BKB</h4>
+                                                <div class="star-rating mb-2">
+                                                    <ul class="produtct-detail-tag">
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                    </ul>
+                                                    <span class="review-text">(34 reviews) / </span><a class="product-review" href="#">Write a review?</a>
+                                                </div>
+                                                <p class="price">$320.00</p>
+                                                <p>Ketersediaan: <span class="item"> Tersedia <i
+                                                            class="fa fa-shopping-basket"></i></span>
+                                                </p>
+                                                <p>Product code: <span class="item">0405689</span> </p>
+                                                <p>Category: <span class="item">Makanan</span></p>
+                                                <p class="text-content">Berencana menjadikan bebek sebagai lauk utama di acara Anda? Jika iya, BKB bisa jadi pilihan yang tepat. BKB atau Bebek Kepahiang Babase menyediakan sajian bebek khas Bengkulu. Berbeda dari restoran bebek lainnya yang cenderung kering dan krispi, bebek khas BKB sangatlah lembut, empuk, dan juicy. Tidak hanya tekstur, tampilan bebek BKB pun sangat khas, berwarna kehitaman dengan proses memasak hampir 24 jam. Proses memasak yang lama khas daerah Kepahiang ditambah aneka rempah dan bumbu menjadikan rasa bebek BKB gurih dan meresap hingga ke tulang.</p>
+{{--                                                <div class="filtaring-area my-3">--}}
+{{--                                                    <div class="size-filter">--}}
+{{--                                                        <h4 class="m-b-15">Select size</h4>--}}
+{{--                                                        <ul>--}}
+{{--                                                            <li class="btn btn-primary light sharp">x</li>--}}
+{{--                                                            <li class="btn btn-primary light sharp">m</li>--}}
+{{--                                                            <li class="btn btn-primary light sharp">l</li>--}}
+{{--                                                            <li class="btn btn-primary light sharp">xs</li>--}}
+{{--                                                            <li class="btn btn-primary light sharp">xl</li>--}}
+{{--                                                        </ul>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+                                                <!--Quantity start-->
+												<div class="col-2 px-0">
+													<input type="number" name="num" class="form-control input-btn input-number" value="1">
+												</div>
+                                                <!--Quanatity End-->
+                                                <div class="shopping-cart mt-3">
+                                                    <a class="btn btn-primary btn-lg" href="#"><i
+                                                            class="fa fa-shopping-basket mr-2"></i>Add
+                                                        to cart</a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -734,6 +745,7 @@
         <!--**********************************
             Content body end
         ***********************************-->
+
 
 
 
@@ -756,18 +768,9 @@
 	<script src="/dashboard-template/vendor/apexchart/apexchart.js"></script>
 
     <script src="/dashboard-template/vendor/highlightjs/highlight.pack.min.js"></script>
-
     <!-- Circle progress -->
-=
 
-    <script>
-        // Inisialisasi tooltip
-        document.addEventListener('DOMContentLoaded', function () {
-            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-            tooltipTriggerList.map(function (tooltipTriggerEl) {
-                return new bootstrap.Tooltip(tooltipTriggerEl)
-            })
-        });
+
 
 </body>
 
