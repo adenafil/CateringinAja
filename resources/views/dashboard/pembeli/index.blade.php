@@ -14,6 +14,14 @@
     <link href="/dashboard-template/css/style.css" rel="stylesheet">
 	<link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
 
+    <style>
+        /* CSS untuk mengubah warna teks saat di-hover */
+        .nav-text-hover {
+            color: #2F4CDD !important;
+        }
+
+    </style>
+
 </head>
 <body>
 
@@ -580,26 +588,28 @@
 
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
-                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                <a class="nav-link" href="{{route('dashboard.pembeli.profile')}}" role="button" data-toggle="dropdown">
                                     <div class="header-info">
                                         <span>Hello, <strong>Kelvin</strong></span>
                                     </div>
                                     <img src="/dashboard-template/images/profile/pic1.jpg" width="20" alt=""/>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="/app-profile.html" class="dropdown-item ai-icon">
+                                    <a href="{{route('dashboard.pembeli.profile')}}" class="dropdown-item ai-icon">
                                         <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                                        <span class="ml-2">Profile </span>
+                                        <span class="ml-2" style="color: #000000;">Profile </span>
                                     </a>
-                                    <a href="./email-inbox.html" class="dropdown-item ai-icon">
-                                        <svg id="icon-inbox" xmlns="http://www.w3.org/2000/svg" class="text-success" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                                        <span class="ml-2">Inbox </span>
-                                    </a>
-                                    <a href="./page-login.html" class="dropdown-item ai-icon">
-                                        <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-                                        <span class="ml-2">Logout </span>
-                                    </a>
-                                </div>
+                                    <form action="{{ route('logout') }}" method="POST" class="dropdown-item ai-icon" style="display: inline;">
+                                        @csrf
+                                        <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+                                            <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                                <polyline points="16 17 21 12 16 7"></polyline>
+                                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                                            </svg>
+                                            <span class="ml-2">Logout</span>
+                                        </button>
+                                    </form>                                </div>
                             </li>
                         </ul>
                     </div>
@@ -617,27 +627,54 @@
             <div class="deznav-scroll">
                 <ul class="metismenu" id="menu">
 
-                    <li class="">
-                        <a class="" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-381-home"></i>
+                    <li class="mm-active">
+                        <a class="" href="{{route('dashboard.pembeli.overview')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/overview-hover.png" style="width: 26px; height: 26px;"></i>
                             <span class="nav-text">Overview</span>
                         </a>
                     </li>
 
-                    <li class="mm-active">
-                        <a class="" href="javascript:void()" aria-expanded="false">
-                            <i class=""><img src="/helper/profile-hover.png" style="width: 23px; height: 23px;"></i>
+                    <li class="">
+                        <a class="" href="{{route('dashboard.pembeli.catering')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/chef.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Catering</span>
+                        </a>
+                    </li>
+
+
+                    <li class="">
+                        <a class="" href="{{route('dashboard.pembeli.catering.order')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/order-seller.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Order</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a class="" href="{{route('dashboard.pembeli.catering.cart')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/cart.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Cart</span>
+                        </a>
+                    </li>
+
+
+
+                    <li class="">
+                        <a class="" href="{{route('dashboard.pembeli.profile')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/profile.png" style="width: 26px; height: 26px;"></i>
                             <span class="nav-text">Profile</span>
                         </a>
                     </li>
 
+                    <li class="" id="logout-link" style="cursor: pointer;">
+                        <a class=""  aria-expanded="false">
+                            <i class=""><img src="/helper/logout.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Logout</span>
+                        </a>
+                    </li>
+
+
                 </ul>
 
-                <div class="add-menu-sidebar">
-                    <img src="/dashboard-template/images/icon1.png" alt=""/>
-                    <p>Organize your menus through button bellow</p>
-                    <a href="javascript:void(0);" class="btn btn-primary btn-block light">Your Menus</a>
-                </div>
             </div>
         </div>
         <!--**********************************
@@ -653,17 +690,17 @@
 				<div class="form-head d-flex mb-3 align-items-start">
 					<div class="mr-auto d-none d-lg-block">
 						<h2 class="text-black font-w600 mb-0">Dashboard</h2>
-						<p class="mb-0">Welcome to Eatio Admin!</p>
+						<p class="mb-0">Welcome to Dashboard CateringinAja!</p>
 					</div>
 
 				</div>
                 <div class="row">
 					<div class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
-						<div class="card bg-secondary" style="background-image:url(images/bg-icon.png); background-repeat:no-repeat; background-position:top right;">
+						<div class="card bg-secondary" style="background-image:url(); background-repeat:no-repeat; background-position:top right;">
 							<div class="card-body p-5 mt-3">
-								<svg width="44" height="44" viewBox="0 0 44 44" class="mb-3" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9531 20.625H5.67188C2.54435 20.625 0 18.0806 0 14.9531V5.67188C0 2.54435 2.54435 0 5.67188 0H14.9531C18.0806 0 20.625 2.54435 20.625 5.67188V14.9531C20.625 18.0806 18.0806 20.625 14.9531 20.625ZM5.67188 2.75C4.06072 2.75 2.75 4.06072 2.75 5.67188V14.9531C2.75 16.5643 4.06072 17.875 5.67188 17.875H14.9531C16.5643 17.875 17.875 16.5643 17.875 14.9531V5.67188C17.875 4.06072 16.5643 2.75 14.9531 2.75H5.67188Z" fill="#fff"/><path d="M38.3281 20.625H29.0469C25.9194 20.625 23.375 18.0806 23.375 14.9531V5.67188C23.375 2.54435 25.9194 0 29.0469 0H38.3281C41.4556 0 44 2.54435 44 5.67188V14.9531C44 18.0806 41.4556 20.625 38.3281 20.625ZM29.0469 2.75C27.4357 2.75 26.125 4.06072 26.125 5.67188V14.9531C26.125 16.5643 27.4357 17.875 29.0469 17.875H38.3281C39.9393 17.875 41.25 16.5643 41.25 14.9531V5.67188C41.25 4.06072 39.9393 2.75 38.3281 2.75H29.0469Z" fill="#fff"/><path d="M33.6875 44C28.0012 44 23.375 39.3738 23.375 33.6875C23.375 28.0012 28.0012 23.375 33.6875 23.375C39.3738 23.375 44 28.0012 44 33.6875C44 39.3738 39.3738 44 33.6875 44ZM33.6875 26.125C29.5176 26.125 26.125 29.5176 26.125 33.6875C26.125 37.8574 29.5176 41.25 33.6875 41.25C37.8574 41.25 41.25 37.8574 41.25 33.6875C41.25 29.5176 37.8574 26.125 33.6875 26.125Z" fill="#fff"/><path d="M14.9531 44H5.67188C2.54435 44 0 41.4556 0 38.3281V29.0469C0 25.9194 2.54435 23.375 5.67188 23.375H14.9531C18.0806 23.375 20.625 25.9194 20.625 29.0469V38.3281C20.625 41.4556 18.0806 44 14.9531 44ZM5.67188 26.125C4.06072 26.125 2.75 27.4357 2.75 29.0469V38.3281C2.75 39.9393 4.06072 41.25 5.67188 41.25H14.9531C16.5643 41.25 17.875 39.9393 17.875 38.3281V29.0469C17.875 27.4357 16.5643 26.125 14.9531 26.125H5.67188Z" fill="#fff"/></svg>
+                                <img src="/dashboard-template/images/order.png" style="width: 44px; height: 44px;" class="mb-3">
 
-								<h4 class="text-white mb-3">Cek Orderanmu Di Sini</h4>
+								<h4 class="text-white mb-3">Cek Pesananmu Di Sini</h4>
 								<a href="javascript:void(0);" class="d-flex text-light align-items-center justify-content-between">
 									<small>Lorem ipsum dolor sit amet, consectetur</small>
 									<i class="ti-arrow-right"></i>
@@ -672,13 +709,12 @@
 						</div>
 					</div>
                     <div class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
-                        <div class="card bg-secondary" style="background-image:url(images/bg-icon.png); background-repeat:no-repeat; background-position:top right;">
+                        <div class="card " style="background-image:url(); background-repeat:no-repeat; background-position:top right; background-color: #FF402F;">
                             <div class="card-body p-5 mt-3">
-                                <svg width="44" height="44" viewBox="0 0 44 44" class="mb-3" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9531 20.625H5.67188C2.54435 20.625 0 18.0806 0 14.9531V5.67188C0 2.54435 2.54435 0 5.67188 0H14.9531C18.0806 0 20.625 2.54435 20.625 5.67188V14.9531C20.625 18.0806 18.0806 20.625 14.9531 20.625ZM5.67188 2.75C4.06072 2.75 2.75 4.06072 2.75 5.67188V14.9531C2.75 16.5643 4.06072 17.875 5.67188 17.875H14.9531C16.5643 17.875 17.875 16.5643 17.875 14.9531V5.67188C17.875 4.06072 16.5643 2.75 14.9531 2.75H5.67188Z" fill="#fff"/><path d="M38.3281 20.625H29.0469C25.9194 20.625 23.375 18.0806 23.375 14.9531V5.67188C23.375 2.54435 25.9194 0 29.0469 0H38.3281C41.4556 0 44 2.54435 44 5.67188V14.9531C44 18.0806 41.4556 20.625 38.3281 20.625ZM29.0469 2.75C27.4357 2.75 26.125 4.06072 26.125 5.67188V14.9531C26.125 16.5643 27.4357 17.875 29.0469 17.875H38.3281C39.9393 17.875 41.25 16.5643 41.25 14.9531V5.67188C41.25 4.06072 39.9393 2.75 38.3281 2.75H29.0469Z" fill="#fff"/><path d="M33.6875 44C28.0012 44 23.375 39.3738 23.375 33.6875C23.375 28.0012 28.0012 23.375 33.6875 23.375C39.3738 23.375 44 28.0012 44 33.6875C44 39.3738 39.3738 44 33.6875 44ZM33.6875 26.125C29.5176 26.125 26.125 29.5176 26.125 33.6875C26.125 37.8574 29.5176 41.25 33.6875 41.25C37.8574 41.25 41.25 37.8574 41.25 33.6875C41.25 29.5176 37.8574 26.125 33.6875 26.125Z" fill="#fff"/><path d="M14.9531 44H5.67188C2.54435 44 0 41.4556 0 38.3281V29.0469C0 25.9194 2.54435 23.375 5.67188 23.375H14.9531C18.0806 23.375 20.625 25.9194 20.625 29.0469V38.3281C20.625 41.4556 18.0806 44 14.9531 44ZM5.67188 26.125C4.06072 26.125 2.75 27.4357 2.75 29.0469V38.3281C2.75 39.9393 4.06072 41.25 5.67188 41.25H14.9531C16.5643 41.25 17.875 39.9393 17.875 38.3281V29.0469C17.875 27.4357 16.5643 26.125 14.9531 26.125H5.67188Z" fill="#fff"/></svg>
-
+                                <img src="/dashboard-template/images/food.png" style="width: 44px; height: 44px;" class="mb-3">
                                 <h4 class="text-white mb-3">Temukan Jasa Catering Di Sini</h4>
                                 <a href="javascript:void(0);" class="d-flex text-light align-items-center justify-content-between">
-                                    <small>Lorem ipsum dolor sit amet, consectetur</small>
+                                    <small class="text-white">Lorem ipsum dolor sit amet, consectetur</small>
                                     <i class="ti-arrow-right"></i>
                                 </a>
                             </div>
@@ -702,6 +738,8 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script src="/dashboard-template/vendor/global/global.min.js"></script>
 	<script src="/dashboard-template/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 	<script src="/dashboard-template/vendor/chart.js/Chart.bundle.min.js"></script>
@@ -720,6 +758,64 @@
 
 	<!-- Dashboard 1 -->
 	<script src="/dashboard-template/js/dashboard/dashboard-1.js"></script>
+
+    <script>
+        document.getElementById('logout-link').addEventListener('click', function(event) {
+            event.preventDefault(); // Mencegah perilaku default dari elemen <a>
+
+            // Kirim request POST menggunakan Axios
+            axios.post('{{ route("logout") }}', {})
+                .then(response => {
+                    // Redirect atau lakukan sesuatu setelah logout berhasil
+                    window.location.href = '/'; // Contoh: Redirect ke halaman home
+                })
+                .catch(error => {
+                    console.error('Logout failed:', error);
+                    alert('Logout failed. Please try again.');
+                });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('li');
+
+            navItems.forEach((item, index) => { // Parameter kedua (index) digunakan di sini
+                item.addEventListener('mouseenter', function() {
+                    console.log(`Mouse entered item with index: ${index}`); // Tampilkan index saat hover
+                    const navText = this.querySelector('.nav-text');
+                    const img = this.querySelector('img');
+
+
+                    if (navText) {
+                        navText.classList.add('nav-text-hover');
+                    }
+
+                    if (img && img.src.includes('/helper/')) {
+                        if (!img.src.includes('overview')) {
+                            img.classList.add('img-hover');
+                            img.src = img.src.replace('.png', '-hover.png');
+                        }
+                    }
+                });
+
+                item.addEventListener('mouseleave', function() {
+                    console.log(`Mouse left item with index: ${index}`); // Tampilkan index saat mouse leave
+                    const navText = this.querySelector('.nav-text');
+                    const img = this.querySelector('img');
+
+                    if (navText) {
+                        navText.classList.remove('nav-text-hover');
+                    }
+
+                    if (img && img.src.includes('/helper/')) {
+                        if (!img.src.includes('overview')) {
+                            img.classList.remove('img-hover');
+                            img.src = img.src.replace('-hover.png', '.png');
+                        }
+
+                    }
+                });
+            });
+        });    </script>
 
 
 </body>
