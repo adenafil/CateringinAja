@@ -99,8 +99,8 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="index.blade.php" class="nav-item nav-link ">Home</a>
-                            <a href="about.html" class="nav-item nav-link">Tentang Kami</a>
+                            <a href="/" class="nav-item nav-link ">Home</a>
+                            <a href="/#about-anchor" class="nav-item nav-link">Tentang Kami</a>
                             <a href="service.html" class="nav-item nav-link active">Temukan Katering</a>
                         </div>
                         <button class="btn-search btn btn-primary btn-md-square me-4 rounded-circle d-none d-lg-inline-flex" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></button>

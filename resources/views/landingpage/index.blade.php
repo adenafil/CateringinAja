@@ -51,9 +51,9 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="about.html" class="nav-item nav-link">Tentang Kami</a>
-                            <a href="service.html" class="nav-item nav-link">Temukan Katering</a>
+                            <a href="/" class="nav-item nav-link active">Home</a>
+                            <a href="#about-anchor" class="nav-item nav-link">Tentang Kami</a>
+                            <a href="{{route('find')}}" class="nav-item nav-link">Temukan Katering</a>
                         </div>
                         <button class="btn-search btn btn-primary btn-md-square me-4 rounded-circle d-none d-lg-inline-flex" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></button>
                         <a href="" class="btn btn-primary py-2 px-4 d-none d-xl-inline-block rounded-pill">Login</a>
@@ -91,7 +91,7 @@
                     <div class="col-lg-7 col-md-12">
                         <small class="d-inline-block fw-bold text-dark  bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown">Selamat Datang di CateringinAja</small>
                         <h1 class="display-1 mb-4 animated bounceInDown">Mau Bikin Acara Spesial ? <span class="text-primary">Cateringin</span>Aja Lahh</h1>
-                        <a href="" class="btn btn-primary border-0 rounded-pill py-3 px-4 px-md-5 me-4 animated bounceInLeft">Temukan Katering</a>
+                        <a href="{{route('find')}}" class="btn btn-primary border-0 rounded-pill py-3 px-4 px-md-5 me-4 animated bounceInLeft">Temukan Katering</a>
                     </div>
                     <div class="col-lg-5 col-md-12">
                         <img src="/landingpage/img/hero.png" class="img-fluid rounded animated zoomIn" alt="">
@@ -104,7 +104,7 @@
 
         <!-- About Satrt -->
         <div class="container-fluid py-6">
-            <div class="container">
+            <div class="container" id="about-anchor">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-5 wow bounceInUp" data-wow-delay="0.1s">
                         <img src="/landingpage/img/about.jpg" class="img-fluid rounded" alt="">
@@ -128,7 +128,7 @@
                                 <i class="fas fa-share text-primary me-2"></i>Penawaran Lezat Untuk Makanan Lezat
                             </div>
                         </div>
-                        <a href="" class="btn btn-primary py-3 px-5 rounded-pill">Temukan Katering<i class="fas fa-arrow-right ps-2"></i></a>
+                        <a href="{{route('find')}}" class="btn btn-primary py-3 px-5 rounded-pill">Temukan Katering<i class="fas fa-arrow-right ps-2"></i></a>
                     </div>
                 </div>
             </div>
