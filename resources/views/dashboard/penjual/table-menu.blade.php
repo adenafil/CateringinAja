@@ -11,6 +11,13 @@
     <!-- Custom Stylesheet -->
     <link href="/dashboard-template/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="/dashboard-template/css/style.css" rel="stylesheet">
+    <style>
+        /* CSS untuk mengubah warna teks saat di-hover */
+        .nav-text-hover {
+            color: #2F4CDD !important;
+        }
+
+    </style>
 
 </head>
 
@@ -66,7 +73,33 @@
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#notes">Notes</a>
-                    </li>
+                    </li>                        <ul class="navbar-nav header-right">
+                        <li class="nav-item dropdown header-profile">
+                            <a class="nav-link" href="{{route('dashboard.profile')}}" role="button" data-toggle="dropdown">
+                                <div class="header-info">
+                                    <span>Hello, <strong>Kelvin</strong></span>
+                                </div>
+                                <img src="/dashboard-template/images/profile/pic1.jpg" width="20" alt=""/>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a href="{{route('dashboard.profile')}}" class="dropdown-item ai-icon">
+                                    <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                    <span class="ml-2" style="color: #000000;">Profile </span>
+                                </a>
+                                <form action="{{ route('logout') }}" method="POST" class="dropdown-item ai-icon" style="display: inline;">
+                                    @csrf
+                                    <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+                                        <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                            <polyline points="16 17 21 12 16 7"></polyline>
+                                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                                        </svg>
+                                        <span class="ml-2">Logout</span>
+                                    </button>
+                                </form>                                </div>
+                        </li>
+                    </ul>
+
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#alerts">Alerts</a>
                     </li>
@@ -584,26 +617,28 @@
 
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown header-profile">
-                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                <a class="nav-link" href="{{route('dashboard.profile')}}" role="button" data-toggle="dropdown">
                                     <div class="header-info">
                                         <span>Hello, <strong>Kelvin</strong></span>
                                     </div>
                                     <img src="/dashboard-template/images/profile/pic1.jpg" width="20" alt=""/>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="/app-profile.html" class="dropdown-item ai-icon">
+                                    <a href="{{route('dashboard.profile')}}" class="dropdown-item ai-icon">
                                         <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                                        <span class="ml-2">Profile </span>
+                                        <span class="ml-2" style="color: #000000;">Profile </span>
                                     </a>
-                                    <a href="./email-inbox.html" class="dropdown-item ai-icon">
-                                        <svg id="icon-inbox" xmlns="http://www.w3.org/2000/svg" class="text-success" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                                        <span class="ml-2">Inbox </span>
-                                    </a>
-                                    <a href="./page-login.html" class="dropdown-item ai-icon">
-                                        <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-                                        <span class="ml-2">Logout </span>
-                                    </a>
-                                </div>
+                                    <form action="{{ route('logout') }}" method="POST" class="dropdown-item ai-icon" style="display: inline;">
+                                        @csrf
+                                        <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+                                            <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                                <polyline points="16 17 21 12 16 7"></polyline>
+                                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                                            </svg>
+                                            <span class="ml-2">Logout</span>
+                                        </button>
+                                    </form>                                </div>
                             </li>
                         </ul>
                     </div>
@@ -621,19 +656,41 @@
             <div class="deznav-scroll">
                 <ul class="metismenu" id="menu">
 
-                    <li class="mm-active">
-                        <a class="" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-381-home"></i>
+                    <li class="">
+                        <a class="" href="{{route('dashboard.overview')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/overview.png" style="width: 26px; height: 26px;"></i>
                             <span class="nav-text">Overview</span>
                         </a>
                     </li>
 
                     <li class="">
-                        <a class="" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-381-networking"></i>
-                            <span class="nav-text">Overview</span>
+                        <a class="" href="{{route('dashboard.order')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/order-seller.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Order</span>
                         </a>
                     </li>
+
+                    <li class="">
+                        <a class="" href="{{route('dashboard.widthdrawalHistory')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/history-withdrawal.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Penarikan Dana</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a class="" href="{{route('dashboard.profile')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/profile.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="" id="logout-link" style="cursor: pointer;">
+                        <a class=""  aria-expanded="false">
+                            <i class=""><img src="/helper/logout.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Logout</span>
+                        </a>
+                    </li>
+
 
                 </ul>
 
@@ -660,15 +717,22 @@
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Catering</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0)">List Menu</a></li>
-                        </ol>
+                        <div style=" display: flex; align-items: center; width: 100%;">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0)">Catering</a></li>
+                                <li class="breadcrumb-item active"><a href="javascript:void(0)">List Menu</a></li>
+                            </ol>
+                            <a href="{{route('dashboard.menu.add-menu')}}" class="btn btn-sm btn-primary ml-auto">Tambah Menu</a>
+                        </div>
                     </div>
                 </div>
                 <!-- row -->
 
+
+
                 <div class="row">
+
+
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
@@ -733,6 +797,8 @@
     <!--**********************************
         Scripts
     ***********************************-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <!-- Required vendors -->
     <script src="/dashboard-template/vendor/global/global.min.js"></script>
 	<script src="/dashboard-template/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
@@ -744,6 +810,63 @@
 
 
 
+    <script>
+        document.getElementById('logout-link').addEventListener('click', function(event) {
+            event.preventDefault(); // Mencegah perilaku default dari elemen <a>
+
+            // Kirim request POST menggunakan Axios
+            axios.post('{{ route("logout") }}', {})
+                .then(response => {
+                    // Redirect atau lakukan sesuatu setelah logout berhasil
+                    window.location.href = '/'; // Contoh: Redirect ke halaman home
+                })
+                .catch(error => {
+                    console.error('Logout failed:', error);
+                    alert('Logout failed. Please try again.');
+                });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('li');
+
+            navItems.forEach((item, index) => { // Parameter kedua (index) digunakan di sini
+                item.addEventListener('mouseenter', function() {
+                    console.log(`Mouse entered item with index: ${index}`); // Tampilkan index saat hover
+                    const navText = this.querySelector('.nav-text');
+                    const img = this.querySelector('img');
+
+
+                    if (navText) {
+                        navText.classList.add('nav-text-hover');
+                    }
+
+                    if (img && img.src.includes('/helper/')) {
+                        if (!img.src.includes('adebayor')) {
+                            img.classList.add('img-hover');
+                            img.src = img.src.replace('.png', '-hover.png');
+                        }
+                    }
+                });
+
+                item.addEventListener('mouseleave', function() {
+                    console.log(`Mouse left item with index: ${index}`); // Tampilkan index saat mouse leave
+                    const navText = this.querySelector('.nav-text');
+                    const img = this.querySelector('img');
+
+                    if (navText) {
+                        navText.classList.remove('nav-text-hover');
+                    }
+
+                    if (img && img.src.includes('/helper/')) {
+                        if (!img.src.includes('adebayor')) {
+                            img.classList.remove('img-hover');
+                            img.src = img.src.replace('-hover.png', '.png');
+                        }
+
+                    }
+                });
+            });
+        });    </script>
 
 
 
