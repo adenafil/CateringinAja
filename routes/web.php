@@ -22,6 +22,8 @@ Route::middleware(['auth', 'seller'])->group(function () {
     Route::get('/catering/dashboard/overview', [DashboardJasaCatering::class, 'index'])->name('dashboard.overview');
     Route::get('/catering/dashboard/menu/add', [DashboardJasaCatering::class, 'addMenuView'])->name('dashboard.menu.add-menu');
     Route::post('/catering/dashboard/menu/add', [DashboardJasaCatering::class, 'postAddMenu'])->name('dashboard.menu.add-menu.post');
+    Route::get('/catering/dashboard/menu/edit/{menu}', [DashboardJasaCatering::class, 'editMenuView'])->name('dashboard.menu.edit-menu');
+    Route::patch('/catering/dashboard/menu/edit/{menu}', [DashboardJasaCatering::class, 'patchMenu'])->name('dashboard.menu.edit-menu.patch');
     Route::patch('/catering/dashboard/menu/{menu}', [DashboardJasaCatering::class, 'setItemAsAvailableOrUnavailable'])->name('dashboard.menu.add-menu.patch');
     Route::get('/catering/dashboard/menu', [DashboardJasaCatering::class, 'MenuView'])->name('dashboard.menu');
     Route::get('/catering/dashboard/profile', [DashboardJasaCatering::class, 'profile'])->name('dashboard.profile');

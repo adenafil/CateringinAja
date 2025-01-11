@@ -74,6 +74,62 @@ class DashboardJasaCatering extends Controller
         return redirect()->route('dashboard.menu');
     }
 
+    public function editMenuView(Menu $menu): Response
+    {
+        return response()->view('dashboard.penjual.edit-add-menu', compact('menu'));
+    }
+
+    public function patchMenu(Request $request, Menu $menu): RedirectResponse
+    {
+        $request->validate([
+            'name' => 'required', // Pastikan nama menu unik di tabel menus
+            'price' => 'required|numeric|min:0', // Pastikan harga tidak negatif
+            'min_order' => 'required|numeric|min:1', // Pastikan minimal order tidak negatif atau nol
+            'category' => 'required|in:Makanan,Minuman',
+            'description' => 'required',
+        ], [
+            'name.required' => 'Nama menu harus diisi.',
+            'price.required' => 'Harga harus diisi.',
+            'price.numeric' => 'Harga harus berupa angka.',
+            'price.min' => 'Harga tidak boleh negatif.',
+            'min_order.required' => 'Minimal order harus diisi.',
+            'min_order.numeric' => 'Minimal order harus berupa angka.',
+            'min_order.min' => 'Minimal order tidak boleh kurang dari 1.',
+            'category.required' => 'Kategori harus diisi.',
+            'category.in' => 'Kategori harus berupa Makanan atau Minuman.',
+            'description.required' => 'Deskripsi harus diisi.',
+        ]);
+
+
+        if ($menu->picture && request()->has('picture')) {
+            try {
+                $data = $request->all();
+                $file = $request->file('picture');
+                if ($file->isValid()) {
+                    $filePath = $file->store('foods/pictures', 'public');
+                    $data['picture'] = $filePath;
+                } else {
+                    alert()->error('Error!','Gagal mengupload gambar');
+                    return back()->withErrors('Gagal mengupload gambar.')->with('success', 'Menu Updated Successfully');
+                }
+                $menu->update($data);
+                alert()->success('Success!','Menu Updated Successfully');
+                return redirect()->route('dashboard.menu');
+            } catch (\Throwable $th) {
+                \Log::error('Error adding menu: ' . $th->getMessage());
+                alert()->error('Error!','Terjadi kesalahan saat mengedit menu');
+
+                return back()->withErrors('Terjadi kesalahan saat mengedit menu.')->withInput();
+            }
+
+        } else {
+            $menu->update($request->all());
+            alert()->success('Success!','Menu Updated Successfully');
+            return redirect()->route('dashboard.menu');
+        }
+
+    }
+
     public function MenuView(): Response
     {
         $menus = Menu::query()
