@@ -283,7 +283,7 @@
                                         <h5 class="text-danger fw-bold mb-3">Top Menu</h5>
                                         <div class="d-flex flex-wrap gap-4">
                                             <!-- Menu Item 1 -->
-                                            <div class="menu-item text-center">
+                                            <div class="item-menu text-center">
                                                 <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
                                                      class="rounded mb-2"
                                                      style="width: 100px; height: 70px; object-fit: cover;"
@@ -292,7 +292,7 @@
                                                 <p class="text-danger mb-0">Rp 58.410</p>
                                             </div>
                                             <!-- Menu Item 2 -->
-                                            <div class="menu-item text-center">
+                                            <div class="item-menu text-center">
                                                 <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
                                                      class="rounded mb-2"
                                                      style="width: 100px; height: 70px; object-fit: cover;"
@@ -301,7 +301,7 @@
                                                 <p class="text-danger mb-0">Rp 58.410</p>
                                             </div>
                                             <!-- Menu Item 3 -->
-                                            <div class="menu-item text-center">
+                                            <div class="item-menu text-center">
                                                 <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
                                                      class="rounded mb-2"
                                                      style="width: 100px; height: 70px; object-fit: cover;"
@@ -358,7 +358,7 @@
                                         <h5 class="text-danger fw-bold mb-3">Top Menu</h5>
                                         <div class="d-flex flex-wrap gap-4">
                                             <!-- Menu Item 1 -->
-                                            <div class="menu-item text-center">
+                                            <div class="item-menu text-center">
                                                 <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
                                                      class="rounded mb-2"
                                                      style="width: 100px; height: 70px; object-fit: cover;"
@@ -367,7 +367,7 @@
                                                 <p class="text-danger mb-0">Rp 58.410</p>
                                             </div>
                                             <!-- Menu Item 2 -->
-                                            <div class="menu-item text-center">
+                                            <div class="item-menu text-center">
                                                 <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
                                                      class="rounded mb-2"
                                                      style="width: 100px; height: 70px; object-fit: cover;"
@@ -376,7 +376,7 @@
                                                 <p class="text-danger mb-0">Rp 58.410</p>
                                             </div>
                                             <!-- Menu Item 3 -->
-                                            <div class="menu-item text-center">
+                                            <div class="item-menu text-center">
                                                 <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
                                                      class="rounded mb-2"
                                                      style="width: 100px; height: 70px; object-fit: cover;"
@@ -433,7 +433,7 @@
                                         <h5 class="text-danger fw-bold mb-3">Top Menu</h5>
                                         <div class="d-flex flex-wrap gap-4">
                                             <!-- Menu Item 1 -->
-                                            <div class="menu-item text-center">
+                                            <div class="item-menu text-center">
                                                 <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
                                                      class="rounded mb-2"
                                                      style="width: 100px; height: 70px; object-fit: cover;"
@@ -442,7 +442,7 @@
                                                 <p class="text-danger mb-0">Rp 58.410</p>
                                             </div>
                                             <!-- Menu Item 2 -->
-                                            <div class="menu-item text-center">
+                                            <div class="item-menu text-center">
                                                 <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
                                                      class="rounded mb-2"
                                                      style="width: 100px; height: 70px; object-fit: cover;"
@@ -451,7 +451,7 @@
                                                 <p class="text-danger mb-0">Rp 58.410</p>
                                             </div>
                                             <!-- Menu Item 3 -->
-                                            <div class="menu-item text-center">
+                                            <div class="item-menu text-center">
                                                 <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
                                                      class="rounded mb-2"
                                                      style="width: 100px; height: 70px; object-fit: cover;"

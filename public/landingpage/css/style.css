@@ -28,12 +28,12 @@
     gap: 15px;
 }
 
-.menu-item {
+.item-menu {
     text-align: center;
     width: 120px;
 }
 
-.menu-item img {
+.item-menu img {
     width: 100%;
     height: auto;
     border-radius: 5px;
