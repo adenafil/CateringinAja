@@ -594,9 +594,13 @@
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="{{route('dashboard.profile')}}" role="button" data-toggle="dropdown">
                                     <div class="header-info">
-                                        <span>Hello, <strong>Kelvin</strong></span>
+                                        <span>Hello, <strong>{{auth()->user()->username}}</strong></span>
                                     </div>
-                                    <img src="/dashboard-template/images/profile/pic1.jpg" width="20" alt=""/>
+                                    @if(auth()->user()->avatar)
+                                        <img src="/storage/{{auth()->user()->avatar}}" width="20" alt=""/>
+                                    @else
+                                        <img src="https://www.dcrc.co/wp-content/uploads/2019/04/blank-head-profile-pic-for-a-man.jpg" width="20" alt="">
+                                    @endif
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="{{route('dashboard.profile')}}" class="dropdown-item ai-icon">
