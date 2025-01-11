@@ -690,7 +690,6 @@
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
                             <h4>Profile Toko</h4>
-                            <span>Element</span>
                         </div>
                     </div>
                 </div>
@@ -703,46 +702,71 @@
                             </div>
                             <div class="card-body">
                                 <div class="basic-form">
-                                    <form>
-                                        <img src="https://img.foodspot.co.id/restaurant//bebekbkb/2024/oct/nasi-tempong-ayam-negeri.jpg" class="img-thumbnail my-4" style="width: 400px; height: 300px; object-fit: cover;">
+                                    <form action="{{route('dashboard.profile.post')}}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PATCH')
+                                        <img src="https://img.foodspot.co.id/restaurant//bebekbkb/2024/oct/nasi-tempong-ayam-negeri.jpg" class="img-thumbnail mb-4" style="width: 400px; height: 300px; object-fit: cover;">
 
                                         <div class="form-group">
                                             <div class="custom-file">
-                                                <input style="font-size: 16px;" type="file" class="custom-file-input" id="customFile">
+                                                <input type="file" style="font-size: 16px;" name="avatar"  class="custom-file-input" id="customFile">
                                                 <label class="custom-file-label" for="customFile">Upload Photo Toko</label>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <input style="font-size: 16px;" type="text" class="form-control input-default " placeholder="Nama Toko">
+                                            <input name="nama_toko" style="font-size: 16px;" type="text" class="form-control input-default " placeholder="Nama Toko" value="{{$user->nama_toko}}">
                                         </div>
 
                                         <div class="form-group">
-                                            <input style="font-size: 16px;" type="text" class="form-control input-default " placeholder="Kisaran Harga">
+                                            <input name="username" style="font-size: 16px;" type="text" class="form-control input-default " placeholder="username" value="{{$user->username}}">
                                         </div>
 
                                         <div class="form-group">
-                                            <input style="font-size: 16px;" type="text" class="form-control input-default " placeholder="Area Antar">
+                                            <input name="name" style="font-size: 16px;" type="text" class="form-control input-default " placeholder="Nama" value="{{$user->nama_toko}}">
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <input name="password" style="font-size: 16px;" type="password" class="form-control input-default " placeholder="password" value="{{$user->password}}">
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <input name="kisaran_harga" style="font-size: 16px;" type="text" class="form-control input-default " placeholder="Kisaran Harga" value="{{$user->kisaran_harga}}">
                                         </div>
 
                                         <div class="form-group">
-                                            <input style="font-size: 16px;" type="text" class="form-control input-default " placeholder="No Handphone">
+                                            <input name="link_google_map_embed" style="font-size: 16px;" type="text" class="form-control input-default " placeholder="Link Google Embed , e.g : https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.606236652342!2d112.6435990758789!3d-7.171433570373684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd8003f8711cee5%3A0x59a3e2701bf754e0!2sUniversitas%20Internasional%20Semen%20Indonesia%20(Kampus%20B)!5e0!3m2!1sen!2sid!4v1736583905221!5m2!1sen!2sid" value="{{$user->link_google_map_embed}}">
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <input name="area_antar" style="font-size: 16px;" type="text" class="form-control input-default " placeholder="Area Antar" value="{{$user->username}}">
                                         </div>
 
                                         <div class="form-group">
-                                            <input style="font-size: 16px;" type="text" class="form-control input-default " placeholder="No Whatsapp">
+                                            <input name="no_handphone" style="font-size: 16px;" type="text" class="form-control input-default " placeholder="No Handphone" value="{{$user->np_handphone}}">
                                         </div>
 
                                         <div class="form-group">
-                                            <input style="font-size: 16px;" type="text" class="form-control input-default " placeholder="Email">
+                                            <input name="no_whatsapp" style="font-size: 16px;" type="text" class="form-control input-default " placeholder="No Whatsapp" value="{{$user->no_whatsapp}}">
                                         </div>
 
                                         <div class="form-group">
-                                            <input style="font-size: 16px;" class="summernote form-control input-default"></input>
+                                            <input name="email" style="font-size: 16px;" type="text" class="form-control input-default " placeholder="Email" value="{{$user->email}}">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <textarea name="alamat_toko"  cols="30" rows="5" class="form-control" placeholder="Alamat">{{$user->alamat_toko}}</textarea>
                                         </div>
 
 
-                                        <button type="button" class="btn btn-sm btn-primary">Tambah</button>
+                                        <div class="form-group">
+                                            <textarea name="deskripsi_toko" id="" cols="30" rows="5" class="form-control" placeholder="Deskripsi Toko">{{$user->deskripsi_toko}}</textarea>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-sm btn-primary">Tambah</button>
 
                                     </form>
                                 </div>
@@ -771,7 +795,7 @@
 
     <!-- Required vendors -->
     <script src="/dashboard-template/vendor/global/global.min.js"></script>
-	<script src="/dashboard-template/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+{{--	<script src="/dashboard-template/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>--}}
     <script src="/dashboard-template/vendor/chart.js/Chart.bundle.min.js"></script>
     <script src="/dashboard-template/js/custom.min.js"></script>
 	<script src="/dashboard-template/js/deznav-init.js"></script>
@@ -857,5 +881,7 @@
 
 
 </body>
+
+@include('sweetalert::alert')
 
 </html>

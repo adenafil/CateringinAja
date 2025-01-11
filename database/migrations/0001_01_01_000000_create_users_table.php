@@ -23,6 +23,9 @@ return new class extends Migration
             $table->string('no_handphone')->nullable();
             $table->string('no_whatsapp')->nullable();
             $table->string('deskripsi_toko')->nullable();
+            $table->text('link_google_map_embed')->nullable();
+            $table->text('alamat_toko')->nullable();
+            $table->string('kisaran_harga')->nullable();
 
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

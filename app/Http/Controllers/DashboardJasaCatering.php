@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -24,7 +26,25 @@ class DashboardJasaCatering extends Controller
 
     public function profile(): Response
     {
-        return response()->view('dashboard.penjual.profile');
+        $user = User::findOrFail(auth()->user()->id);
+        return response()->view('dashboard.penjual.profile', compact('user'));
+    }
+
+    public function postProfile(request $request): RedirectResponse
+    {
+        $user = User::findOrFail(auth()->user()->id);
+        if (request()->has('avatar')) {
+            $data = $request->all();
+            $file = $request->file('avatar');
+            $filePath = $file->store('avatars');
+            $data['avatar'] = $filePath;
+            $user->update($data);
+            alert()->success('Success!','Profile Information Saved Successfully');
+            return back();
+        }
+        $user->update($request->all());
+        alert()->success('Success!','Profile Information Saved Successfully');
+        return back();
     }
 
     public function order(): Response

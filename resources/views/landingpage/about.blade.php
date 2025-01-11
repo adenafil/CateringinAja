@@ -855,8 +855,11 @@
         </div>
         <!-- Testimonial End -->
 
-
-
+        <div class="" style="">
+            <iframe src="
+            https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.569879006268!2d112.64659807587906!3d-7.175614670418498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd8003eae3b5885%3A0xe591511ea76dac1d!2sUniversitas%20Internasional%20Semen%20Indonesia!5e0!3m2!1sen!2sid!4v1736528998579!5m2!1sen!2sid
+            " width="100%" height="550" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
         <!-- Copyright Start -->
         <div class="container-fluid copyright bg-dark py-4">
             <div class="container">
