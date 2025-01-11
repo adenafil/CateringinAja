@@ -629,26 +629,48 @@
             <div class="deznav-scroll">
                 <ul class="metismenu" id="menu">
 
-                    <li class="mm-active">
-                        <a class="" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-381-home"></i>
+                    <li class="">
+                        <a class="" href="{{route('dashboard.overview')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/overview.png" style="width: 26px; height: 26px;"></i>
                             <span class="nav-text">Overview</span>
                         </a>
                     </li>
 
                     <li class="">
-                        <a class="" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-381-networking"></i>
-                            <span class="nav-text">Overview</span>
+                        <a class="" href="{{route('dashboard.order')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/order-seller.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Order</span>
                         </a>
                     </li>
+
+                    <li class="">
+                        <a class="" href="{{route('dashboard.widthdrawalHistory')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/history-withdrawal.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Penarikan Dana</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a class="" href="{{route('dashboard.profile')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/profile.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="" id="logout-link" style="cursor: pointer;">
+                        <a class=""  aria-expanded="false">
+                            <i class=""><img src="/helper/logout.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Logout</span>
+                        </a>
+                    </li>
+
 
                 </ul>
 
                 <div class="add-menu-sidebar">
                     <img src="/dashboard-template/images/icon1.png" alt=""/>
                     <p>Organize your menus through button bellow</p>
-                    <a href="javascript:void(0);" class="btn btn-primary btn-block light">Your Menus</a>
+                    <a href="{{route('dashboard.menu')}}" class="btn btn-primary btn-block light">Your Menus</a>
                 </div>
             </div>
         </div>
@@ -661,6 +683,16 @@
         ***********************************-->
         <div class="content-body">
             <div class="container-fluid">
+
+                @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible fade show">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                        <strong>Error!</strong> {{$errors->first()}}
+                        <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                        </button>
+                    </div>
+                @endif
+
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
@@ -684,30 +716,31 @@
                             </div>
                             <div class="card-body">
                                 <div class="basic-form">
-                                    <form>
-                                        <img src="https://img.foodspot.co.id/restaurant//bebekbkb/2024/oct/nasi-tempong-ayam-negeri.jpg" class="img-thumbnail my-4" style="width: 400px; height: 300px; object-fit: cover;">
+                                    <form action="{{route('dashboard.menu.add-menu.post')}}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <img src="" class="img-thumbnail mb-4 d-none" style="width: 400px; height: 300px; object-fit: cover;" id="previewImage">
 
                                         <div class="form-group">
                                             <div class="custom-file">
-                                                <input style="font-size: 16px;" type="file" class="custom-file-input" id="customFile">
+                                                <input name="picture" style="font-size: 16px;" type="file" class="custom-file-input" id="customFile">
                                                 <label class="custom-file-label" for="customFile">Upload Gambar</label>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <input style="font-size: 16px;" type="text" class="form-control input-default " placeholder="Nama Menu">
+                                            <input name="name" style="font-size: 16px;" type="text" class="form-control input-default " placeholder="Nama Menu">
                                         </div>
 
                                         <div class="form-group">
-                                            <input style="font-size: 16px;" type="text" class="form-control input-default " placeholder="Harga">
+                                            <input name="price" style="font-size: 16px;" type="number" class="form-control input-default " placeholder="Harga">
                                         </div>
 
                                         <div class="form-group">
-                                            <input style="font-size: 16px;" type="text" class="form-control input-default " placeholder="Minimal Order Produk">
+                                            <input name="min_order" style="font-size: 16px;" type="number" class="form-control input-default " placeholder="Minimal Order Produk">
                                         </div>
 
                                         <div class="form-group">
-                                            <select class="form-control form-control-lg">
+                                            <select name="category" class="form-control form-control-lg">
                                                 <option style="font-size: 16px;">Category Menu</option>
                                                 <option style="font-size: 16px;">Makanan</option>
                                                 <option style="font-size: 16px;">Minuman</option>
@@ -715,11 +748,10 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <input style="font-size: 16px;" class="summernote form-control input-default"></input>
+                                            <textarea name="description" cols="30" rows="5" class="form-control" placeholder="Deskripsi Menu"></textarea>
                                         </div>
 
-
-                                        <button type="button" class="btn btn-sm btn-primary">Tambah</button>
+                                        <button type="submit" class="btn btn-sm btn-primary">Tambah</button>
 
                                     </form>
                                 </div>
@@ -746,7 +778,7 @@
     ***********************************-->
     <!-- Required vendors -->
     <script src="/dashboard-template/vendor/global/global.min.js"></script>
-	<script src="/dashboard-template/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+{{--	<script src="/dashboard-template/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>--}}
     <script src="/dashboard-template/vendor/chart.js/Chart.bundle.min.js"></script>
     <script src="/dashboard-template/js/custom.min.js"></script>
 	<script src="/dashboard-template/js/deznav-init.js"></script>
@@ -760,19 +792,37 @@
 
 
     <script>
-        document.querySelector('.custom-file-input').addEventListener('change', function (e) {
-            // Ambil nama file
-            let fileName = e.target.files[0] ? e.target.files[0].name : 'Choose file';
-            // Temukan label terkait dan perbarui teksnya
-            let label = e.target.nextElementSibling;
-            if (label && label.classList.contains('custom-file-label')) {
-                label.textContent = fileName;
-            }
-        });
+        // Fungsi untuk menampilkan gambar yang diunggah dan memperbarui label
+        function previewImage(event) {
+            const input = event.target;
+            const reader = new FileReader();
 
+            // Ketika file selesai dibaca
+            reader.onload = function() {
+                const imgElement = document.getElementById('previewImage');
+                imgElement.src = reader.result; // Set src gambar ke hasil pembacaan file
+                imgElement.classList.remove('d-none'); // Tampilkan elemen img dengan menghapus class d-none
+                imgElement.classList.add('d-block'); // Tambahkan class d-block untuk memastikan elemen ditampilkan
+
+            };
+
+            // Jika file dipilih, baca file tersebut
+            if (input.files && input.files[0]) {
+                reader.readAsDataURL(input.files[0]); // Baca file sebagai URL data
+            }
+
+            // Perbarui label input file menjadi nama file yang diunggah
+            const label = input.nextElementSibling;
+            if (label && label.classList.contains('custom-file-label')) {
+                label.textContent = input.files[0].name;
+            }
+        }
+
+        // Tambahkan event listener ke input file
+        document.getElementById('customFile').addEventListener('change', previewImage);
     </script>
 
-
 </body>
+@include('sweetalert::alert')
 
 </html>

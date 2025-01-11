@@ -671,7 +671,7 @@
                 <div class="add-menu-sidebar">
                     <img src="/dashboard-template/images/icon1.png" alt=""/>
                     <p>Organize your menus through button bellow</p>
-                    <a href="javascript:void(0);" class="btn btn-primary btn-block light">Your Menus</a>
+                    <a href="{{route('dashboard.menu')}}" class="btn btn-primary btn-block light">Your Menus</a>
                 </div>
             </div>
         </div>

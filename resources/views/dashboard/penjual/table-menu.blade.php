@@ -701,7 +701,7 @@
                 <div class="add-menu-sidebar">
                     <img src="/dashboard-template/images/icon1.png" alt=""/>
                     <p>Organize your menus through button bellow</p>
-                    <a href="javascript:void(0);" class="btn btn-primary btn-block light">Your Menus</a>
+                    <a href="{{route('dashboard.menu')}}" class="btn btn-primary btn-block light">Your Menus</a>
                 </div>
             </div>
         </div>
@@ -805,7 +805,7 @@
 
     <!-- Required vendors -->
     <script src="/dashboard-template/vendor/global/global.min.js"></script>
-	<script src="/dashboard-template/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+{{--	<script src="/dashboard-template/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>--}}
     <script src="/dashboard-template/vendor/chart.js/Chart.bundle.min.js"></script>
     <script src="/dashboard-template/js/custom.min.js"></script>
 	<script src="/dashboard-template/js/deznav-init.js"></script>
@@ -875,5 +875,6 @@
 
 
 </body>
+@include('sweetalert::alert')
 
 </html>

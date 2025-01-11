@@ -711,7 +711,9 @@
                                         @method('PATCH')
 
                                         @if($user->avatar)
-                                            <img src="/storage/{{$user->avatar}}" class="img-thumbnail mb-4" style="width: 400px; height: 300px; object-fit: cover;">
+                                            <img src="/storage/{{$user->avatar}}" class="img-thumbnail mb-4" style="width: 400px; height: 300px"; object-fit: cover; id="previewImage">
+                                        @else
+                                            <img src="" class="img-thumbnail mb-4 d-none" style="width: 400px; height: 300px"; object-fit: cover; id="previewImage";>
                                         @endif
 
                                         <div class="form-group">
@@ -816,15 +818,34 @@
 
 
     <script>
-        document.querySelector('.custom-file-input').addEventListener('change', function (e) {
-            // Ambil nama file
-            let fileName = e.target.files[0] ? e.target.files[0].name : 'Choose file';
-            // Temukan label terkait dan perbarui teksnya
-            let label = e.target.nextElementSibling;
-            if (label && label.classList.contains('custom-file-label')) {
-                label.textContent = fileName;
+        // Fungsi untuk menampilkan gambar yang diunggah dan memperbarui label
+        function previewImage(event) {
+            const input = event.target;
+            const reader = new FileReader();
+
+            // Ketika file selesai dibaca
+            reader.onload = function() {
+                const imgElement = document.getElementById('previewImage');
+                imgElement.src = reader.result; // Set src gambar ke hasil pembacaan file
+                imgElement.classList.remove('d-none'); // Tampilkan elemen img dengan menghapus class d-none
+                imgElement.classList.add('d-block'); // Tambahkan class d-block untuk memastikan elemen ditampilkan
+
+            };
+
+            // Jika file dipilih, baca file tersebut
+            if (input.files && input.files[0]) {
+                reader.readAsDataURL(input.files[0]); // Baca file sebagai URL data
             }
-        });
+
+            // Perbarui label input file menjadi nama file yang diunggah
+            const label = input.nextElementSibling;
+            if (label && label.classList.contains('custom-file-label')) {
+                label.textContent = input.files[0].name;
+            }
+        }
+
+        // Tambahkan event listener ke input file
+        document.getElementById('customFile').addEventListener('change', previewImage);
 
     </script>
 
