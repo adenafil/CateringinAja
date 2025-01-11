@@ -861,15 +861,95 @@
             " width="100%" height="550" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <!-- Copyright Start -->
-        <div class="container-fluid copyright bg-dark py-4">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>CateringinAja</a>, All right reserved.</span>
+        <footer class="text-center text-lg-start bg-body-tertiary text-muted">
+
+            <section class="">
+                <!-- Section: Social media -->
+                <section class="container d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+                    <!-- Left -->
+                    <div class="me-5 d-none d-lg-block">
+                        <span>Pantau terus social media kami:</span>
                     </div>
+                    <!-- Left -->
+
+                    <!-- Right -->
+                    <div>
+                        <a href="" class="me-4 text-reset">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="" class="me-4 text-reset">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="" class="me-4 text-reset">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="" class="me-4 text-reset">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                    <!-- Right -->
+                </section>
+                <!-- Section: Social media -->
+            </section>
+
+            <!-- Section: Links  -->
+            <section class="">
+                <div class="container text-center text-md-start mt-5">
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <!-- Content -->
+                            <h2 class="text-primary fw-bold mb-0"><span><img src="/landingpage/img/logo-only-cateringinaja.png" style="width: 70px"></span> Cateringin<span class="text-dark">Aja</span> </h2>
+                            <p>
+                                Catering Nikmat, Harga Bersahabat – Cuma di CateringinAja!
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Quick Links
+                            </h6>
+                            <p>
+                                <a href="#!" class="text-reset">Home</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Tentang Kami</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Temukan Catering</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                            <p><i class="fas fa-home me-3"></i> Gresik, Jawa Timur, Indonesia</p>
+                            <p>
+                                <i class="fas fa-envelope me-3"></i>
+                                cateringinaja@gmail.com
+                            </p>
+                            <p><i class="fas fa-phone me-3"></i> +6281236397074</p>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
                 </div>
+            </section>
+            <!-- Section: Links  -->
+
+            <!-- Copyright -->
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2025 All right reserved -
+                <a class="text-reset fw-bold" href="/">CateringinAja</a>
             </div>
-        </div>
+            <!-- Copyright -->
+        </footer>
         <!-- Copyright End -->
 
 
