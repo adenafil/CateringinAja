@@ -59,17 +59,30 @@
 
                         <!-- Login Dropdown -->
                         <div class="nav-item dropdown login-dropdown">
-                            <button class="btn btn-primary rounded-pill px-4 py-2 me-2 mt-2 mt-lg-0" style="min-width: 96px;"
+                            <a class="btn btn-primary rounded-pill px-4 py-2 me-2 mt-2 mt-lg-0" style="min-width: 96px;"
                                     data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                 Login
-                            </button>
+                            </a>
                             <div class="dropdown-menu login-options">
-                                <a class="dropdown-item fw-bold" href="#">Penyedia Catering</a>
-                                <a class="dropdown-item fw-bold" href="#">Pembeli</a>
+                                <a class="dropdown-item fw-bold" href="{{route('login.penjual')}}">Penyedia Catering</a>
+                                <a class="dropdown-item fw-bold" href="{{route('login.pembeli')}}">Pembeli</a>
                             </div>
                         </div>
-                        <a href="" class="btn btn-outline-primary py-2 px-4 rounded-pill mt-2 mt-lg-0" style="min-width: 96px;">Daftar</a>
+
+                        {{--Register Dropdown--}}
+                        <div class="nav-item dropdown login-dropdown">
+                            <a class="btn btn-outline-primary rounded-pill px-4 py-2 me-2 mt-2 mt-lg-0" style="min-width: 96px;"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                Daftar
+                            </a>
+                            <div class="dropdown-menu login-options">
+                                <a class="dropdown-item fw-bold" href="{{route('register.penjual')}}">Penyedia Catering</a>
+                                <a class="dropdown-item fw-bold" href="{{route('register.pembeli')}}">Pembeli</a>
+                            </div>
+                        </div>
+
                     </div>
                 </nav>
             </div>

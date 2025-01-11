@@ -45,14 +45,6 @@
                                             <label class="mb-1"><strong>Password</strong></label>
                                             <input name="password" type="password" class="form-control" value="Password">
                                         </div>
-                                        <div class="form-group">
-                                            <label class="mb-1"><strong>Daftar Sebagai</strong></label>
-                                            <select name="user_type" class="form-control" required>
-                                                <option value="" selected disabled>Pilih tipe akun</option>
-                                                <option value="catering">Penyedia Catering</option>
-                                                <option value="buyer">Pembeli</option>
-                                            </select>
-                                        </div>
                                         <div class="text-center mt-4">
                                             <button type="submit" class="btn btn-primary btn-block">Sign me up</button>
                                         </div>
@@ -74,7 +66,6 @@
 ***********************************-->
 <!-- Required vendors -->
 <script src="/dashboard-template/vendor/global/global.min.js"></script>
-<script src="/dashboard-template/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 <script src="/dashboard-template/js/custom.min.js"></script>
 <script src="/dashboard-template/js/deznav-init.js"></script>
 
