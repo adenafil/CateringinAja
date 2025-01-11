@@ -76,7 +76,10 @@ class DashboardJasaCatering extends Controller
 
     public function MenuView(): Response
     {
-        return response()->view('dashboard.penjual.table-menu');
+        $menus = Menu::query()
+            ->orderBy('created_at', 'asc') // Urutkan berdasarkan tanggal terbaru
+            ->paginate(4);
+        return response()->view('dashboard.penjual.table-menu', compact('menus'));
     }
 
     public function profile(): Response

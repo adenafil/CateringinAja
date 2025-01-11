@@ -68,3 +68,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ### TODOLIST
 -- check before login is the role correct or not, after that just f redirect
 -- add middeleware for pembeli & penjual
+-- change guest middleware and auth breeze to be custom middleware

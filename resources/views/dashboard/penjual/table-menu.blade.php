@@ -757,33 +757,45 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+
+                                        @foreach($menus as $menu)
                                             <tr>
-                                                <td><strong>01</strong></td>
+                                                <td><strong>{{ ($menus->currentPage() - 1) * $menus->perPage() + $loop->iteration   }}</strong></td>
                                                 <td>
-                                                    <img src="https://img.foodspot.co.id/restaurant//dominos/logooo.jpg" class="img-fluid rounded" style="width: 100px; height: 100px; object-fit: cover; object-position: center;">
+                                                    <img src="/storage/{{$menu->picture}}" class="img-fluid rounded" style="width: 100px; height: 100px; object-fit: cover; object-position: center;">
                                                 </td>
-                                                <td>Domino's Pizza</td>
-                                                <td>999.999 IDR</td>
-                                                <td><span class="badge light badge-success">Available</span></td>
-                                                <td>Makanan</td>
+                                                <td>{{$menu->name}}</td>
+                                                <td>{{$menu->price}} IDR</td>
+                                                @if($menu->status == 'Tersedia')
+                                                    <td><span class="badge light badge-success">{{$menu->status}}</span></td>
+                                                @else
+                                                    <td><span class="badge light badge-danger">{{$menu->status}}</span></td>
+                                                @endif
+                                                <td>{{$menu->category}}</td>
                                                 <td>
-													<div class="dropdown">
-														<button type="button" class="btn btn-success light sharp" data-toggle="dropdown">
-															<svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
-														</button>
-														<div class="dropdown-menu">
-															<a class="dropdown-item" href="#">Edit</a>
-															<a class="dropdown-item" href="#">Delete</a>
-														</div>
-													</div>
-												</td>
+                                                    <div class="dropdown">
+                                                        <button type="button" class="btn btn-success light sharp" data-toggle="dropdown">
+                                                            <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" href="#">Edit</a>
+                                                            <a class="dropdown-item" href="#">Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                             </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="pagination pagination-gutter pagination-primary mx-auto">
+                        {{$menus->appends(['search' => request()->get('search')])->links()}}
+                    </div>
+
 
                 </div>
             </div>
