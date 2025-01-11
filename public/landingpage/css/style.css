@@ -14,6 +14,30 @@
  }
 /*** Spinner End ***/
 
+/* Login dropdown styles */
+.login-dropdown .dropdown-menu {
+    min-width: 200px;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-top: 0.5rem;
+    background-color: #ff4b4b;
+}
+
+.login-dropdown .dropdown-item {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    background-color: #FFFFFF;
+    color: #ff4b4b;
+}
+
+.login-dropdown .dropdown-item:hover {
+    background-color: #ff4b4b;
+    color: #FFFFFF;
+}
+
 .top-menu {
     margin-top: 20px;
 }

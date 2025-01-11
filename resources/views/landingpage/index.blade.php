@@ -55,8 +55,21 @@
                             <a href="#about-anchor" class="nav-item nav-link">Tentang Kami</a>
                             <a href="{{route('find')}}" class="nav-item nav-link">Temukan Katering</a>
                         </div>
-                        <button class="btn-search btn btn-primary btn-md-square me-4 rounded-circle d-none d-lg-inline-flex" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></button>
-                        <a href="" class="btn btn-primary py-2 px-4 d-none d-xl-inline-block rounded-pill">Login</a>
+                        <button class="btn-search btn btn-primary btn-md-square me-4 rounded-circle" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></button>
+
+                        <!-- Login Dropdown -->
+                        <div class="nav-item dropdown login-dropdown">
+                            <button class="btn btn-primary rounded-pill px-4 py-2 me-2 mt-2 mt-lg-0" style="min-width: 96px;"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                Login
+                            </button>
+                            <div class="dropdown-menu login-options">
+                                <a class="dropdown-item fw-bold" href="#">Penyedia Catering</a>
+                                <a class="dropdown-item fw-bold" href="#">Pembeli</a>
+                            </div>
+                        </div>
+                        <a href="" class="btn btn-outline-primary py-2 px-4 rounded-pill mt-2 mt-lg-0" style="min-width: 96px;">Daftar</a>
                     </div>
                 </nav>
             </div>
@@ -622,5 +635,14 @@
 
         <!-- Template Javascript -->
         <script src="/landingpage/js/main.js"></script>
+        <script type="javascript">
+            // Initialize Bootstrap tooltips and popovers if needed
+            document.addEventListener('DOMContentLoaded', function() {
+                var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+                var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+                    return new bootstrap.Dropdown(dropdownToggleEl)
+                })
+            });
+        </script>
     </body>
 </html>
