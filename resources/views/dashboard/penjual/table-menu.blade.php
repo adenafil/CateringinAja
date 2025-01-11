@@ -788,7 +788,11 @@
                                                                     <button type="submit" class="dropdown-item">Atur Sebagai Tidak Tersedia</button>
                                                                 @endif
                                                             </form>
-                                                            <a class="dropdown-item" href="#">Hapus</a>
+                                                            <form action="{{route('dashboard.menu.add-menu.delete', $menu)}}" method="POST">
+                                                                @csrf
+                                                                @method("DELETE")
+                                                                <button type="submit" class="dropdown-item">Hapus</button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </td>

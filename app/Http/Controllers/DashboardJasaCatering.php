@@ -150,6 +150,13 @@ class DashboardJasaCatering extends Controller
         return back();
     }
 
+    public function deleteMenu(Menu $menu): RedirectResponse
+    {
+        $menu->delete();
+        alert()->success('Success!','Menu Deleted Successfully');
+        return back();
+    }
+
     public function profile(): Response
     {
         $user = User::findOrFail(auth()->user()->id);
