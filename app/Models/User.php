@@ -29,6 +29,10 @@ class User extends Authenticatable
         'no_handphone',
         'no_whatsapp',
         'deskripsi_toko',
+        'alamat_toko',
+        'link_google_map_embed',
+        'kisaran_harga',
+        'name'
     ];
 
     /**
