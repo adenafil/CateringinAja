@@ -705,7 +705,10 @@
                                     <form action="{{route('dashboard.profile.post')}}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         @method('PATCH')
-                                        <img src="https://img.foodspot.co.id/restaurant//bebekbkb/2024/oct/nasi-tempong-ayam-negeri.jpg" class="img-thumbnail mb-4" style="width: 400px; height: 300px; object-fit: cover;">
+
+                                        @if($user->avatar)
+                                            <img src="/storage/{{$user->avatar}}" class="img-thumbnail mb-4" style="width: 400px; height: 300px; object-fit: cover;">
+                                        @endif
 
                                         <div class="form-group">
                                             <div class="custom-file">
