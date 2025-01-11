@@ -205,45 +205,275 @@
                 </div>
                 <div class="row g-4">
                     <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.1s">
-                        <div class="bg-light rounded service-item">
-                            <div class="service-content d-flex align-items-center justify-content-center p-4">
-                                <div class="service-content-icon text-center">
-                                    <i class="fas fa-cheese fa-7x text-primary mb-4"></i>
-                                    <h4 class="mb-3">Layanan Pernikahan</h4>
-                                    <p class="mb-4">Bersama kami, wujudkan momen spesial pernikahan Anda dengan layanan profesional dan penuh cinta.</p>
-                                </div>
+                        <div class="service-card position-relative rounded overflow-hidden">
+                            <img src="/landingpage/img/wedding-catering.jpg" class="w-100 h-100 object-fit-cover" alt="Layanan Pernikahan">
+                            <div class="service-overlay position-absolute w-100 h-100 d-flex flex-column justify-content-end p-4">
+                                <h3 class="text-white mb-2">Layanan Pernikahan</h3>
+                                <p class="text-white mb-3">Bersama kami, wujudkan momen spesial pernikahan Anda dengan layanan profesional dan penuh cinta.</p>
+                                <a href="#" class="btn btn-primary px-4 py-2 rounded-pill">Selengkapnya</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.3s">
-                        <div class="bg-light rounded service-item">
-                            <div class="service-content d-flex align-items-center justify-content-center p-4">
-                                <div class="service-content-icon text-center">
-                                    <i class="fas fa-pizza-slice fa-7x text-primary mb-4"></i>
-                                    <h4 class="mb-3">Catering Perusahaan</h4>
-                                    <p class="mb-4">Nikmati menu istimewa untuk setiap acara perusahaan Anda, dirancang untuk memanjakan setiap selera.</p>
-                                </div>
+                        <div class="service-card position-relative rounded overflow-hidden">
+                            <img src="/landingpage/img/corporate-catering.jpg" class="w-100 h-100 object-fit-cover" alt="Catering Perusahaan">
+                            <div class="service-overlay position-absolute w-100 h-100 d-flex flex-column justify-content-end p-4">
+                                <h3 class="text-white mb-2">Catering Perusahaan</h3>
+                                <p class="text-white mb-3">Nikmati menu istimewa untuk setiap acara perusahaan Anda, dirancang untuk memanjakan setiap selera.</p>
+                                <a href="#" class="btn btn-primary px-4 py-2 rounded-pill">Selengkapnya</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.5s">
-                        <div class="bg-light rounded service-item">
-                            <div class="service-content d-flex align-items-center justify-content-center p-4">
-                                <div class="service-content-icon text-center">
-                                    <i class="fas fa-hotdog fa-7x text-primary mb-4"></i>
-                                    <h4 class="mb-3">Pengiriman ke Rumah</h4>
-                                    <p class="mb-4">Hidangan lezat sampai di pintu rumah Anda, praktis tanpa repot, untuk setiap kesempatan.</p>
-                                </div>
+                        <div class="service-card position-relative rounded overflow-hidden">
+                            <img src="/landingpage/img/home-delivery.jpg" class="w-100 h-100 object-fit-cover" alt="Pengiriman ke Rumah">
+                            <div class="service-overlay position-absolute w-100 h-100 d-flex flex-column justify-content-end p-4">
+                                <h3 class="text-white mb-2">Pengiriman ke Rumah</h3>
+                                <p class="text-white mb-3">Hidangan lezat sampai di pintu rumah Anda, praktis tanpa repot, untuk setiap kesempatan.</p>
+                                <a href="#" class="btn btn-primary px-4 py-2 rounded-pill">Selengkapnya</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.7s">
-                        <div class="bg-light rounded service-item">
-                            <div class="service-content d-flex align-items-center justify-content-center p-4">
-                                <div class="service-content-icon text-center">
-                                    <i class="fas fa-hamburger fa-7x text-primary mb-4"></i>
-                                    <h4 class="mb-3">Catering Prasmanan</h4>
-                                    <p class="mb-4">Sajikan pengalaman kuliner tak terlupakan dengan layanan prasmanan yang elegan dan berkelas.</p>
+                        <div class="service-card position-relative rounded overflow-hidden">
+                            <img src="/landingpage/img/buffet-catering.jpg" class="w-100 h-100 object-fit-cover" alt="Catering Prasmanan">
+                            <div class="service-overlay position-absolute w-100 h-100 d-flex flex-column justify-content-end p-4">
+                                <h3 class="text-white mb-2">Catering Prasmanan</h3>
+                                <p class="text-white mb-3">Sajikan pengalaman kuliner tak terlupakan dengan layanan prasmanan yang elegan dan berkelas.</p>
+                                <a href="#" class="btn btn-primary px-4 py-2 rounded-pill">Selengkapnya</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rekomendasi Catering Section -->
+        <div class="container py-4 mb-4">
+            <div class="text-center mb-4">
+                <h1 class="display-5 mb-5">Rekomendasi<br>Catering Populer Kami</h1>
+            </div>
+
+            <div class="row g-4">
+                <!-- Recommendation Card 1 -->
+                <div class="col-12">
+                    <div class="card border-0 shadow-sm p-4">
+                        <div class="row g-0">
+                            <!-- Image Section -->
+                            <div class="col-md-4 position-relative" style="max-width: 300px;">
+                                <img src="https://foryourplate.id/wp-content/uploads/2024/03/Thumbnail-Bebek-Carok.-foryourplate.id_Leqsi-Aprilia-2048x1536.jpg"
+                                     class="img-fluid rounded h-100 w-100"
+                                     style="object-fit: cover;"
+                                     alt="Bebek Carok">
+                                <span class="position-absolute bottom-0 end-0 m-3 badge bg-white text-dark">
+                            ⭐ 5.0
+                        </span>
+                            </div>
+
+                            <!-- Content Section -->
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h4 class="card-title text-danger fw-bold mb-3">Bebek Carok</h4>
+                                    <p class="card-text text-muted mb-4" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                                        Berencana menjadikan bebek sebagai lauk utama di acara Anda? Bebek Carok hadir dengan cita rasa autentik yang khas. Dimasak dengan resep turun-temurun dan bumbu pilihan, setiap gigitan menjanjikan kelezatan yang tak terlupakan. Daging bebek yang empuk dan bumbu yang meresap hingga ke tulang menjadikan Bebek Carok pilihan sempurna untuk berbagai acara.
+                                    </p>
+
+                                    <!-- Top Menu Section -->
+                                    <div class="mb-4">
+                                        <h5 class="text-danger fw-bold mb-3">Top Menu</h5>
+                                        <div class="d-flex flex-wrap gap-4">
+                                            <!-- Menu Item 1 -->
+                                            <div class="menu-item text-center">
+                                                <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
+                                                     class="rounded mb-2"
+                                                     style="width: 100px; height: 70px; object-fit: cover;"
+                                                     alt="Nasi Tempong Bebek">
+                                                <p class="mb-1 fw-bold">Bebek Carok Jumbo Hitam</p>
+                                                <p class="text-danger mb-0">Rp 58.410</p>
+                                            </div>
+                                            <!-- Menu Item 2 -->
+                                            <div class="menu-item text-center">
+                                                <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
+                                                     class="rounded mb-2"
+                                                     style="width: 100px; height: 70px; object-fit: cover;"
+                                                     alt="Nasi Tempong Bebek">
+                                                <p class="mb-1 fw-bold">Bebek Carok Jumbo Hitam</p>
+                                                <p class="text-danger mb-0">Rp 58.410</p>
+                                            </div>
+                                            <!-- Menu Item 3 -->
+                                            <div class="menu-item text-center">
+                                                <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
+                                                     class="rounded mb-2"
+                                                     style="width: 100px; height: 70px; object-fit: cover;"
+                                                     alt="Nasi Tempong Bebek">
+                                                <p class="mb-1 fw-bold">Bebek Carok Jumbo Hitam</p>
+                                                <p class="text-danger mb-0">Rp 58.410</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Info Section -->
+                                    <div class="d-flex flex-wrap gap-3 text-muted">
+                                        <p class="m-0">
+                                            <span class="fw-bold text-dark">Kisaran Harga:</span> Rp 4.500 - 230.000
+                                        </p>
+                                        <span class="text-muted">|</span>
+                                        <p class="m-0">
+                                            <span class="fw-bold text-dark">Minimum:</span> 5 Pax
+                                        </p>
+                                        <span class="text-muted">|</span>
+                                        <p class="m-0">Pesan 1 hari sebelumnya</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendation Card 2 -->
+                <div class="col-12">
+                    <div class="card border-0 shadow-sm p-4">
+                        <div class="row g-0">
+                            <!-- Image Section -->
+                            <div class="col-md-4 position-relative" style="max-width: 300px;">
+                                <img src="https://foryourplate.id/wp-content/uploads/2024/03/Thumbnail-Bebek-Carok.-foryourplate.id_Leqsi-Aprilia-2048x1536.jpg"
+                                     class="img-fluid rounded h-100 w-100"
+                                     style="object-fit: cover;"
+                                     alt="Bebek Carok">
+                                <span class="position-absolute bottom-0 end-0 m-3 badge bg-white text-dark">
+                            ⭐ 5.0
+                        </span>
+                            </div>
+
+                            <!-- Content Section -->
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h4 class="card-title text-danger fw-bold mb-3">Bebek Carok</h4>
+                                    <p class="card-text text-muted mb-4" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                                        Berencana menjadikan bebek sebagai lauk utama di acara Anda? Bebek Carok hadir dengan cita rasa autentik yang khas. Dimasak dengan resep turun-temurun dan bumbu pilihan, setiap gigitan menjanjikan kelezatan yang tak terlupakan. Daging bebek yang empuk dan bumbu yang meresap hingga ke tulang menjadikan Bebek Carok pilihan sempurna untuk berbagai acara.
+                                    </p>
+
+                                    <!-- Top Menu Section -->
+                                    <div class="mb-4">
+                                        <h5 class="text-danger fw-bold mb-3">Top Menu</h5>
+                                        <div class="d-flex flex-wrap gap-4">
+                                            <!-- Menu Item 1 -->
+                                            <div class="menu-item text-center">
+                                                <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
+                                                     class="rounded mb-2"
+                                                     style="width: 100px; height: 70px; object-fit: cover;"
+                                                     alt="Nasi Tempong Bebek">
+                                                <p class="mb-1 fw-bold">Bebek Carok Jumbo Hitam</p>
+                                                <p class="text-danger mb-0">Rp 58.410</p>
+                                            </div>
+                                            <!-- Menu Item 2 -->
+                                            <div class="menu-item text-center">
+                                                <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
+                                                     class="rounded mb-2"
+                                                     style="width: 100px; height: 70px; object-fit: cover;"
+                                                     alt="Nasi Tempong Bebek">
+                                                <p class="mb-1 fw-bold">Bebek Carok Jumbo Hitam</p>
+                                                <p class="text-danger mb-0">Rp 58.410</p>
+                                            </div>
+                                            <!-- Menu Item 3 -->
+                                            <div class="menu-item text-center">
+                                                <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
+                                                     class="rounded mb-2"
+                                                     style="width: 100px; height: 70px; object-fit: cover;"
+                                                     alt="Nasi Tempong Bebek">
+                                                <p class="mb-1 fw-bold">Bebek Carok Jumbo Hitam</p>
+                                                <p class="text-danger mb-0">Rp 58.410</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Info Section -->
+                                    <div class="d-flex flex-wrap gap-3 text-muted">
+                                        <p class="m-0">
+                                            <span class="fw-bold text-dark">Kisaran Harga:</span> Rp 4.500 - 230.000
+                                        </p>
+                                        <span class="text-muted">|</span>
+                                        <p class="m-0">
+                                            <span class="fw-bold text-dark">Minimum:</span> 5 Pax
+                                        </p>
+                                        <span class="text-muted">|</span>
+                                        <p class="m-0">Pesan 1 hari sebelumnya</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendation Card 2 -->
+                <div class="col-12">
+                    <div class="card border-0 shadow-sm p-4">
+                        <div class="row g-0">
+                            <!-- Image Section -->
+                            <div class="col-md-4 position-relative" style="max-width: 300px;">
+                                <img src="https://foryourplate.id/wp-content/uploads/2024/03/Thumbnail-Bebek-Carok.-foryourplate.id_Leqsi-Aprilia-2048x1536.jpg"
+                                     class="img-fluid rounded h-100 w-100"
+                                     style="object-fit: cover;"
+                                     alt="Bebek Carok">
+                                <span class="position-absolute bottom-0 end-0 m-3 badge bg-white text-dark">
+                            ⭐ 5.0
+                        </span>
+                            </div>
+
+                            <!-- Content Section -->
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h4 class="card-title text-danger fw-bold mb-3">Bebek Carok</h4>
+                                    <p class="card-text text-muted mb-4" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                                        Berencana menjadikan bebek sebagai lauk utama di acara Anda? Bebek Carok hadir dengan cita rasa autentik yang khas. Dimasak dengan resep turun-temurun dan bumbu pilihan, setiap gigitan menjanjikan kelezatan yang tak terlupakan. Daging bebek yang empuk dan bumbu yang meresap hingga ke tulang menjadikan Bebek Carok pilihan sempurna untuk berbagai acara.
+                                    </p>
+
+                                    <!-- Top Menu Section -->
+                                    <div class="mb-4">
+                                        <h5 class="text-danger fw-bold mb-3">Top Menu</h5>
+                                        <div class="d-flex flex-wrap gap-4">
+                                            <!-- Menu Item 1 -->
+                                            <div class="menu-item text-center">
+                                                <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
+                                                     class="rounded mb-2"
+                                                     style="width: 100px; height: 70px; object-fit: cover;"
+                                                     alt="Nasi Tempong Bebek">
+                                                <p class="mb-1 fw-bold">Bebek Carok Jumbo Hitam</p>
+                                                <p class="text-danger mb-0">Rp 58.410</p>
+                                            </div>
+                                            <!-- Menu Item 2 -->
+                                            <div class="menu-item text-center">
+                                                <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
+                                                     class="rounded mb-2"
+                                                     style="width: 100px; height: 70px; object-fit: cover;"
+                                                     alt="Nasi Tempong Bebek">
+                                                <p class="mb-1 fw-bold">Bebek Carok Jumbo Hitam</p>
+                                                <p class="text-danger mb-0">Rp 58.410</p>
+                                            </div>
+                                            <!-- Menu Item 3 -->
+                                            <div class="menu-item text-center">
+                                                <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
+                                                     class="rounded mb-2"
+                                                     style="width: 100px; height: 70px; object-fit: cover;"
+                                                     alt="Nasi Tempong Bebek">
+                                                <p class="mb-1 fw-bold">Bebek Carok Jumbo Hitam</p>
+                                                <p class="text-danger mb-0">Rp 58.410</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Info Section -->
+                                    <div class="d-flex flex-wrap gap-3 text-muted">
+                                        <p class="m-0">
+                                            <span class="fw-bold text-dark">Kisaran Harga:</span> Rp 4.500 - 230.000
+                                        </p>
+                                        <span class="text-muted">|</span>
+                                        <p class="m-0">
+                                            <span class="fw-bold text-dark">Minimum:</span> 5 Pax
+                                        </p>
+                                        <span class="text-muted">|</span>
+                                        <p class="m-0">Pesan 1 hari sebelumnya</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -251,8 +481,6 @@
                 </div>
             </div>
         </div>
-        <!-- Service End -->
-
 
 
 <!--        &lt;!&ndash; Footer Start &ndash;&gt;-->
@@ -283,17 +511,99 @@
 <!--        &lt;!&ndash; Footer End &ndash;&gt;-->
 
 
-        <!-- Copyright Start -->
-        <div class="container-fluid copyright bg-dark py-4">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>CateringinAja</a>, All right reserved.</span>
+        {{--Footer Start--}}
+        <!-- Footer -->
+        <footer class="text-center text-lg-start bg-body-tertiary text-muted" style="margin-top: 132px;">
+
+            <section class="">
+                <!-- Section: Social media -->
+                <section class="container d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+                    <!-- Left -->
+                    <div class="me-5 d-none d-lg-block">
+                        <span>Pantau terus social media kami:</span>
                     </div>
+                    <!-- Left -->
+
+                    <!-- Right -->
+                    <div>
+                        <a href="" class="me-4 text-reset">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="" class="me-4 text-reset">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="" class="me-4 text-reset">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="" class="me-4 text-reset">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                    <!-- Right -->
+                </section>
+                <!-- Section: Social media -->
+            </section>
+
+            <!-- Section: Links  -->
+            <section class="">
+                <div class="container text-center text-md-start mt-5">
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <!-- Content -->
+                            <h2 class="text-primary fw-bold mb-0"><span><img src="/landingpage/img/logo-only-cateringinaja.png" style="width: 70px"></span> Cateringin<span class="text-dark">Aja</span> </h2>
+                            <p>
+                                Catering Nikmat, Harga Bersahabat – Cuma di CateringinAja!
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Quick Links
+                            </h6>
+                            <p>
+                                <a href="#!" class="text-reset">Home</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Tentang Kami</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Temukan Catering</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                            <p><i class="fas fa-home me-3"></i> Gresik, Jawa Timur, Indonesia</p>
+                            <p>
+                                <i class="fas fa-envelope me-3"></i>
+                                cateringinaja@gmail.com
+                            </p>
+                            <p><i class="fas fa-phone me-3"></i> +6281236397074</p>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
                 </div>
+            </section>
+            <!-- Section: Links  -->
+
+            <!-- Copyright -->
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2025 All right reserved -
+                <a class="text-reset fw-bold" href="/">CateringinAja</a>
             </div>
-        </div>
-        <!-- Copyright End -->
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+        {{--Footer End--}}
 
 
         <!-- Back to Top -->
