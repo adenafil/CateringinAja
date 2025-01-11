@@ -779,7 +779,16 @@
                                                         </button>
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item" href="#">Edit</a>
-                                                            <a class="dropdown-item" href="#">Delete</a>
+                                                            <form action="{{ route('dashboard.menu.add-menu.patch', $menu) }}" method="POST" style="display: inline;">
+                                                                @csrf
+                                                                @method('PATCH') <!-- Method Spoofing untuk PATCH -->
+                                                                @if($menu->status == "Tidak Tersedia")
+                                                                    <button type="submit" class="dropdown-item">Atur Sebagai Tersedia</button>
+                                                                @else
+                                                                    <button type="submit" class="dropdown-item">Atur Sebagai Tidak Tersedia</button>
+                                                                @endif
+                                                            </form>
+                                                            <a class="dropdown-item" href="#">Hapus</a>
                                                         </div>
                                                     </div>
                                                 </td>

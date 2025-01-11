@@ -82,6 +82,18 @@ class DashboardJasaCatering extends Controller
         return response()->view('dashboard.penjual.table-menu', compact('menus'));
     }
 
+    public function setItemAsAvailableOrUnavailable(Menu $menu): RedirectResponse
+    {
+        if ($menu->status == 'Tersedia') {
+            $menu->update(['status' => 'Tidak Tersedia']);
+            alert()->success('Success!','Menu Unavailable Successfully');
+        } else {
+            $menu->update(['status' => 'Tersedia']);
+            alert()->success('Success!','Menu Available Successfully');
+        }
+        return back();
+    }
+
     public function profile(): Response
     {
         $user = User::findOrFail(auth()->user()->id);
