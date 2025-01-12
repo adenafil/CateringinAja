@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Menu extends Model
 {
@@ -27,5 +28,12 @@ class Menu extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function cartUsers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'carts', 'menu_id', 'user_id')
+            ->withPivot('quantity') // Jika ada kolom tambahan di tabel pivot
+            ->withTimestamps(); // Jika perlu timestamps
     }
 }
