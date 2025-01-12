@@ -734,7 +734,7 @@
                                                 <li><i class="fa fa-star-half-empty"></i></li>
                                                 <li><i class="fa fa-star-half-empty"></i></li>
                                             </ul>
-                                            <button class="btn btn-sm btn-primary mt-2">Check Out</button>
+                                            <a class="btn btn-sm btn-primary mt-2" href="{{route('dashboard.pembeli.catering.checkout', $cart->id)}}">Check Out</a>
                                             <button class="btn btn-sm btn-danger mt-2">Remove</button>
                                             {{--                                        <span class="price">$761.00</span>--}}
                                         </div>

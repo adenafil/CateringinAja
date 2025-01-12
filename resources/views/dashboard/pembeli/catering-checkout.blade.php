@@ -634,26 +634,53 @@
                 <ul class="metismenu" id="menu">
 
                     <li class="">
-                        <a class="" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-381-home"></i>
+                        <a class="" href="{{route('dashboard.pembeli.overview')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/overview.png" style="width: 26px; height: 26px;"></i>
                             <span class="nav-text">Overview</span>
                         </a>
                     </li>
 
+                    <li class="">
+                        <a class="" href="{{route('dashboard.pembeli.catering')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/chef.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Catering</span>
+                        </a>
+                    </li>
+
+
+                    <li class="">
+                        <a class="" href="{{route('dashboard.pembeli.catering.order')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/order-seller.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Order</span>
+                        </a>
+                    </li>
+
                     <li class="mm-active">
-                        <a class="" href="javascript:void()" aria-expanded="false">
-                            <i class=""><img src="/helper/profile-hover.png" style="width: 23px; height: 23px;"></i>
+                        <a class="" href="{{route('dashboard.pembeli.catering.cart')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/cart-hover.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Cart</span>
+                        </a>
+                    </li>
+
+
+
+                    <li class="">
+                        <a class="" href="{{route('dashboard.pembeli.profile')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/profile.png" style="width: 26px; height: 26px;"></i>
                             <span class="nav-text">Profile</span>
                         </a>
                     </li>
 
+                    <li class="" id="logout-link" style="cursor: pointer;">
+                        <a class=""  aria-expanded="false">
+                            <i class=""><img src="/helper/logout.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Logout</span>
+                        </a>
+                    </li>
+
+
                 </ul>
 
-                <div class="add-menu-sidebar">
-                    <img src="/dashboard-template/images/icon1.png" alt=""/>
-                    <p>Organize your menus through button bellow</p>
-                    <a href="javascript:void(0);" class="btn btn-primary btn-block light">Your Menus</a>
-                </div>
             </div>
         </div>
         <!--**********************************
@@ -668,13 +695,13 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Hi, welcome back!</h4>
-                            <p class="mb-0">Your business dashboard template</p>
+                            <h4>Halaman Check Out</h4>
+{{--                            <p class="mb-0">Your business dashboard template</p>--}}
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Shop</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Cart</a></li>
                             <li class="breadcrumb-item active"><a href="javascript:void(0)">Checkout</a></li>
                         </ol>
                     </div>
@@ -687,30 +714,20 @@
                                     <div class="col-md-4 order-md-2 mb-4">
                                         <h4 class="d-flex justify-content-between align-items-center mb-3">
                                             <span class="text-muted">Your cart</span>
-                                            <span class="badge badge-primary badge-pill">3</span>
+                                            <span class="badge badge-primary badge-pill">{{$results->count()}}</span>
                                         </h4>
                                         <ul class="list-group mb-3">
-                                            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                                <div>
-                                                    <h6 class="my-0">Product name</h6>
-                                                    <small class="text-muted">Brief description</small>
-                                                </div>
-                                                <span class="text-muted">$12</span>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                                <div>
-                                                    <h6 class="my-0">Second product</h6>
-                                                    <small class="text-muted">Brief description</small>
-                                                </div>
-                                                <span class="text-muted">$8</span>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                                <div>
-                                                    <h6 class="my-0">Third item</h6>
-                                                    <small class="text-muted">Brief description</small>
-                                                </div>
-                                                <span class="text-muted">$5</span>
-                                            </li>
+
+                                            @foreach($results as $result)
+                                                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                                    <div>
+                                                        <h6 class="my-0">{{$result->name}}</h6>
+                                                        <small class="text-muted">Quantity: {{$result->quantity}}</small>
+                                                    </div>
+                                                    <span class="text-muted">IDR {{$result->total_price}}.000.00</span>
+                                                </li>
+                                            @endforeach
+
 {{--                                            <li class="list-group-item d-flex justify-content-between active">--}}
 {{--                                                <div class="text-white">--}}
 {{--                                                    <h6 class="my-0 text-white">Promo code</h6>--}}
@@ -719,34 +736,38 @@
 {{--                                                <span class="text-white">-$5</span>--}}
 {{--                                            </li>--}}
                                             <li class="list-group-item d-flex justify-content-between">
-                                                <span>Total (USD)</span>
-                                                <strong>$20</strong>
+                                                <span>Total (IDR)</span>
+                                                <strong>IDR {{$total_price}}.000.00</strong>
                                             </li>
                                         </ul>
 
-                                        <form>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Promo code">
-                                                <div class="input-group-append">
-                                                    <button type="submit" class="btn btn-primary">Redeem</button>
-                                                </div>
-                                            </div>
-                                        </form>
+{{--                                        <form>--}}
+{{--                                            <div class="input-group">--}}
+{{--                                                <input type="text" class="form-control" placeholder="Promo code">--}}
+{{--                                                <div class="input-group-append">--}}
+{{--                                                    <button type="submit" class="btn btn-primary">Redeem</button>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </form>--}}
                                     </div>
                                     <div class="col-md-8 order-md-1">
                                         <h4 class="mb-3">Billing address</h4>
-                                        <form class="needs-validation" novalidate="">
+                                        <form class="needs-validation" action="{{ route('dashboard.pembeli.catering.checkout.post', ['results' => $results, 'total_price' => $total_price]) }}" method="POST" novalidate>
+                                            @csrf
+                                            <!-- Isi form yang sudah ada -->
                                             <div class="row">
+                                                <input type="hidden" name="amount" value="{{$total_price}}">
+                                                <input type="hidden" name="results" value="{{ json_encode($results) }}">
                                                 <div class="col-md-6 mb-3">
                                                     <label for="firstName">First name</label>
-                                                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                                                    <input name="first_name" type="text" class="form-control" id="firstName" placeholder="" value="" required>
                                                     <div class="invalid-feedback">
                                                         Valid first name is required.
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 mb-3">
                                                     <label for="lastName">Last name</label>
-                                                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                                                    <input name="last_name" type="text" class="form-control" id="lastName" placeholder="" value="" required>
                                                     <div class="invalid-feedback">
                                                         Valid last name is required.
                                                     </div>
@@ -759,7 +780,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">@</span>
                                                     </div>
-                                                    <input type="text" class="form-control" id="username" placeholder="Username" required="">
+                                                    <input name="username" type="text" class="form-control" id="username" placeholder="Username" required value="{{$user->username}}" readonly>
                                                     <div class="invalid-feedback" style="width: 100%;">
                                                         Your username is required.
                                                     </div>
@@ -767,9 +788,8 @@
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="email">Email <span
-                                                        class="text-muted">(Optional)</span></label>
-                                                <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                                                <label for="email">Email <span class="text-muted"></span></label>
+                                                <input name="payer_email" type="email" class="form-control" id="email" placeholder="you@example.com" value="{{$user->email}}" readonly>
                                                 <div class="invalid-feedback">
                                                     Please enter a valid email address for shipping updates.
                                                 </div>
@@ -777,17 +797,14 @@
 
                                             <div class="mb-3">
                                                 <label for="address">Address</label>
-                                                <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+                                                <input type="text" class="form-control" id="address" placeholder="1234 Main St" required value="{{$user->alamat_toko}}">
                                                 <div class="invalid-feedback">
                                                     Please enter your shipping address.
                                                 </div>
                                             </div>
 
-
-                                            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to
-                                                checkout</button>
-                                        </form>
-                                    </div>
+                                            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                                        </form>                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -853,7 +870,7 @@
                     }
 
                     if (img && img.src.includes('/helper/')) {
-                        if (!img.src.includes('overview')) {
+                        if (!img.src.includes('cart')) {
                             img.classList.add('img-hover');
                             img.src = img.src.replace('.png', '-hover.png');
                         }
@@ -870,7 +887,7 @@
                     }
 
                     if (img && img.src.includes('/helper/')) {
-                        if (!img.src.includes('overview')) {
+                        if (!img.src.includes('cart')) {
                             img.classList.remove('img-hover');
                             img.src = img.src.replace('-hover.png', '.png');
                         }

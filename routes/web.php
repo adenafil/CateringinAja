@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardJasaCatering;
 use App\Http\Controllers\DashboardPembeliCatering;
 use App\Http\Controllers\LandingPage;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,9 +44,16 @@ Route::middleware(['auth', 'buyer'])->group(function () {
     Route::get('/user/dashboard/catering/{catering}/{menu}', [DashboardPembeliCatering::class, 'addToCartView'])->name('dashboard.pembeli.catering.detailToko.addToCart');
     Route::put('/user/dashboard/catering/{catering}/{menu}', [DashboardPembeliCatering::class, 'putCart'])->name('dashboard.pembeli.catering.detailToko.addToCart.put');
     Route::get('/user/dashboard/cart', [DashboardPembeliCatering::class, 'cartView'])->name('dashboard.pembeli.catering.cart');
-    Route::get('/user/dashboard/catering/checkout', [DashboardPembeliCatering::class, 'checkoutView'])->name('dashboard.pembeli.catering.checkout');
+    Route::get('/user/dashboard/cart/{seller_id}/checkout', [DashboardPembeliCatering::class, 'checkoutView'])->name('dashboard.pembeli.catering.checkout');
+    Route::post('/user/dashboard/cart/checkout', [DashboardPembeliCatering::class, 'checkout'])->name('dashboard.pembeli.catering.checkout.post');
     Route::get('/user/dashboard/catering/order', [DashboardPembeliCatering::class, 'orderView'])->name('dashboard.pembeli.catering.order');
     Route::get('/user/dashboard/catering/order/detail', [DashboardPembeliCatering::class, 'orderDetailView'])->name('dashboard.pembeli.catering.order.detail');
+
 });
+
+/*XENDIT*/
+//Route::post('/api/payments', [PaymentController::class, 'createInvoice']);
+Route::post('/dashboard/payments/webhook',[DashboardPembeliCatering::class,'handleWebhook']);
+
 
 require __DIR__.'/auth.php';

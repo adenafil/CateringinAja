@@ -3,13 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\Menu;
+use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Xendit\Configuration;
+use Xendit\Invoice\CreateInvoiceRequest;
+use Xendit\Invoice\InvoiceApi;
 
 class DashboardPembeliCatering extends Controller
 {
+    public function __construct()
+    {
+        Configuration::setXenditKey(env('XENDIT_SECRET_KEY'));
+    }
+
+
     public function index() {
         return response()->view('dashboard.pembeli.index');
     }
@@ -106,10 +118,108 @@ class DashboardPembeliCatering extends Controller
         return response()->view('dashboard.pembeli.cart', compact('carts'));
     }
 
-    public function checkoutView()
+    public function checkoutView($seller_id)
     {
-        return response()->view('dashboard.pembeli.catering-checkout');
+
+        $results = DB::table('carts as c')
+            ->select('m.name', 'm.description', 'c.quantity', DB::raw('(m.price * c.quantity) as total_price'), 'm.price', 'm.id as menu_id', 'c.id as cart_id')
+            ->join('menus as m', 'm.id', '=', 'c.menu_id')
+            ->join('users as u', 'u.id', '=', 'm.user_id')
+            ->where('c.user_id', \auth()->user()->id)
+            ->where('m.user_id', $seller_id)
+            ->get();
+
+        $total_price = 0;
+
+        foreach ($results as $result) {
+            $total_price += $result->total_price;
+        }
+
+        $user = \auth()->user();
+
+        return response()->view('dashboard.pembeli.catering-checkout', compact('results', 'user', 'total_price'));
     }
+
+    public function checkout(Request $request) {
+        $results = json_decode($request->input('results'), true); // Decode JSON
+        $total_price =  (int) ($request->input('total_price') . ".000") * 1000;
+        try {
+            $payment = new Payment;
+            $payment->user_id = auth()->user()->id;
+            $payment->external_id = (string) Str::uuid();
+            $payment->amount = $total_price;
+            $payment->payer_email = $request->input('payer_email');
+            $payment->description = $request->input('description');
+            $payment->status = 'pending';
+            $createInvoice = new CreateInvoiceRequest([
+                'external_id' => $payment->external_id,
+                'amount' => $total_price,
+                'payer_email' => $request->input('payer_email'),
+                'description' => $request->input('description'),
+                'invoice_duration' => 172800,
+            ]);
+
+            $apiInstance = new InvoiceApi();
+            $generateInvoice = $apiInstance->createInvoice($createInvoice);
+            $payment->checkout_link = $generateInvoice['invoice_url'];
+            $payment->save();
+
+            // Buat order
+            $order = Order::create([
+                'user_id' => auth()->user()->id,
+                'payment_id' => $payment->id,
+                'total_amount' => $request->input('amount'),
+                'status' => 'pending',
+            ]);
+
+            $carts = $results;
+
+
+            // Pindahkan item dari cart ke order_details
+            foreach ($carts as $cart) {
+                OrderDetail::create([
+                    'order_id' => $order['id'],
+                    'menu_id' => $cart['menu_id'],
+                    'quantity' => $cart['quantity'],
+                    'price' => $request->input('amount'),
+                ]);
+
+                // Hapus item dari cart
+                $cart = DB::table('carts')->where('id', $cart['cart_id'])->first();
+                if ($cart) {
+                    DB::table('carts')->where('id', $cart->id)->delete();
+                }
+            }
+
+            return redirect($payment->checkout_link);
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+
+    }
+
+    public function handleWebhook(Request $request)
+    {
+        $data = $request->all();
+        $external_id = $data['external_id'];
+        $status = strtolower($data['status']);
+        $payment_method = $data['payment_method'];
+
+
+        $order = Payment::where('external_id', $external_id)->first();
+        $order->status = $status;
+        $order->payment_method = $payment_method;
+        $order->save();
+
+
+        return response()->json([
+            'message' => 'Webhook received',
+            'status' => $status,
+            'payment_method' => $payment_method,
+        ]);
+    }
+
 
     public function orderView() {
         return response()->view('dashboard.pembeli.order-table');
