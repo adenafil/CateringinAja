@@ -37,6 +37,7 @@ Route::middleware(['auth', 'seller'])->group(function () {
 Route::middleware(['auth', 'buyer'])->group(function () {
     Route::get('/user/dashboard/overview', [DashboardPembeliCatering::class, 'index'])->name('dashboard.pembeli.overview');
     Route::get('/user/dashboard/profile', [DashboardPembeliCatering::class, 'profile'])->name('dashboard.pembeli.profile');
+    Route::patch('/user/dashboard/profile', [DashboardPembeliCatering::class, 'patchProfile'])->name('dashboard.pembeli.profile.patch');
     Route::get('/user/dashboard/catering', [DashboardPembeliCatering::class, 'catering'])->name('dashboard.pembeli.catering');
     Route::get('/user/dashboard/catering/namaToko', [DashboardPembeliCatering::class, 'cateringDetail'])->name('dashboard.pembeli.catering.detailToko');
     Route::get('/user/dashboard/catering/namaToko/namaProduct', [DashboardPembeliCatering::class, 'addToCartView'])->name('dashboard.pembeli.catering.detailToko.addToCart');

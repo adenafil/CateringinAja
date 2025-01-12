@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardPembeliCatering extends Controller
@@ -11,7 +12,24 @@ class DashboardPembeliCatering extends Controller
     }
 
     public function profile() {
-        return response()->view('dashboard.pembeli.profile');
+        $user = auth()->user();
+        return response()->view('dashboard.pembeli.profile', compact('user'));
+    }
+
+    public function patchProfile(Request $request) {
+        $user = User::findOrFail(auth()->user()->id);
+        if (request()->has('avatar')) {
+            $data = $request->all();
+            $file = $request->file('avatar');
+            $filePath = $file->store('avatars');
+            $data['avatar'] = $filePath;
+            $user->update($data);
+            alert()->success('Success!','Profile Information Saved Successfully');
+            return back();
+        }
+        $user->update($request->all());
+        alert()->success('Success!','Profile Information Saved Successfully');
+        return back();
     }
 
     public function catering() {
