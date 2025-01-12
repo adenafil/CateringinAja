@@ -575,16 +575,16 @@
                 <nav class="navbar navbar-expand">
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="header-left">
-                            {{--                            <div class="search_bar dropdown show">--}}
-                            {{--                                <div class="dropdown-menu p-0 m-0 show">--}}
-                            {{--                                    <form>--}}
-                            {{--                                        <input class="form-control" type="search" placeholder="Search Here" aria-label="Search">--}}
-                            {{--                                    </form>--}}
-                            {{--                                </div>--}}
-                            {{--								<span class="search_icon p-3 c-pointer" data-toggle="dropdown">--}}
-                            {{--                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.7871 22.7761L17.9548 16.9437C19.5193 15.145 20.4665 12.7982 20.4665 10.2333C20.4665 4.58714 15.8741 0 10.2333 0C4.58714 0 0 4.59246 0 10.2333C0 15.8741 4.59246 20.4665 10.2333 20.4665C12.7982 20.4665 15.145 19.5193 16.9437 17.9548L22.7761 23.7871C22.9144 23.9255 23.1007 24 23.2816 24C23.4625 24 23.6488 23.9308 23.7871 23.7871C24.0639 23.5104 24.0639 23.0528 23.7871 22.7761ZM1.43149 10.2333C1.43149 5.38004 5.38004 1.43681 10.2279 1.43681C15.0812 1.43681 19.0244 5.38537 19.0244 10.2333C19.0244 15.0812 15.0812 19.035 10.2279 19.035C5.38004 19.035 1.43149 15.0865 1.43149 10.2333Z" fill="#A4A4A4"/></svg>--}}
-                            {{--                                </span>--}}
-                            {{--                            </div>--}}
+                                                        <div class="search_bar dropdown show">
+                                                            <div class="dropdown-menu p-0 m-0 show">
+                                                                <form>
+                                                                    <input name="search" class="form-control" type="search" placeholder="Search Here" aria-label="Search">
+                                                                </form>
+                                                            </div>
+                            								<span class="search_icon p-3 c-pointer" data-toggle="dropdown">
+                                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.7871 22.7761L17.9548 16.9437C19.5193 15.145 20.4665 12.7982 20.4665 10.2333C20.4665 4.58714 15.8741 0 10.2333 0C4.58714 0 0 4.59246 0 10.2333C0 15.8741 4.59246 20.4665 10.2333 20.4665C12.7982 20.4665 15.145 19.5193 16.9437 17.9548L22.7761 23.7871C22.9144 23.9255 23.1007 24 23.2816 24C23.4625 24 23.6488 23.9308 23.7871 23.7871C24.0639 23.5104 24.0639 23.0528 23.7871 22.7761ZM1.43149 10.2333C1.43149 5.38004 5.38004 1.43681 10.2279 1.43681C15.0812 1.43681 19.0244 5.38537 19.0244 10.2333C19.0244 15.0812 15.0812 19.035 10.2279 19.035C5.38004 19.035 1.43149 15.0865 1.43149 10.2333Z" fill="#A4A4A4"/></svg>
+                                                            </span>
+                                                        </div>
                         </div>
 
                         <ul class="navbar-nav header-right">
@@ -706,74 +706,50 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="new-arrival-product">
-                                    <div class="new-arrivals-img-contnent">
-                                        <img class="img-fluid" src="https://img.foodspot.co.id/restaurant//bebekbkb/logo.jpg" alt="">
-                                    </div>
-                                    <div class="new-arrival-content text-center mt-3">
-                                        <p class="text-truncate"
-                                           data-bs-toggle="tooltip"
-                                           data-bs-placement="top"
-                                           title="Berencana menjadikan bebek sebagai lauk utama di acara Anda? Jika iya, BKB bisa jadi pilihan yang tepat. BKB atau Bebek Kepahiang Babase menyediakan sajian bebek khas Bengkulu. Berbeda dari restoran bebek lainnya yang cenderung kering dan krispi, bebek khas BKB sangatlah lembut, empuk, dan juicy. Tidak hanya tekstur, tampilan bebek BKB pun sangat khas, berwarna kehitaman dengan proses memasak hampir 24 jam. Proses memasak yang lama khas daerah Kepahiang ditambah aneka rempah dan bumbu menjadikan rasa bebek BKB gurih dan meresap hingga ke tulang.."
-                                        >
-                                            Berencana menjadikan bebek sebagai lauk utama di acara Anda? Jika iya, BKB bisa jadi pilihan yang tepat. BKB atau Bebek Kepahiang Babase menyediakan sajian bebek khas Bengkulu. Berbeda dari restoran bebek lainnya yang cenderung kering dan krispi, bebek khas BKB sangatlah lembut, empuk, dan juicy. Tidak hanya tekstur, tampilan bebek BKB pun sangat khas, berwarna kehitaman dengan proses memasak hampir 24 jam. Proses memasak yang lama khas daerah Kepahiang ditambah aneka rempah dan bumbu menjadikan rasa bebek BKB gurih dan meresap hingga ke tulang..
-                                        </p>
-                                    </div>
-                                    <div class="new-arrival-content text-center mt-3">
-                                        <h4>Bebek BKB</h4>
-                                        <ul class="star-rating">
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star-half-empty"></i></li>
-                                            <li><i class="fa fa-star-half-empty"></i></li>
-                                        </ul>
-                                        <button class="btn btn-sm btn-primary mt-2">View</button>
+                    @foreach($caterings as $catering)
+                        <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="new-arrival-product">
+                                        <div class="new-arrivals-img-contnent">
+                                            <img class="img-fluid" src="/storage/{{$catering->avatar}}" alt="" style="width: 100%; height: 200px;">
+                                        </div>
+                                        <div class="new-arrival-content text-center mt-3">
+                                            <p class="text-truncate"
+                                               data-bs-toggle="tooltip"
+                                               data-bs-placement="top"
+                                               title="{{$catering->deskripsi_toko}}"
+                                            >
+                                                {{$catering->deskripsi_toko}}
+                                            </p>
+                                        </div>
+                                        <div class="new-arrival-content text-center mt-3">
+                                            <h4>{{$catering->nama_toko}}</h4>
+                                            <ul class="star-rating">
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star-half-empty"></i></li>
+                                                <li><i class="fa fa-star-half-empty"></i></li>
+                                            </ul>
+                                            {{--                                        <span class="price">$761.00</span>--}}
+                                            <button class="btn btn-sm btn-primary mt-2">View</button>
 
-                                        {{--                                        <span class="price">$761.00</span>--}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="new-arrival-product">
-                                    <div class="new-arrivals-img-contnent">
-                                        <img class="img-fluid" src="https://img.foodspot.co.id/restaurant//bebekbkb/logo.jpg" alt="">
-                                    </div>
-                                    <div class="new-arrival-content text-center mt-3">
-                                        <p class="text-truncate"
-                                           data-bs-toggle="tooltip"
-                                           data-bs-placement="top"
-                                           title="Berencana menjadikan bebek sebagai lauk utama di acara Anda? Jika iya, BKB bisa jadi pilihan yang tepat. BKB atau Bebek Kepahiang Babase menyediakan sajian bebek khas Bengkulu. Berbeda dari restoran bebek lainnya yang cenderung kering dan krispi, bebek khas BKB sangatlah lembut, empuk, dan juicy. Tidak hanya tekstur, tampilan bebek BKB pun sangat khas, berwarna kehitaman dengan proses memasak hampir 24 jam. Proses memasak yang lama khas daerah Kepahiang ditambah aneka rempah dan bumbu menjadikan rasa bebek BKB gurih dan meresap hingga ke tulang.."
-                                        >
-                                            Berencana menjadikan bebek sebagai lauk utama di acara Anda? Jika iya, BKB bisa jadi pilihan yang tepat. BKB atau Bebek Kepahiang Babase menyediakan sajian bebek khas Bengkulu. Berbeda dari restoran bebek lainnya yang cenderung kering dan krispi, bebek khas BKB sangatlah lembut, empuk, dan juicy. Tidak hanya tekstur, tampilan bebek BKB pun sangat khas, berwarna kehitaman dengan proses memasak hampir 24 jam. Proses memasak yang lama khas daerah Kepahiang ditambah aneka rempah dan bumbu menjadikan rasa bebek BKB gurih dan meresap hingga ke tulang..
-                                        </p>
-                                    </div>
-                                    <div class="new-arrival-content text-center mt-3">
-                                        <h4>Bebek BKB</h4>
-                                        <ul class="star-rating">
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star-half-empty"></i></li>
-                                            <li><i class="fa fa-star-half-empty"></i></li>
-                                        </ul>
-{{--                                        <span class="price">$761.00</span>--}}
-                                        <button class="btn btn-sm btn-primary mt-2">View</button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
+
+                <div class="pagination pagination-gutter pagination-primary mx-auto">
+                    {{$caterings->appends(['search' => request()->get('search')])->links()}}
+                </div>
+
             </div>
+
+
         </div>
         <!--**********************************
             Content body end

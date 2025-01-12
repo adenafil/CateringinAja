@@ -755,7 +755,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <input name="no_handphone" style="font-size: 16px;" type="text" class="form-control input-default " placeholder="No Handphone" value="{{$user->np_handphone}}">
+                                            <input name="no_handphone" style="font-size: 16px;" type="text" class="form-control input-default " placeholder="No Handphone" value="{{$user->no_handphone}}">
                                         </div>
 
                                         <div class="form-group">
