@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Menu;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardPembeliCatering extends Controller
 {
@@ -54,8 +55,29 @@ class DashboardPembeliCatering extends Controller
 
     public function addToCartView(User $catering, Menu $menu)
     {
+        $quantity = User::query()
+            ->where('id', \auth()->user()->id)
+            ->first()
+            ->cartMenus()
+            ->where('menu_id', $menu->id) // Filter berdasarkan menu_id
+            ->first()->pivot->quantity ?? 1;
 
-        return response()->view('dashboard.pembeli.catering-add-to-cart', compact('catering', 'menu'));
+        return response()->view('dashboard.pembeli.catering-add-to-cart', compact('catering', 'menu', 'quantity'));
+    }
+
+    public function putCart(User $catering, Menu $menu, Request $request)
+    {
+        $request->validate([
+            'quantity' => 'required|numeric|min:1',
+        ]);
+
+        $user = User::query()->where("id", \auth()->user()->id)->first();
+
+        $user->cartMenus()->syncWithoutDetaching([$menu->id => ['quantity' => $request->get('quantity')]]);
+
+        alert()->success('Success!','Menu Added Into Your Cart Successfully');
+
+        return back();
     }
 
     public function cartView()

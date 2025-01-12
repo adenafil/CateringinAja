@@ -766,15 +766,19 @@
 {{--                                                    </div>--}}
 {{--                                                </div>--}}
                                                 <!--Quantity start-->
-												<div class="col-2 px-0">
-													<input type="number" name="num" class="form-control input-btn input-number" value="1">
-												</div>
-                                                <!--Quanatity End-->
-                                                <div class="shopping-cart mt-3">
-                                                    <a class="btn btn-primary btn-lg" href="#"><i
-                                                            class="fa fa-shopping-basket mr-2"></i>Add
-                                                        to cart</a>
-                                                </div>
+                                                <form action="{{route('dashboard.pembeli.catering.detailToko.addToCart.put', [$catering, $menu])}}" method="POST">
+                                                    @csrf
+                                                    @method("PUT")
+                                                    <div class="col-2 px-0">
+                                                        <input type="number" name="quantity" class="form-control input-btn input-number" value="{{$quantity}}">
+                                                    </div>
+                                                    <!--Quanatity End-->
+                                                    <div class="shopping-cart mt-3">
+                                                        <button type="submit" class="btn btn-primary btn-lg" @if($menu->status == "Tidak Tersedia") disabled @endif><i
+                                                                class="fa fa-shopping-basket mr-2"></i>Add
+                                                            to cart</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -806,7 +810,6 @@
 
 
     <script src="/dashboard-template/vendor/global/global.min.js"></script>
-	<script src="/dashboard-template/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
     <script src="/dashboard-template/vendor/chart.js/Chart.bundle.min.js"></script>
     <script src="/dashboard-template/js/custom.min.js"></script>
 	<script src="/dashboard-template/js/deznav-init.js"></script>
@@ -877,5 +880,8 @@
 
 
 </body>
+
+@include('sweetalert::alert')
+
 
 </html>
