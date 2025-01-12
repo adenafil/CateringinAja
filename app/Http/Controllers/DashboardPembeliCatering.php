@@ -6,6 +6,7 @@ use App\Models\Menu;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DashboardPembeliCatering extends Controller
 {
@@ -89,7 +90,20 @@ class DashboardPembeliCatering extends Controller
 
     public function cartView()
     {
-        return response()->view('dashboard.pembeli.cart');
+
+        $carts = DB::table('carts as c')
+            ->join('menus as m', 'm.id', '=', 'c.menu_id')
+            ->join('users as u', 'u.id', '=', 'm.user_id')
+            ->select(
+                'u.id', 'u.username', 'u.name', 'u.email', 'u.role', 'u.avatar',
+                'u.nama_toko', 'u.area_antar', 'u.no_handphone', 'u.no_whatsapp',
+                'u.deskripsi_toko', 'u.link_google_map_embed', 'u.kisaran_harga'
+            )
+            ->where('c.user_id', \auth()->user()->id) // Filter berdasarkan user_id pembeli
+            ->groupBy('u.id')
+            ->paginate(4);
+
+        return response()->view('dashboard.pembeli.cart', compact('carts'));
     }
 
     public function checkoutView()

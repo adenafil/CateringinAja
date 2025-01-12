@@ -708,40 +708,51 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="new-arrival-product">
-                                    <div class="new-arrivals-img-contnent">
-                                        <img class="img-fluid" src="https://img.foodspot.co.id/restaurant//bebekbkb/logo.jpg" alt="">
-                                    </div>
-                                    <div class="new-arrival-content text-center mt-3">
-                                        <p class="text-truncate"
-                                           data-bs-toggle="tooltip"
-                                           data-bs-placement="top"
-                                           title="Berencana menjadikan bebek sebagai lauk utama di acara Anda? Jika iya, BKB bisa jadi pilihan yang tepat. BKB atau Bebek Kepahiang Babase menyediakan sajian bebek khas Bengkulu. Berbeda dari restoran bebek lainnya yang cenderung kering dan krispi, bebek khas BKB sangatlah lembut, empuk, dan juicy. Tidak hanya tekstur, tampilan bebek BKB pun sangat khas, berwarna kehitaman dengan proses memasak hampir 24 jam. Proses memasak yang lama khas daerah Kepahiang ditambah aneka rempah dan bumbu menjadikan rasa bebek BKB gurih dan meresap hingga ke tulang.."
-                                        >
-                                            Berencana menjadikan bebek sebagai lauk utama di acara Anda? Jika iya, BKB bisa jadi pilihan yang tepat. BKB atau Bebek Kepahiang Babase menyediakan sajian bebek khas Bengkulu. Berbeda dari restoran bebek lainnya yang cenderung kering dan krispi, bebek khas BKB sangatlah lembut, empuk, dan juicy. Tidak hanya tekstur, tampilan bebek BKB pun sangat khas, berwarna kehitaman dengan proses memasak hampir 24 jam. Proses memasak yang lama khas daerah Kepahiang ditambah aneka rempah dan bumbu menjadikan rasa bebek BKB gurih dan meresap hingga ke tulang..
-                                        </p>
-                                    </div>
-                                    <div class="new-arrival-content text-center mt-3">
-                                        <h4>Bebek BKB</h4>
-                                        <ul class="star-rating">
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star-half-empty"></i></li>
-                                            <li><i class="fa fa-star-half-empty"></i></li>
-                                        </ul>
-                                        <button class="btn btn-sm btn-primary mt-2">Check Out</button>
-{{--                                        <span class="price">$761.00</span>--}}
+                    @foreach($carts as $cart)
+                        <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="new-arrival-product">
+                                        <div class="new-arrivals-img-contnent">
+                                            <img class="img-fluid" src="/storage/{{$cart->avatar}}" alt="" style="width: 100%; height: 200px;">
+                                        </div>
+                                        <div class="new-arrival-content text-center mt-3">
+                                            <p class="text-truncate"
+                                               data-bs-toggle="tooltip"
+                                               data-bs-placement="top"
+                                               title="{{$cart->deskripsi_toko}}"
+                                            >
+                                                {{$cart->deskripsi_toko}}
+                                            </p>
+                                        </div>
+                                        <div class="new-arrival-content text-center mt-3">
+                                            <h4>{{$cart->nama_toko}}</h4>
+                                            <ul class="star-rating">
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star-half-empty"></i></li>
+                                                <li><i class="fa fa-star-half-empty"></i></li>
+                                            </ul>
+                                            <button class="btn btn-sm btn-primary mt-2">Check Out</button>
+                                            <button class="btn btn-sm btn-danger mt-2">Remove</button>
+                                            {{--                                        <span class="price">$761.00</span>--}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
+
+
                 </div>
+                <div class="pagination pagination-gutter pagination-primary mx-auto">
+                    {{$carts->appends(['search' => request()->get('search')])->links()}}
+                </div>
+
+
             </div>
+
         </div>
         <!--**********************************
             Content body end

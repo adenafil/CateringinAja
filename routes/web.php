@@ -42,7 +42,7 @@ Route::middleware(['auth', 'buyer'])->group(function () {
     Route::get('/user/dashboard/catering/{catering}', [DashboardPembeliCatering::class, 'cateringDetail'])->name('dashboard.pembeli.catering.detailToko');
     Route::get('/user/dashboard/catering/{catering}/{menu}', [DashboardPembeliCatering::class, 'addToCartView'])->name('dashboard.pembeli.catering.detailToko.addToCart');
     Route::put('/user/dashboard/catering/{catering}/{menu}', [DashboardPembeliCatering::class, 'putCart'])->name('dashboard.pembeli.catering.detailToko.addToCart.put');
-    Route::get('/user/dashboard/catering/cart', [DashboardPembeliCatering::class, 'cartView'])->name('dashboard.pembeli.catering.cart');
+    Route::get('/user/dashboard/cart', [DashboardPembeliCatering::class, 'cartView'])->name('dashboard.pembeli.catering.cart');
     Route::get('/user/dashboard/catering/checkout', [DashboardPembeliCatering::class, 'checkoutView'])->name('dashboard.pembeli.catering.checkout');
     Route::get('/user/dashboard/catering/order', [DashboardPembeliCatering::class, 'orderView'])->name('dashboard.pembeli.catering.order');
     Route::get('/user/dashboard/catering/order/detail', [DashboardPembeliCatering::class, 'orderDetailView'])->name('dashboard.pembeli.catering.order.detail');
