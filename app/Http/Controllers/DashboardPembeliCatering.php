@@ -52,9 +52,10 @@ class DashboardPembeliCatering extends Controller
         return response()->view('dashboard.pembeli.catering-detail', compact('menus', 'catering'));
     }
 
-    public function addToCartView()
+    public function addToCartView(User $catering, Menu $menu)
     {
-        return response()->view('dashboard.pembeli.catering-add-to-cart');
+
+        return response()->view('dashboard.pembeli.catering-add-to-cart', compact('catering', 'menu'));
     }
 
     public function cartView()

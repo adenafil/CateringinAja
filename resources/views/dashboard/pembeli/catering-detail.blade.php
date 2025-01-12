@@ -701,7 +701,7 @@
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Catering</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Nama Toko</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">{{$catering->nama_toko}}</a></li>
                         </ol>
                     </div>
                 </div>
@@ -720,7 +720,7 @@
                                         </div>
                                         <div class="col-md-7 col-xxl-12">
                                             <div class="new-arrival-content position-relative">
-                                                <h4>{{$menu->name}}</h4>
+                                                <h4><a href="{{route('dashboard.pembeli.catering.detailToko.addToCart', [$catering, $menu])}}">{{$menu->name}}</a></h4>
                                                 <p class="price">Rp {{$menu->price}}</p>
                                                 <p>Ketersediaan : <span class="item"> {{$menu->status}} <i
                                                             @if($menu->status == "Tersedia")
@@ -819,7 +819,7 @@
                     }
 
                     if (img && img.src.includes('/helper/')) {
-                        if (!img.src.includes('overview')) {
+                        if (!img.src.includes('chef')) {
                             img.classList.add('img-hover');
                             img.src = img.src.replace('.png', '-hover.png');
                         }
@@ -836,7 +836,7 @@
                     }
 
                     if (img && img.src.includes('/helper/')) {
-                        if (!img.src.includes('overview')) {
+                        if (!img.src.includes('chef')) {
                             img.classList.remove('img-hover');
                             img.src = img.src.replace('-hover.png', '.png');
                         }

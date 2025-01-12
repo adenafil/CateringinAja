@@ -633,26 +633,53 @@
                 <ul class="metismenu" id="menu">
 
                     <li class="">
-                        <a class="" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-381-home"></i>
+                        <a class="" href="{{route('dashboard.pembeli.overview')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/overview.png" style="width: 26px; height: 26px;"></i>
                             <span class="nav-text">Overview</span>
                         </a>
                     </li>
 
                     <li class="mm-active">
-                        <a class="" href="javascript:void()" aria-expanded="false">
-                            <i class=""><img src="/helper/profile-hover.png" style="width: 23px; height: 23px;"></i>
+                        <a class="" href="{{route('dashboard.pembeli.catering')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/chef-hover.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Catering</span>
+                        </a>
+                    </li>
+
+
+                    <li class="">
+                        <a class="" href="{{route('dashboard.pembeli.catering.order')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/order-seller.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Order</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a class="" href="{{route('dashboard.pembeli.catering.cart')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/cart.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Cart</span>
+                        </a>
+                    </li>
+
+
+
+                    <li class="">
+                        <a class="" href="{{route('dashboard.pembeli.profile')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/profile.png" style="width: 26px; height: 26px;"></i>
                             <span class="nav-text">Profile</span>
                         </a>
                     </li>
 
+                    <li class="" id="logout-link" style="cursor: pointer;">
+                        <a class=""  aria-expanded="false">
+                            <i class=""><img src="/helper/logout.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Logout</span>
+                        </a>
+                    </li>
+
+
                 </ul>
 
-                <div class="add-menu-sidebar">
-                    <img src="/dashboard-template/images/icon1.png" alt=""/>
-                    <p>Organize your menus through button bellow</p>
-                    <a href="javascript:void(0);" class="btn btn-primary btn-block light">Your Menus</a>
-                </div>
             </div>
         </div>
         <!--**********************************
@@ -687,7 +714,7 @@
                                         <!-- Tab panes -->
                                         <div class="tab-content">
                                             <div role="tabpanel" class="tab-pane fade show active" id="first">
-                                                <img class="img-fluid" src="https://img.foodspot.co.id/restaurant//bebekbkb/logo.jpg" alt="">
+                                                <img class="img-fluid" src="/storage/{{$menu->picture}}" alt="">
                                             </div>
 {{--                                            <div role="tabpanel" class="tab-pane fade" id="second">--}}
 {{--                                                <img class="img-fluid" src="https://img.foodspot.co.id/restaurant//bebekbkb/logo.jpg" alt="">--}}
@@ -705,7 +732,7 @@
                                         <div class="product-detail-content">
                                             <!--Product details-->
                                             <div class="new-arrival-content pr">
-                                                <h4>Bebek BKB</h4>
+                                                <h4>{{$menu->name}}</h4>
                                                 <div class="star-rating mb-2">
                                                     <ul class="produtct-detail-tag">
                                                         <li><i class="fa fa-star"></i></li>
@@ -716,13 +743,16 @@
                                                     </ul>
                                                     <span class="review-text">(34 reviews) / </span><a class="product-review" href="#">Write a review?</a>
                                                 </div>
-                                                <p class="price">$320.00</p>
-                                                <p>Ketersediaan: <span class="item"> Tersedia <i
-                                                            class="fa fa-shopping-basket"></i></span>
-                                                </p>
+                                                <p class="price">Rp {{$menu->price}}</p>
+                                                <p>Ketersediaan : <span class="item"> {{$menu->status}} <i
+                                                            @if($menu->status == "Tersedia")
+                                                                class="fa fa-check-circle text-success"></i></span></p>
+                                                @else
+                                                    class="fa fa-times text-danger"></i></span></p>
+                                                @endif
                                                 <p>Product code: <span class="item">0405689</span> </p>
                                                 <p>Category: <span class="item">Makanan</span></p>
-                                                <p class="text-content">Berencana menjadikan bebek sebagai lauk utama di acara Anda? Jika iya, BKB bisa jadi pilihan yang tepat. BKB atau Bebek Kepahiang Babase menyediakan sajian bebek khas Bengkulu. Berbeda dari restoran bebek lainnya yang cenderung kering dan krispi, bebek khas BKB sangatlah lembut, empuk, dan juicy. Tidak hanya tekstur, tampilan bebek BKB pun sangat khas, berwarna kehitaman dengan proses memasak hampir 24 jam. Proses memasak yang lama khas daerah Kepahiang ditambah aneka rempah dan bumbu menjadikan rasa bebek BKB gurih dan meresap hingga ke tulang.</p>
+                                                <p class="text-content">{{$menu->description}}</p>
 {{--                                                <div class="filtaring-area my-3">--}}
 {{--                                                    <div class="size-filter">--}}
 {{--                                                        <h4 class="m-b-15">Select size</h4>--}}
@@ -817,7 +847,7 @@
                     }
 
                     if (img && img.src.includes('/helper/')) {
-                        if (!img.src.includes('overview')) {
+                        if (!img.src.includes('chef')) {
                             img.classList.add('img-hover');
                             img.src = img.src.replace('.png', '-hover.png');
                         }
@@ -834,7 +864,7 @@
                     }
 
                     if (img && img.src.includes('/helper/')) {
-                        if (!img.src.includes('overview')) {
+                        if (!img.src.includes('chef')) {
                             img.classList.remove('img-hover');
                             img.src = img.src.replace('-hover.png', '.png');
                         }
