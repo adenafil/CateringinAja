@@ -70,3 +70,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 -- add middeleware for pembeli & penjual
 -- change guest middleware and auth breeze to be custom middleware
 -- Fix deznav anchor over catering
+-- RATING, ORDER list either on penjual or pembeli dashboard, penarikan dana, find, home
