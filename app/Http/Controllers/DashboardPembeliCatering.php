@@ -47,9 +47,16 @@ class DashboardPembeliCatering extends Controller
         return response()->view('dashboard.pembeli.catering', compact('caterings'));
     }
 
-    public function cateringDetail(User $catering)
+    public function cateringDetail(User $catering, Request $request)
     {
-        $menus = Menu::query()->where("user_id", $catering->id)->paginate(4);
+        if ($request->has('search')) {
+            $menus = Menu::query()->where("user_id", $catering->id)->
+                where('name', 'like', '%' . $request->get('search') . '%')
+                ->paginate(4);
+        } else {
+            $menus = Menu::query()->where("user_id", $catering->id)->paginate(4);
+        }
+
         return response()->view('dashboard.pembeli.catering-detail', compact('menus', 'catering'));
     }
 
