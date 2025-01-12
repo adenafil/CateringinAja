@@ -777,6 +777,8 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script src="/dashboard-template/vendor/global/global.min.js"></script>
 {{--	<script src="/dashboard-template/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>--}}
     <script src="/dashboard-template/vendor/chart.js/Chart.bundle.min.js"></script>
@@ -792,6 +794,22 @@
 
 
     <script>
+        document.getElementById('logout-link').addEventListener('click', function(event) {
+            event.preventDefault(); // Mencegah perilaku default dari elemen <a>
+
+            // Kirim request POST menggunakan Axios
+            axios.post('{{ route("logout") }}', {})
+                .then(response => {
+                    // Redirect atau lakukan sesuatu setelah logout berhasil
+                    window.location.href = '/'; // Contoh: Redirect ke halaman home
+                })
+                .catch(error => {
+                    console.error('Logout failed:', error);
+                    alert('Logout failed. Please try again.');
+                });
+        });
+
+
         // Fungsi untuk menampilkan gambar yang diunggah dan memperbarui label
         function previewImage(event) {
             const input = event.target;
