@@ -733,7 +733,7 @@
                                                 <li><i class="fa fa-star-half-empty"></i></li>
                                             </ul>
                                             {{--                                        <span class="price">$761.00</span>--}}
-                                            <button class="btn btn-sm btn-primary mt-2">View</button>
+                                            <a class="btn btn-sm btn-primary mt-2" href="{{route('dashboard.pembeli.catering.detailToko', $catering)}}">View</a>
 
                                         </div>
                                     </div>

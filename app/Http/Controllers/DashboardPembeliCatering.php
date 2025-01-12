@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -45,9 +46,10 @@ class DashboardPembeliCatering extends Controller
         return response()->view('dashboard.pembeli.catering', compact('caterings'));
     }
 
-    public function cateringDetail()
+    public function cateringDetail(User $catering)
     {
-        return response()->view('dashboard.pembeli.catering-detail');
+        $menus = Menu::query()->where("user_id", $catering->id)->paginate(4);
+        return response()->view('dashboard.pembeli.catering-detail', compact('menus', 'catering'));
     }
 
     public function addToCartView()
