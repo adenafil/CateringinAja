@@ -134,10 +134,14 @@ class DashboardJasaCatering extends Controller
     {
 
         if (request()->has('search')) {
-            $menus = Menu::query()->where('name', 'like', '%' . $request->get('search') . '%')->paginate(4);
+            $menus = Menu::query()
+                ->where('name', 'like', '%' . $request->get('search') . '%')
+                ->where('user_id', auth()->user()->id)
+                ->paginate(4);
 
         } else {
             $menus = Menu::query()
+                ->where('user_id', auth()->user()->id)
                 ->orderBy('created_at', 'asc') // Urutkan berdasarkan tanggal terbaru
                 ->paginate(4);
         }
