@@ -700,12 +700,12 @@
 				</div>
                 <div class="row">
 					<div class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
-						<div class="card bg-secondary" style="background-image:url(); background-repeat:no-repeat; background-position:top right;">
+						<div class="card bg-secondary" style="; background-repeat:no-repeat; background-position:top right;">
 							<div class="card-body p-5 mt-3">
                                 <img src="/dashboard-template/images/order.png" style="width: 44px; height: 44px;" class="mb-3">
 
 								<h4 class="text-white mb-3">Cek Pesananmu Di Sini</h4>
-								<a href="javascript:void(0);" class="d-flex text-light align-items-center justify-content-between">
+								<a href="{{route('dashboard.pembeli.catering.order')}}" class="d-flex text-light align-items-center justify-content-between">
 									<small>Lorem ipsum dolor sit amet, consectetur</small>
 									<i class="ti-arrow-right"></i>
 								</a>
@@ -713,11 +713,11 @@
 						</div>
 					</div>
                     <div class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
-                        <div class="card " style="background-image:url(); background-repeat:no-repeat; background-position:top right; background-color: #FF402F;">
+                        <div class="card " style="; background-repeat:no-repeat; background-position:top right; background-color: #FF402F;">
                             <div class="card-body p-5 mt-3">
                                 <img src="/dashboard-template/images/food.png" style="width: 44px; height: 44px;" class="mb-3">
                                 <h4 class="text-white mb-3">Temukan Jasa Catering Di Sini</h4>
-                                <a href="javascript:void(0);" class="d-flex text-light align-items-center justify-content-between">
+                                <a href="{{route('dashboard.pembeli.catering')}}" class="d-flex text-light align-items-center justify-content-between">
                                     <small class="text-white">Lorem ipsum dolor sit amet, consectetur</small>
                                     <i class="ti-arrow-right"></i>
                                 </a>
