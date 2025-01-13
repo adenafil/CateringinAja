@@ -633,26 +633,53 @@
                 <ul class="metismenu" id="menu">
 
                     <li class="">
-                        <a class="" href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-381-home"></i>
+                        <a class="" href="{{route('dashboard.pembeli.overview')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/overview.png" style="width: 26px; height: 26px;"></i>
                             <span class="nav-text">Overview</span>
                         </a>
                     </li>
 
+                    <li class="">
+                        <a class="" href="{{route('dashboard.pembeli.catering')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/chef.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Catering</span>
+                        </a>
+                    </li>
+
+
                     <li class="mm-active">
-                        <a class="" href="javascript:void()" aria-expanded="false">
-                            <i class=""><img src="/helper/profile-hover.png" style="width: 23px; height: 23px;"></i>
+                        <a class="" href="{{route('dashboard.pembeli.catering.order')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/order-seller-hover.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Order</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a class="" href="{{route('dashboard.pembeli.catering.cart')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/cart.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Cart</span>
+                        </a>
+                    </li>
+
+
+
+                    <li class="">
+                        <a class="" href="{{route('dashboard.pembeli.profile')}}" aria-expanded="false">
+                            <i class=""><img src="/helper/profile.png" style="width: 26px; height: 26px;"></i>
                             <span class="nav-text">Profile</span>
                         </a>
                     </li>
 
+                    <li class="" id="logout-link" style="cursor: pointer;">
+                        <a class=""  aria-expanded="false">
+                            <i class=""><img src="/helper/logout.png" style="width: 26px; height: 26px;"></i>
+                            <span class="nav-text">Logout</span>
+                        </a>
+                    </li>
+
+
                 </ul>
 
-                <div class="add-menu-sidebar">
-                    <img src="/dashboard-template/images/icon1.png" alt=""/>
-                    <p>Organize your menus through button bellow</p>
-                    <a href="javascript:void(0);" class="btn btn-primary btn-block light">Your Menus</a>
-                </div>
             </div>
         </div>
         <!--**********************************
@@ -683,39 +710,21 @@
                     <div class="col-xl-12 col-lg-6">
                         <div class="card">
                             <div class="card-header border-0 pb-0">
-                                <h4 class="card-title">Disease History</h4>
+                                <h4 class="card-title">History Order</h4>
                             </div>
                             <div class="card-body">
                                 <div class="widget-timeline-icon">
                                     <ul class="timeline">
-                                        <li>
-                                            <div class="icon bg-primary"></div>
-                                            <a class="timeline-panel text-muted" href="#">
-                                                <h4 class="mb-2">Order Delivered</h4>
-                                                <p class="fs-15 mb-0 ">Wait..</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <div class="icon bg-primary"></div>
-                                            <a class="timeline-panel text-muted" href="#">
-                                                <h4 class="mb-2">On Delivery</h4>
-                                                <p class="fs-15 mb-0 ">Sat, 23 Jul 2020, 01:24 PM</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <div class="icon bg-primary"></div>
-                                            <a class="timeline-panel text-muted" href="#">
-                                                <h4 class="mb-2">Payment Success</h4>
-                                                <p class="fs-15 mb-0 ">Fri, 22 Jul 2020, 10:44 AM</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <div class="icon bg-primary"></div>
-                                            <a class="timeline-panel text-muted" href="#">
-                                                <h4 class="mb-2">Order Created</h4>
-                                                <p class="fs-15 mb-0 ">Thu, 21 Jul 2020, 11:49 AM</p>
-                                            </a>
-                                        </li>
+                                        @foreach($logs as $log)
+                                            <li>
+                                                <div class="icon bg-primary"></div>
+                                                <a class="timeline-panel text-muted" href="#">
+                                                    <h4 class="mb-2 text-uppercase">{{$log->status}}</h4>
+                                                    <p class="fs-15 mb-0 ">{{$log->created_at}}</p>
+                                                </a>
+                                            </li>
+                                        @endforeach
+
                                     </ul>
                                 </div>
                             </div>
@@ -740,111 +749,71 @@
 
 
                 <div class="row">
-                    <div class="col-lg-12 col-xl-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row m-b-30">
-                                    <div class="col-md-5 col-xxl-12">
-                                        <div class="new-arrival-product mb-4 mb-xxl-4 mb-md-0">
-                                            <div class="new-arrivals-img-contnent">
-                                                <img class="img-fluid" src="https://img.foodspot.co.id/restaurant//bebekbkb/logo.jpg" alt="">
+                    @foreach($menus as $menu)
+                        <div class="col-lg-12 col-xl-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row m-b-30">
+                                        <div class="col-md-5 col-xxl-12">
+                                            <div class="new-arrival-product mb-4 mb-xxl-4 mb-md-0">
+                                                <div class="new-arrivals-img-contnent">
+                                                    <img class="img-fluid" src="/storage/{{$menu->picture}}" alt="">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-7 col-xxl-12">
-                                        <div class="new-arrival-content position-relative">
-                                            <h4>Bebek BKB</h4>
-                                            <p class="price">Rp 22.800</p>
-                                            <p>Ketersediaan : <span class="item"> Tersedia <i
-                                                        class="fa fa-check-circle text-success"></i></span></p>
-                                            <p>Product code: <span class="item">0405689</span> </p>
-                                            <p>Category: <span class="item">Makanan</span></p>
-                                            <p class="text-content ">Berencana menjadikan bebek sebagai lauk utama di acara Anda? Jika iya, BKB bisa jadi pilihan yang tepat. BKB atau Bebek Kepahiang Babase menyediakan sajian bebek khas Bengkulu. Berbeda dari restoran bebek lainnya yang cenderung kering dan krispi, bebek khas BKB sangatlah lembut, empuk, dan juicy. Tidak hanya tekstur, tampilan bebek BKB pun sangat khas, berwarna kehitaman dengan proses memasak hampir 24 jam. Proses memasak yang lama khas daerah Kepahiang ditambah aneka rempah dan bumbu menjadikan rasa bebek BKB gurih dan meresap hingga ke tulang..
-                                            </p>
-                                            <div class="comment-review star-rating text-right">
-                                                <ul>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star-half-empty"></i></li>
-                                                    <li><i class="fa fa-star-half-empty"></i></li>
-                                                </ul>
-                                                <span class="review-text">(34 reviews) / </span><a class="product-review" href="">Write a review?</a>
+                                        <div class="col-md-7 col-xxl-12">
+                                            <div class="new-arrival-content position-relative">
+                                                <h4>{{$menu->name}}</h4>
+                                                <p class="price">Rp {{number_format((int)$menu->price, 0, ',', '.')}}.000</p>
+                                                <p>Ketersediaan : <span class="item"> {{$menu->status}} <i
+                                                            @if($menu->status == "Tersedia")
+                                                                class="fa fa-check-circle text-success"></i></span></p>
+                                                @else
+                                                    class="fa fa-times text-danger"></i></span></p>
+                                                @endif
+                                                <p>Category: <span class="item">{{$menu->category}}</span></p>
+                                                <p class="text-content ">{{$menu->description}}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-12 col-xl-6">
+
+                    @endforeach
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 col-xl-12">
                         <div class="card">
-                            <div class="card-body">
-                                <div class="row m-b-30">
-                                    <div class="col-md-5 col-xxl-12">
-                                        <div class="new-arrival-product mb-4 mb-xxl-4 mb-md-0">
-                                            <div class="new-arrivals-img-contnent">
-                                                <img class="img-fluid" src="https://img.foodspot.co.id/restaurant//bebekbkb/logo.jpg" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7 col-xxl-12">
-                                        <div class="new-arrival-content position-relative">
-                                            <h4>Bebek BKB</h4>
-                                            <p class="price">Rp 22.800</p>
-                                            <p>Ketersediaan : <span class="item"> Tersedia <i
-                                                        class="fa fa-check-circle text-success"></i></span></p>
-                                            <p>Product code: <span class="item">0405689</span> </p>
-                                            <p>Category: <span class="item">Makanan</span></p>
-                                            <p class="text-content ">.  dan krispi, bebek khas BKB sangatlah lembut, empuk, dan juicy. Tidak hanya tekstur, tampilan bebek BKB pun sangat khas, berwarna kehitaman dengan proses memasak hampir 24 jam. Proses memasak yang lama khas daerah Kepahiang ditambah aneka rempah dan bumbu menjadikan rasa bebek BKB gurih dan meresap hingga ke tulang..
-                                            </p>
-                                            <div class="comment-review star-rating text-right">
-                                                <ul>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star-half-empty"></i></li>
-                                                    <li><i class="fa fa-star-half-empty"></i></li>
-                                                </ul>
-                                                <span class="review-text">(34 reviews) / </span><a class="product-review" href="">Write a review?</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="card-header border-0 pb-0 d-sm-flex d-block">
+                                <div>
+                                    <h4 class="card-title mb-1 fs-28 font-w600">Review Anda</h4>
+                                    <p class="mb-0">Ini adalah review yang sudah anda buat </p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-xl-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row m-b-30">
-                                    <div class="col-md-5 col-xxl-12">
-                                        <div class="new-arrival-product mb-4 mb-xxl-4 mb-md-0">
-                                            <div class="new-arrivals-img-contnent">
-                                                <img class="img-fluid" src="https://img.foodspot.co.id/restaurant//bebekbkb/logo.jpg" alt="">
-                                            </div>
-                                        </div>
+                            <div class="card-body p-0">
+                                <div class="media review-box">
+                                    <img class="mr-3 img-fluid btn-rounded" width="55" src="/dashboard-template/images/avatar/1.jpg" alt="DexignZone">
+                                    <div class="media-body">
+                                        <h4 class="mt-0 mb-0 text-black">{{auth()->user()->username}}</h4>
+                                        <ul class="review-meta mb-3 d-block d-sm-flex align-items-center">
+                                            <li class="mr-3"><small>Pembeli</small></li>
+                                            <li class="mr-3"><small>{{$review->created_at}}</small></li>
+                                        </ul>
+                                        <p class="mb-3 text-secondary">{{$review->comment}}</p>
                                     </div>
-                                    <div class="col-md-7 col-xxl-12">
-                                        <div class="new-arrival-content position-relative">
-                                            <h4>Bebek BKB</h4>
-                                            <p class="price">Rp 22.800</p>
-                                            <p>Ketersediaan : <span class="item"> Tersedia <i
-                                                        class="fa fa-check-circle text-success"></i></span></p>
-                                            <p>Product code: <span class="item">0405689</span> </p>
-                                            <p>Category: <span class="item">Makanan</span></p>
-                                            <p class="text-content ">.  dan krispi, bebek khas BKB sangatlah lembut, empuk, dan juicy. Tidak hanya tekstur, tampilan bebek BKB pun sangat khas, berwarna kehitaman dengan proses memasak hampir 24 jam. Proses memasak yang lama khas daerah Kepahiang ditambah aneka rempah dan bumbu menjadikan rasa bebek BKB gurih dan meresap hingga ke tulang..
-                                            </p>
-                                            <div class="comment-review star-rating text-right">
-                                                <ul>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star-half-empty"></i></li>
-                                                    <li><i class="fa fa-star-half-empty"></i></li>
-                                                </ul>
-                                                <span class="review-text">(34 reviews) / </span><a class="product-review" href="">Write a review?</a>
-                                            </div>
+                                    <div class="media-footer align-self-center">
+                                        <div class="star-review text-md-center">
+                                            <span class="text-secondary">{{$review->rating}}.0</span>
+                                            @for($i =1; $i <= $review->rating; $i++)
+                                                <i class="fa fa-star text-primary"></i>
+                                            @endfor
+                                            @for($i =1; $i <= 5-$review->rating; $i++)
+                                                <i class="fa fa-star text-gray"></i>
+                                            @endfor
+
                                         </div>
                                     </div>
                                 </div>
@@ -916,7 +885,7 @@
                     }
 
                     if (img && img.src.includes('/helper/')) {
-                        if (!img.src.includes('overview')) {
+                        if (!img.src.includes('order')) {
                             img.classList.add('img-hover');
                             img.src = img.src.replace('.png', '-hover.png');
                         }
@@ -933,7 +902,7 @@
                     }
 
                     if (img && img.src.includes('/helper/')) {
-                        if (!img.src.includes('overview')) {
+                        if (!img.src.includes('order')) {
                             img.classList.remove('img-hover');
                             img.src = img.src.replace('-hover.png', '.png');
                         }

@@ -18,6 +18,9 @@
             color: #2F4CDD !important;
         }
 
+        .dataTables_paginate, .dataTables_info {
+            display: none;
+        }
     </style>
 
 </head>
@@ -697,44 +700,97 @@
 				</div>
                 <div class="row">
 					<div class="col-12">
-						<div class="table-responsive">
-							<table id="example5" class="display mb-4 dataTablesCard" style="min-width: 845px;">
-								<thead>
-									<tr>
-										<th>Order Id</th>
-										<th>Nama Toko</th>
-										<th>Tanggal Pemesanan</th>
-										<th>Makanan / Minuman Yang Di Beli</th>
-										<th>Total Biaya</th>
-										<th>Status Order</th>
-										<th></th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>#5552351</td>
-										<td>Bebek BKB</td>
-										<td>26 March 2020, 12:42 AM</td>
-										<td>Bebek, Es Coca Cola</td>
-										<td> Rp 20.000</td>
-										<td><span class="btn btn-sm light btn-secondary fs-16">Sedang Di Antar</span></td>
-										<td>
-											<div class="dropdown ml-auto text-right">
-												<div class="btn-link" data-toggle="dropdown">
-													<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
-												</div>
-												<div class="dropdown-menu dropdown-menu-right">
-													<a class="dropdown-item" href="#">View Detail</a>
-													<a class="dropdown-item" href="#">Edit</a>
-													<a class="dropdown-item" href="#">Delete</a>
-												</div>
-											</div>
-										</td>
-									</tr>
+                        <div class="table-responsive">
+                            <table id="example5" class="display mb-4 dataTablesCard" style="min-width: 845px;">
+                                <thead>
+                                <tr class="text-center">
+                                    <th>Order Id</th>
+                                    <th>Nama Toko</th>
+                                    <th>Tanggal Pemesanan</th>
+                                    <th>Total Biaya</th>
+                                    <th>Metode Pembayaran</th>
+                                    <th>Status Order</th>
+                                    <th>Aksi</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($payments as $payment)
+                                    <tr class="text-center">
+                                        <td class="text-truncate">{{$payment->order_id}}</td>
+                                        <td>{{$payment->nama_toko}}</td>
+                                        <td>{{$payment->tanggal_pemesanan}}</td>
+                                        <td>Rp {{number_format((int)$payment->total_biaya, 0, ',', '.')}}.00</td>
+                                        <td>{{$payment->payment_method}}</td>
+                                        <td>
+                                            <span class="btn btn-sm light btn-secondary fs-16 text-uppercase">{{$payment->status}}</span>
+                                        </td>
+                                        <td>
+                                            <div class="dropdown ml-auto text-right">
+                                                <div class="btn-link" data-toggle="dropdown">
+                                                    <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24"></rect>
+                                                            <circle fill="#000000" cx="5" cy="12" r="2"></circle>
+                                                            <circle fill="#000000" cx="12" cy="12" r="2"></circle>
+                                                            <circle fill="#000000" cx="19" cy="12" r="2"></circle>
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="{{route('dashboard.pembeli.catering.order.detail', $payment->payment_id)}}">View Detail</a>
+                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#reviewModal-{{$payment->order_id}}">Review</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
 
-								</tbody>
-							</table>
-						</div>
+                                    <!-- Modal for Review -->
+                                    <div class="modal fade" id="reviewModal-{{$payment->order_id}}" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel-{{$payment->order_id}}" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="reviewModalLabel-{{$payment->order_id}}">Leave a Review for Order {{$payment->nama_toko}}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="{{route('post.review')}}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="payment_id" value="{{$payment->payment_id}}">
+                                                        <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
+                                                        <div class="form-group">
+                                                            <label for="rating-{{$payment->order_id}}">Rating</label>
+                                                            <select class="form-control" id="rating-{{$payment->order_id}}" name="rating" required>
+                                                                <option value="1"  @if($payment->rating == 1) selected @endif >1 - Poor</option>
+                                                                <option value="2" @if($payment->rating == 2) selected @endif>2 - Fair</option>
+                                                                <option value="3" @if($payment->rating == 3) selected @endif>3 - Good</option>
+                                                                <option value="4" @if($payment->rating == 4) selected @endif>4 - Very Good</option>
+                                                                <option value="5" @if($payment->rating == 5) selected @endif>5 - Excellent</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="comment-{{$payment->order_id}}">Comment</label>
+                                                            <textarea class="form-control" id="comment-{{$payment->order_id}}" name="comment" rows="3" required>{{$payment->comment}}</textarea>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-sm btn-primary"  @if($payment->comment) disabled @endif>Submit Review</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="pagination pagination-gutter pagination-primary mx-auto">
+                            {{$payments->appends(['search' => request()->get('search')])->links()}}
+                        </div>
+
                     </div>
 				</div>
             </div>
@@ -757,7 +813,7 @@
 
 
     <script src="/dashboard-template/vendor/global/global.min.js"></script>
-	<script src="/dashboard-template/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+{{--	<script src="/dashboard-template/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>--}}
     <script src="/dashboard-template/js/custom.min.js"></script>
 	<script src="/dashboard-template/js/deznav-init.js"></script>
 
@@ -843,4 +899,7 @@
 
 
 </body>
+
+@include('sweetalert::alert')
+
 </html>

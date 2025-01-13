@@ -737,7 +737,7 @@
 {{--                                            </li>--}}
                                             <li class="list-group-item d-flex justify-content-between">
                                                 <span>Total (IDR)</span>
-                                                <strong>IDR {{$total_price}}.000.00</strong>
+                                                <strong>IDR {{number_format((int)$total_price, 0, ',', '.')}}.000.00</strong>
                                             </li>
                                         </ul>
 

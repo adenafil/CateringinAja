@@ -47,7 +47,8 @@ Route::middleware(['auth', 'buyer'])->group(function () {
     Route::get('/user/dashboard/cart/{seller_id}/checkout', [DashboardPembeliCatering::class, 'checkoutView'])->name('dashboard.pembeli.catering.checkout');
     Route::post('/user/dashboard/cart/checkout', [DashboardPembeliCatering::class, 'checkout'])->name('dashboard.pembeli.catering.checkout.post');
     Route::get('/user/dashboard/order', [DashboardPembeliCatering::class, 'orderView'])->name('dashboard.pembeli.catering.order');
-    Route::get('/user/dashboard/catering/order/detail', [DashboardPembeliCatering::class, 'orderDetailView'])->name('dashboard.pembeli.catering.order.detail');
+    Route::get('/user/dashboard/order/detail/{payment_id}', [DashboardPembeliCatering::class, 'orderDetailView'])->name('dashboard.pembeli.catering.order.detail');
+    Route::post('/user/dashboard/order/review', [DashboardPembeliCatering::class, 'postReview'])->name('post.review');
 
 });
 

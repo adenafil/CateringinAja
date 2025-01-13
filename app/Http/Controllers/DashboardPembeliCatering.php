@@ -6,6 +6,8 @@ use App\Models\Menu;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Payment;
+use App\Models\PaymentLog;
+use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -164,6 +166,11 @@ class DashboardPembeliCatering extends Controller
             $payment->checkout_link = $generateInvoice['invoice_url'];
             $payment->save();
 
+            PaymentLog::create([
+               'payment_id' => $payment->id,
+                'status' => 'pending',
+            ]);
+
             // Buat order
             $order = Order::create([
                 'user_id' => auth()->user()->id,
@@ -212,6 +219,11 @@ class DashboardPembeliCatering extends Controller
         $payment->payment_method = $payment_method;
         $payment->save();
 
+        PaymentLog::create([
+            'payment_id' => $payment->id,
+            'status' => $payment->status,
+        ]);
+
         $order = Order::query()->where('payment_id', $payment->id)->first();
         $order->status = $status;
         $order->save();
@@ -225,10 +237,58 @@ class DashboardPembeliCatering extends Controller
 
 
     public function orderView() {
-        return response()->view('dashboard.pembeli.order-table');
+        $payments = Payment::select(
+            'p.external_id as order_id',
+            'penjual.nama_toko',
+            'p.created_at as tanggal_pemesanan',
+            'p.amount as total_biaya',
+            'p.payment_method',
+            'p.status',
+            'p.id as payment_id',
+            'r.rating',
+            'r.comment',
+            DB::raw('SUM(od.quantity * m.price) AS total_amount')
+        )
+            ->from('payments as p')
+            ->join('orders as o', 'o.payment_id', '=', 'p.id')
+            ->join('order_details as od', 'od.order_id', '=', 'o.id')
+            ->join('menus as m', 'm.id', '=', 'od.menu_id')
+            ->join('users as penjual', 'penjual.id', '=', 'm.user_id')
+            ->join('reviews as r', 'r.payment_id', '=', 'p.id')
+            ->groupBy('p.id', 'penjual.nama_toko')
+            ->paginate(10); // Sesuaikan jumlah item per halaman sesuai kebutuhan
+
+
+        return response()->view('dashboard.pembeli.order-table', compact('payments'));
     }
 
-    public function orderDetailView() {
-        return response()->view('dashboard.pembeli.order-detail');
+    public function postReview(Request $request) {
+        try {
+            $request->validate([
+                'rating' => 'required|numeric|min:1|max:5',
+                'comment' => 'required',
+            ]);
+
+            Review::create($request->all());
+            alert()->success('Success!','Review Added Successfully');
+            return back();
+        } catch (\Throwable $th) {
+            alert()->error('Error!','Terjadi kesalahan saat menambahkan review');
+            return back();
+        }
+    }
+
+    public function orderDetailView($payment_id) {
+        $logs = PaymentLog::query()->where('payment_id', $payment_id)->get();
+        $menus = Menu::select('menus.id', 'menus.picture', 'menus.name', 'menus.price', 'menus.min_order', 'menus.category', 'menus.description', 'menus.status', 'menus.user_id')
+            ->join('order_details as od', 'od.menu_id', '=', 'menus.id')
+            ->join('orders as o', 'o.id', '=', 'od.order_id')
+            ->join('payments as p', 'p.id', '=', 'o.payment_id')
+            ->where('p.id', $payment_id)
+            ->get();
+
+        $review = Review::query()->where('payment_id', $payment_id)->first();
+
+        return response()->view('dashboard.pembeli.order-detail', compact('menus', 'logs', 'review'));
     }
 }
