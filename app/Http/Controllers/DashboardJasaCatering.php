@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Menu;
+use App\Models\OrderDetail;
+use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,7 +14,22 @@ class DashboardJasaCatering extends Controller
 {
     public function index(): Response
     {
-        return response()->view('dashboard.penjual.index');
+        $user_id = auth()->user()->id;
+        $totalMenus = Menu::where('user_id', $user_id)->count();
+        $totalRevenue = OrderDetail::join('menus', 'menus.id', '=', 'order_details.menu_id')
+            ->where('menus.user_id', $user_id)
+            ->sum('order_details.price');
+        $totalOrders = OrderDetail::join('menus', 'menus.id', '=', 'order_details.menu_id')
+            ->where('menus.user_id', $user_id)
+            ->count();
+        $totalClients = Payment::join('orders', 'orders.payment_id', '=', 'payments.id')
+            ->join('order_details', 'order_details.order_id', '=', 'orders.id')
+            ->join('menus', 'menus.id', '=', 'order_details.menu_id')
+            ->where('menus.user_id', $user_id)
+            ->distinct('payments.user_id')
+            ->count('payments.user_id');
+
+        return response()->view('dashboard.penjual.index', compact('totalMenus', 'totalRevenue', 'totalOrders', 'totalClients'));
     }
 
     public function addMenuView(): Response
