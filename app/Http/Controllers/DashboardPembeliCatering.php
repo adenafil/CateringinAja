@@ -207,11 +207,14 @@ class DashboardPembeliCatering extends Controller
         $payment_method = $data['payment_method'];
 
 
-        $order = Payment::where('external_id', $external_id)->first();
-        $order->status = $status;
-        $order->payment_method = $payment_method;
-        $order->save();
+        $payment = Payment::where('external_id', $external_id)->first();
+        $payment->status = $status;
+        $payment->payment_method = $payment_method;
+        $payment->save();
 
+        $order = Order::query()->where('payment_id', $payment->id)->first();
+        $order->status = $status;
+        $order->save();
 
         return response()->json([
             'message' => 'Webhook received',
