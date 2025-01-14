@@ -73,3 +73,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 -- RATING, ORDER list either on penjual or pembeli dashboard, penarikan dana, find, home
 - add min order in adding up cart
 -- add remove order only when it is on pending state
+-- ADD review state in about and see more go to the catering 
