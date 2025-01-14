@@ -282,229 +282,69 @@
 
             <div class="row g-4">
                 <!-- Recommendation Card 1 -->
-                <div class="col-12">
-                    <div class="card border-0 shadow-sm p-4">
-                        <div class="row g-0">
-                            <!-- Image Section -->
-                            <div class="col-md-4 position-relative" style="max-width: 300px;">
-                                <img src="https://foryourplate.id/wp-content/uploads/2024/03/Thumbnail-Bebek-Carok.-foryourplate.id_Leqsi-Aprilia-2048x1536.jpg"
-                                     class="img-fluid rounded h-100 w-100"
-                                     style="object-fit: cover;"
-                                     alt="Bebek Carok">
-                                <span class="position-absolute bottom-0 end-0 m-3 badge bg-white text-dark">
+
+                @foreach($users as $user)
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm p-4">
+                            <div class="row g-0">
+                                <!-- Image Section -->
+                                <div class="col-md-4 position-relative" style="max-width: 300px;">
+                                    <img src="/storage/{{$user->avatar}}"
+                                         class="img-fluid rounded h-100 w-100"
+                                         style="object-fit: cover;"
+                                         alt="Bebek Carok">
+                                    <span class="position-absolute bottom-0 end-0 m-3 badge bg-white text-dark">
                             ⭐ 5.0
                         </span>
-                            </div>
+                                </div>
 
-                            <!-- Content Section -->
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h4 class="card-title text-danger fw-bold mb-3">Bebek Carok</h4>
-                                    <p class="card-text text-muted mb-4" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                                        Berencana menjadikan bebek sebagai lauk utama di acara Anda? Bebek Carok hadir dengan cita rasa autentik yang khas. Dimasak dengan resep turun-temurun dan bumbu pilihan, setiap gigitan menjanjikan kelezatan yang tak terlupakan. Daging bebek yang empuk dan bumbu yang meresap hingga ke tulang menjadikan Bebek Carok pilihan sempurna untuk berbagai acara.
-                                    </p>
+                                <!-- Content Section -->
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h4 class="card-title text-danger fw-bold mb-3">{{$user->nama_toko}}</h4>
+                                        <p class="card-text text-muted mb-4" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                                            {{$user->deskripsi_toko}}
+                                        </p>
 
-                                    <!-- Top Menu Section -->
-                                    <div class="mb-4">
-                                        <h5 class="text-danger fw-bold mb-3">Top Menu</h5>
-                                        <div class="d-flex flex-wrap gap-4">
-                                            <!-- Menu Item 1 -->
-                                            <div class="item-menu text-center">
-                                                <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
-                                                     class="rounded mb-2"
-                                                     style="width: 100px; height: 70px; object-fit: cover;"
-                                                     alt="Nasi Tempong Bebek">
-                                                <p class="mb-1 fw-bold">Bebek Carok Jumbo Hitam</p>
-                                                <p class="text-danger mb-0">Rp 58.410</p>
-                                            </div>
-                                            <!-- Menu Item 2 -->
-                                            <div class="item-menu text-center">
-                                                <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
-                                                     class="rounded mb-2"
-                                                     style="width: 100px; height: 70px; object-fit: cover;"
-                                                     alt="Nasi Tempong Bebek">
-                                                <p class="mb-1 fw-bold">Bebek Carok Jumbo Hitam</p>
-                                                <p class="text-danger mb-0">Rp 58.410</p>
-                                            </div>
-                                            <!-- Menu Item 3 -->
-                                            <div class="item-menu text-center">
-                                                <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
-                                                     class="rounded mb-2"
-                                                     style="width: 100px; height: 70px; object-fit: cover;"
-                                                     alt="Nasi Tempong Bebek">
-                                                <p class="mb-1 fw-bold">Bebek Carok Jumbo Hitam</p>
-                                                <p class="text-danger mb-0">Rp 58.410</p>
+                                        <!-- Top Menu Section -->
+                                        <div class="mb-4">
+                                            <h5 class="text-danger fw-bold mb-3">Top Menu</h5>
+                                            <div class="d-flex flex-wrap gap-4">
+                                                <!-- Menu Item 1 -->
+
+                                                @foreach($user->menus->take(3) as $menu)
+                                                    <div class="item-menu text-center">
+                                                        <img src="/storage/{{$menu->picture}}"
+                                                             class="rounded mb-2"
+                                                             style="width: 100px; height: 70px; object-fit: cover;"
+                                                             alt="Nasi Tempong Bebek">
+                                                        <p class="mb-1 fw-bold">{{$menu->name}}</p>
+                                                        <p class="text-danger mb-0">{{formatRupiah($menu->price)}}</p>
+                                                    </div>
+                                                @endforeach
+
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <!-- Info Section -->
-                                    <div class="d-flex flex-wrap gap-3 text-muted">
-                                        <p class="m-0">
-                                            <span class="fw-bold text-dark">Kisaran Harga:</span> Rp 4.500 - 230.000
-                                        </p>
-                                        <span class="text-muted">|</span>
-                                        <p class="m-0">
-                                            <span class="fw-bold text-dark">Minimum:</span> 5 Pax
-                                        </p>
-                                        <span class="text-muted">|</span>
-                                        <p class="m-0">Pesan 1 hari sebelumnya</p>
+                                        <!-- Info Section -->
+                                        <div class="d-flex flex-wrap gap-3 text-muted">
+                                            <p class="m-0">
+                                                <span class="fw-bold text-dark">Kisaran Harga:</span> Rp {{$user->kisaran_harga}}
+                                            </p>
+                                            <span class="text-muted">|</span>
+                                            <p class="m-0">
+                                                <span class="fw-bold text-dark">Minimum:</span> 5 Pax
+                                            </p>
+                                            <span class="text-muted">|</span>
+                                            <p class="m-0">Pesan 1 hari sebelumnya</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
 
-                <!-- Recommendation Card 2 -->
-                <div class="col-12">
-                    <div class="card border-0 shadow-sm p-4">
-                        <div class="row g-0">
-                            <!-- Image Section -->
-                            <div class="col-md-4 position-relative" style="max-width: 300px;">
-                                <img src="https://foryourplate.id/wp-content/uploads/2024/03/Thumbnail-Bebek-Carok.-foryourplate.id_Leqsi-Aprilia-2048x1536.jpg"
-                                     class="img-fluid rounded h-100 w-100"
-                                     style="object-fit: cover;"
-                                     alt="Bebek Carok">
-                                <span class="position-absolute bottom-0 end-0 m-3 badge bg-white text-dark">
-                            ⭐ 5.0
-                        </span>
-                            </div>
-
-                            <!-- Content Section -->
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h4 class="card-title text-danger fw-bold mb-3">Bebek Carok</h4>
-                                    <p class="card-text text-muted mb-4" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                                        Berencana menjadikan bebek sebagai lauk utama di acara Anda? Bebek Carok hadir dengan cita rasa autentik yang khas. Dimasak dengan resep turun-temurun dan bumbu pilihan, setiap gigitan menjanjikan kelezatan yang tak terlupakan. Daging bebek yang empuk dan bumbu yang meresap hingga ke tulang menjadikan Bebek Carok pilihan sempurna untuk berbagai acara.
-                                    </p>
-
-                                    <!-- Top Menu Section -->
-                                    <div class="mb-4">
-                                        <h5 class="text-danger fw-bold mb-3">Top Menu</h5>
-                                        <div class="d-flex flex-wrap gap-4">
-                                            <!-- Menu Item 1 -->
-                                            <div class="item-menu text-center">
-                                                <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
-                                                     class="rounded mb-2"
-                                                     style="width: 100px; height: 70px; object-fit: cover;"
-                                                     alt="Nasi Tempong Bebek">
-                                                <p class="mb-1 fw-bold">Bebek Carok Jumbo Hitam</p>
-                                                <p class="text-danger mb-0">Rp 58.410</p>
-                                            </div>
-                                            <!-- Menu Item 2 -->
-                                            <div class="item-menu text-center">
-                                                <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
-                                                     class="rounded mb-2"
-                                                     style="width: 100px; height: 70px; object-fit: cover;"
-                                                     alt="Nasi Tempong Bebek">
-                                                <p class="mb-1 fw-bold">Bebek Carok Jumbo Hitam</p>
-                                                <p class="text-danger mb-0">Rp 58.410</p>
-                                            </div>
-                                            <!-- Menu Item 3 -->
-                                            <div class="item-menu text-center">
-                                                <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
-                                                     class="rounded mb-2"
-                                                     style="width: 100px; height: 70px; object-fit: cover;"
-                                                     alt="Nasi Tempong Bebek">
-                                                <p class="mb-1 fw-bold">Bebek Carok Jumbo Hitam</p>
-                                                <p class="text-danger mb-0">Rp 58.410</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Info Section -->
-                                    <div class="d-flex flex-wrap gap-3 text-muted">
-                                        <p class="m-0">
-                                            <span class="fw-bold text-dark">Kisaran Harga:</span> Rp 4.500 - 230.000
-                                        </p>
-                                        <span class="text-muted">|</span>
-                                        <p class="m-0">
-                                            <span class="fw-bold text-dark">Minimum:</span> 5 Pax
-                                        </p>
-                                        <span class="text-muted">|</span>
-                                        <p class="m-0">Pesan 1 hari sebelumnya</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Recommendation Card 2 -->
-                <div class="col-12">
-                    <div class="card border-0 shadow-sm p-4">
-                        <div class="row g-0">
-                            <!-- Image Section -->
-                            <div class="col-md-4 position-relative" style="max-width: 300px;">
-                                <img src="https://foryourplate.id/wp-content/uploads/2024/03/Thumbnail-Bebek-Carok.-foryourplate.id_Leqsi-Aprilia-2048x1536.jpg"
-                                     class="img-fluid rounded h-100 w-100"
-                                     style="object-fit: cover;"
-                                     alt="Bebek Carok">
-                                <span class="position-absolute bottom-0 end-0 m-3 badge bg-white text-dark">
-                            ⭐ 5.0
-                        </span>
-                            </div>
-
-                            <!-- Content Section -->
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h4 class="card-title text-danger fw-bold mb-3">Bebek Carok</h4>
-                                    <p class="card-text text-muted mb-4" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                                        Berencana menjadikan bebek sebagai lauk utama di acara Anda? Bebek Carok hadir dengan cita rasa autentik yang khas. Dimasak dengan resep turun-temurun dan bumbu pilihan, setiap gigitan menjanjikan kelezatan yang tak terlupakan. Daging bebek yang empuk dan bumbu yang meresap hingga ke tulang menjadikan Bebek Carok pilihan sempurna untuk berbagai acara.
-                                    </p>
-
-                                    <!-- Top Menu Section -->
-                                    <div class="mb-4">
-                                        <h5 class="text-danger fw-bold mb-3">Top Menu</h5>
-                                        <div class="d-flex flex-wrap gap-4">
-                                            <!-- Menu Item 1 -->
-                                            <div class="item-menu text-center">
-                                                <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
-                                                     class="rounded mb-2"
-                                                     style="width: 100px; height: 70px; object-fit: cover;"
-                                                     alt="Nasi Tempong Bebek">
-                                                <p class="mb-1 fw-bold">Bebek Carok Jumbo Hitam</p>
-                                                <p class="text-danger mb-0">Rp 58.410</p>
-                                            </div>
-                                            <!-- Menu Item 2 -->
-                                            <div class="item-menu text-center">
-                                                <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
-                                                     class="rounded mb-2"
-                                                     style="width: 100px; height: 70px; object-fit: cover;"
-                                                     alt="Nasi Tempong Bebek">
-                                                <p class="mb-1 fw-bold">Bebek Carok Jumbo Hitam</p>
-                                                <p class="text-danger mb-0">Rp 58.410</p>
-                                            </div>
-                                            <!-- Menu Item 3 -->
-                                            <div class="item-menu text-center">
-                                                <img src="https://bacaini.id/wp-content/uploads/2023/09/bebek-carok.jpg"
-                                                     class="rounded mb-2"
-                                                     style="width: 100px; height: 70px; object-fit: cover;"
-                                                     alt="Nasi Tempong Bebek">
-                                                <p class="mb-1 fw-bold">Bebek Carok Jumbo Hitam</p>
-                                                <p class="text-danger mb-0">Rp 58.410</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Info Section -->
-                                    <div class="d-flex flex-wrap gap-3 text-muted">
-                                        <p class="m-0">
-                                            <span class="fw-bold text-dark">Kisaran Harga:</span> Rp 4.500 - 230.000
-                                        </p>
-                                        <span class="text-muted">|</span>
-                                        <p class="m-0">
-                                            <span class="fw-bold text-dark">Minimum:</span> 5 Pax
-                                        </p>
-                                        <span class="text-muted">|</span>
-                                        <p class="m-0">Pesan 1 hari sebelumnya</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
