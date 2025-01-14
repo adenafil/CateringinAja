@@ -728,20 +728,9 @@
                                                             @else
                                                                 class="fa fa-times text-danger"></i></span></p>
                                                             @endif
-                                                <p>Product code: <span class="item">0405689</span> </p>
                                                 <p>Category: <span class="item">Makanan</span></p>
                                                 <p class="text-content ">{{$menu->description}}
                                                 </p>
-                                                <div class="comment-review star-rating text-right">
-                                                    <ul>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star-half-empty"></i></li>
-                                                        <li><i class="fa fa-star-half-empty"></i></li>
-                                                    </ul>
-                                                    <span class="review-text">(34 reviews) / </span><a class="product-review" href="">Write a review?</a>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
