@@ -155,7 +155,7 @@
                                 <!-- Content Section -->
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h4 class="card-title text-danger fw-bold mb-3">{{$user->nama_toko}}</h4>
+                                        <a class="card-title text-danger fw-bold mb-3 h4" href="{{route("about", $user)}}">{{$user->nama_toko}}</a>
                                         <p class="card-text text-muted mb-4" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
                                             {{$user->deskripsi_toko}}
                                         </p>

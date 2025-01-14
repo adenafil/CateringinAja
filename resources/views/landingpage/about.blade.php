@@ -89,28 +89,28 @@
             <div class="container">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-5 wow bounceInUp position-relative" data-wow-delay="0.1s">
-                        <img style="height: 550px; width: 550px; object-fit: cover;" src="https://img.foodspot.co.id/restaurant//bebekbkb/logo.jpg" class="img-fluid rounded" alt="">
+                        <img style="height: 550px; width: 550px; object-fit: cover;" src="/storage/{{$user->avatar}}" class="img-fluid rounded" alt="">
                         <!-- Rating Section -->
                         <div class="rating-badge position-absolute top-0 start-2 bg-primary text-white rounded-pill px-3 py-1 m-3">
                             <i class="fas fa-star"></i> 4.8
                         </div>
                     </div>
                     <div class="col-lg-7 wow bounceInUp" data-wow-delay="0.3s">
-                        <h1 class="display-5 mb-4">Bebek BKB</h1>
-                        <p class="mb-4" style="font-family: 'Calibri Light'; color: #000000; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">Berencana menjadikan bebek sebagai lauk utama di acara Anda? Jika iya, BKB bisa jadi pilihan yang tepat. BKB atau Bebek Kepahiang Babase menyediakan sajian bebek khas Bengkulu. Berbeda dari restoran bebek lainnya yang cenderung kering dan krispi, bebek khas BKB sangatlah lembut, empuk, dan juicy. Tidak hanya tekstur, tampilan bebek BKB pun sangat khas, berwarna kehitaman dengan proses memasak hampir 24 jam. Proses memasak yang lama khas daerah Kepahiang ditambah aneka rempah dan bumbu menjadikan rasa bebek BKB gurih dan meresap hingga ke tulang..</p>
+                        <h1 class="display-5 mb-4">{{$user->nama_toko}}</h1>
+                        <p class="mb-4" style="font-family: 'Calibri Light'; color: #000000; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">{{$user->deskripsi_toko}}</p>
                         <div class="d-flex flex-column gap-3 text-dark mb-5">
                             <div class="col-sm-6">
                                 <i class="fas fa-street-view text-primary me-2"></i>
-                                <span>Area Antar :</span> Jakarta Barat, Jakarta Pusat, Jakarta Selatan, Jakarta Timur, Jakarta Utara
+                                <span>Area Antar :</span> {{$user->area_antar}}
                             </div>
                             <div class="col-sm-6">
-                                <i class="fas fa-phone text-primary me-2"></i>082149250644
+                                <i class="fas fa-phone text-primary me-2"></i>{{$user->no_handphone}}
                             </div>
                             <div class="col-sm-6">
-                                <i class="fa-brands fa-whatsapp-square text-primary me-2"></i>082149250644
+                                <i class="fa-brands fa-whatsapp-square text-primary me-2"></i>{{$user->no_whatsapp}}
                             </div>
                             <div class="col-sm-6">
-                                <i class="fas fa-mail-bulk text-primary me-2"></i>bebekgkb@cateringinaja.my.id
+                                <i class="fas fa-mail-bulk text-primary me-2"></i>{{$user->email}}
                             </div>
                         </div>
                         <a href="" class="btn btn-primary py-3 px-5 rounded-pill">See More<i class="fas fa-arrow-right ps-2"></i></a>
@@ -132,529 +132,50 @@
                     <ul class="nav nav-pills d-inline-flex justify-content-center mb-5 wow bounceInUp" data-wow-delay="0.1s">
                         <li class="nav-item p-2">
                             <a class="d-flex py-2 mx-2 border border-primary bg-white rounded-pill active" data-bs-toggle="pill" href="#tab-6">
-                                <span class="text-dark" style="width: 150px;">Starter</span>
+                                <span class="text-dark" style="width: 150px;">Makanan</span>
                             </a>
                         </li>
                         <li class="nav-item p-2">
                             <a class="d-flex py-2 mx-2 border border-primary bg-white rounded-pill" data-bs-toggle="pill" href="#tab-7">
-                                <span class="text-dark" style="width: 150px;">Main Course</span>
-                            </a>
-                        </li>
-                        <li class="nav-item p-2">
-                            <a class="d-flex py-2 mx-2 border border-primary bg-white rounded-pill" data-bs-toggle="pill" href="#tab-8">
-                                <span class="text-dark" style="width: 150px;">Drinks</span>
-                            </a>
-                        </li>
-                        <li class="nav-item p-2">
-                            <a class="d-flex py-2 mx-2 border border-primary bg-white rounded-pill" data-bs-toggle="pill" href="#tab-9">
-                                <span class="text-dark" style="width: 150px;">Offers</span>
-                            </a>
-                        </li>
-                        <li class="nav-item p-2">
-                            <a class="d-flex py-2 mx-2 border border-primary bg-white rounded-pill" data-bs-toggle="pill" href="#tab-10">
-                                <span class="text-dark" style="width: 150px;">Our Spesial</span>
+                                <span class="text-dark" style="width: 150px;">Minuman</span>
                             </a>
                         </li>
                     </ul>
                     <div class="tab-content">
                         <div id="tab-6" class="tab-pane fade show p-0 active">
                             <div class="row g-4">
-                                <div class="col-lg-6 wow bounceInUp" data-wow-delay="0.1s">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-01.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Paneer</h4>
-                                                <h4 class="text-primary">$90</h4>
+                                @foreach($user->menus->where('category', 'Makanan') as $menu)
+                                    <div class="col-lg-6 wow bounceInUp" data-wow-delay="0.1s">
+                                        <div class="menu-item d-flex align-items-center">
+                                            <img class="flex-shrink-0 img-fluid rounded-circle" src="/storage/{{$menu->picture}}" alt="" style="width: 100px; height: 100px; object-fit: cover; ">
+                                            <div class="w-100 d-flex flex-column text-start ps-4">
+                                                <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
+                                                    <h4>{{$menu->name}}</h4>
+                                                    <h4 class="text-primary">{{formatRupiah($menu->price)}}</h4>
+                                                </div>
+                                                <p class="mb-0">{{$menu->description}}</p>
                                             </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6 wow bounceInUp" data-wow-delay="0.2s">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-02.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Sweet Potato</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 wow bounceInUp" data-wow-delay="0.3s">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-03.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Sabudana Tikki</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 wow bounceInUp" data-wow-delay="0.4s">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-04.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Pizza</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 wow bounceInUp" data-wow-delay="0.5s">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-05.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Bacon</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 wow bounceInUp" data-wow-delay="0.6s">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-06.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Chicken</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 wow bounceInUp" data-wow-delay="0.7s">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-07.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Blooming</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 wow bounceInUp" data-wow-delay="0.8s">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-08.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Sweet</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                         <div id="tab-7" class="tab-pane fade show p-0">
                             <div class="row g-4">
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-01.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Argentinian</h4>
-                                                <h4 class="text-primary">$90</h4>
+                                @foreach($user->menus->where('category', 'Minuman') as $menu)
+                                    <div class="col-lg-6">
+                                        <div class="menu-item d-flex align-items-center">
+                                            <img class="flex-shrink-0 img-fluid rounded-circle" src="/storage/{{$menu->picture}}" alt="" style="width: 100px; height: 100px; object-fit: cover; ">
+                                            <div class="w-100 d-flex flex-column text-start ps-4">
+                                                <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
+                                                    <h4>{{$menu->name}}</h4>
+                                                    <h4 class="text-primary">{{formatRupiah($menu->price)}}</h4>
+                                                </div>
+                                                <p class="mb-0">{{$menu->description}}</p>
                                             </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-03.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Crispy</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-05.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Sabudana Tikki</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-07.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Blooming</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-08.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Argentinian</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/mg/menu-03.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Lemon</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-02.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Water Drink</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-01.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Salty lemon</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="tab-8" class="tab-pane fade show p-0">
-                            <div class="row g-4">
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-01.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Crispy water</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-02.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Juice</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-03.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Orange</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-04.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Apple Juice</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-05.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Banana</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-06.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Sweet Water</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-07.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Hot Coffee</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-08.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Sweet Potato</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="tab-9" class="tab-pane fade show p-0">
-                            <div class="row g-4">
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-06.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Sabudana Tikki</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-07.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Crispy</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-09.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Pizza</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-02.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Bacon</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-03.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Chicken</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-05.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Blooming</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-07.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Sweet</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-09.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Argentinian</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="tab-10" class="tab-pane fade show p-0">
-                            <div class="row g-4">
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-06.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Sabudana Tikki</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-07.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Crispy</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-09.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Pizza</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-02.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Bacon</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-03.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Chicken</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-05.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Blooming</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-07.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Sweet</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded-circle" src="/landingpage/img/menu-09.jpg" alt="">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                                                <h4>Argentinian</h4>
-                                                <h4 class="text-primary">$90</h4>
-                                            </div>
-                                            <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -856,8 +377,7 @@
         <!-- Testimonial End -->
 
         <div class="" style="">
-            <iframe src="
-            https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.569879006268!2d112.64659807587906!3d-7.175614670418498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd8003eae3b5885%3A0xe591511ea76dac1d!2sUniversitas%20Internasional%20Semen%20Indonesia!5e0!3m2!1sen!2sid!4v1736528998579!5m2!1sen!2sid
+            <iframe src="{{$user->link_google_map_embed}}
             " width="100%" height="550" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <!-- Copyright Start -->

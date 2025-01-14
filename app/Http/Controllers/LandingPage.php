@@ -26,8 +26,8 @@ class LandingPage extends Controller
         return response()->view('landingpage.list', compact('users'));
     }
 
-    public function about(): Response
+    public function about(User $user): Response
     {
-        return response()->view('landingpage.about');
+        return response()->view('landingpage.about', compact('user'));
     }
 }
