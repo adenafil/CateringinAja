@@ -20,7 +20,10 @@ class LandingPage extends Controller
 
     public function find(): Response
     {
-        return response()->view('landingpage.list');
+        $users = User::query()
+            ->where('role', 'penjual')
+            ->paginate(3);
+        return response()->view('landingpage.list', compact('users'));
     }
 
     public function about(): Response

@@ -134,201 +134,78 @@
 
 
         <div class="container py-2" >
-            <div class="row g-4 py-3">
-                <div class="col-12 d-flex flex-column align-items-start gap-3">
-                    <!-- Bagian Gambar dan Deskripsi -->
-                    <div class="d-flex flex-column flex-md-row gap-3 position-relative">
-                        <!-- Gambar dengan rating -->
-                        <div class="position-relative">
-                            <img class="img-fluid img-thumbnail rounded-2"
-                                 style="width: 300px; height: 300px; object-fit: cover;"
-                                 src="https://img.foodspot.co.id/restaurant//bebekbkb/logo.jpg"
-                                 alt="Bebek BKB">
-                            <!-- Button Rating -->
-                            <span class="badge bg-primary position-absolute m-2"
-                                  style="font-size: 0.9rem; padding: 5px 10px; border-radius: 10px; bottom: 20px; right: 0;">
-                ⭐ 5.0
-            </span>
-                        </div>
-                        <!-- Deskripsi -->
-                        <div style="max-width: 1000px;">
-                            <p class="text-danger fw-bold text-decoration-underline" style="font-size: 24px; font-weight: bolder;">Bebek GKB</p>
-                            <p style="font-family: 'Calibri Light'; color: #777; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
-                                Berencana menjadikan bebek sebagai lauk utama di acara Anda? Jika iya, BKB bisa jadi pilihan yang tepat. BKB atau Bebek Kepahiang Babase menyediakan sajian bebek khas Bengkulu. Berbeda dari restoran bebek lainnya yang cenderung kering dan krispi, bebek khas BKB sangatlah lembut, empuk, dan juicy. Tidak hanya tekstur, tampilan bebek BKB pun sangat khas, berwarna kehitaman dengan proses memasak hampir 24 jam. Proses memasak yang lama khas daerah Kepahiang ditambah aneka rempah dan bumbu menjadikan rasa bebek BKB gurih dan meresap hingga ke tulang.
-                            </p>
-                            <div class="top-menu">
-                                <p class="text-danger fw-bold">Top Menu</p>
-                                <div class="menu-items" style="color: black">
-                                    <!-- Menu 1 -->
-                                    <div class="menu-item">
-                                        <img style="width: 100px; height: 70px; object-fit: cover;" src="https://img.foodspot.co.id/restaurant//bebekbkb/2024/oct/nasi-tempong-bebek-djakarta.jpg" alt="Nasi Tempong Bebek">
-                                        <p class="menu-name">Nasi Tempong Bebek</p>
-                                        <p class="menu-price">Rp 58.410</p>
-                                    </div>
-                                    <!-- Menu 2 -->
-                                    <div class="menu-item">
-                                        <img style="width: 100px; height: 70px; object-fit: cover;" src="https://img.foodspot.co.id/restaurant//bebekbkb/2024/oct/nasi-tempong-bebek-djakarta.jpg" alt="Nasi Tempong Bebek">
-                                        <p class="menu-name">Nasi Tempong Ayam</p>
-                                        <p class="menu-price">Rp 51.810</p>
-                                    </div>
-                                    <!-- Menu 3 -->
-                                    <div class="menu-item">
-                                        <img style="width: 100px; height: 70px; object-fit: cover;" src="https://img.foodspot.co.id/restaurant//bebekbkb/2024/oct/nasi-tempong-bebek-djakarta.jpg" alt="Nasi Tempong Bebek">
-                                        <p class="menu-name">Nasi Tempong Ayam Pedas</p>
-                                        <p class="menu-price">Rp 51.810</p>
+            <div class="row g-4 py-4">
+                <!-- Recommendation Card 1 -->
+
+                @foreach($users as $user)
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm p-4">
+                            <div class="row g-0">
+                                <!-- Image Section -->
+                                <div class="col-md-4 position-relative" style="max-width: 300px;">
+                                    <img src="/storage/{{$user->avatar}}"
+                                         class="img-fluid rounded h-100 w-100"
+                                         style="object-fit: cover;"
+                                         alt="Bebek Carok">
+                                    <span class="position-absolute bottom-0 end-0 m-3 badge bg-white text-dark">
+                            ⭐ 5.0
+                        </span>
+                                </div>
+
+                                <!-- Content Section -->
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h4 class="card-title text-danger fw-bold mb-3">{{$user->nama_toko}}</h4>
+                                        <p class="card-text text-muted mb-4" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                                            {{$user->deskripsi_toko}}
+                                        </p>
+
+                                        <!-- Top Menu Section -->
+                                        <div class="mb-4">
+                                            <h5 class="text-danger fw-bold mb-3">Top Menu</h5>
+                                            <div class="d-flex flex-wrap gap-4">
+                                                <!-- Menu Item 1 -->
+
+                                                @foreach($user->menus->take(3) as $menu)
+                                                    <div class="item-menu text-center">
+                                                        <img src="/storage/{{$menu->picture}}"
+                                                             class="rounded mb-2"
+                                                             style="width: 100px; height: 70px; object-fit: cover;"
+                                                             alt="Nasi Tempong Bebek">
+                                                        <p class="mb-1 fw-bold">{{$menu->name}}</p>
+                                                        <p class="text-danger mb-0">{{formatRupiah($menu->price)}}</p>
+                                                    </div>
+                                                @endforeach
+
+                                            </div>
+                                        </div>
+
+                                        <!-- Info Section -->
+                                        <div class="d-flex flex-wrap gap-3 text-muted">
+                                            <p class="m-0">
+                                                <span class="fw-bold text-dark">Kisaran Harga:</span> Rp {{$user->kisaran_harga}}
+                                            </p>
+                                            <span class="text-muted">|</span>
+                                            <p class="m-0">
+                                                <span class="fw-bold text-dark">Minimum:</span> 5 Pax
+                                            </p>
+                                            <span class="text-muted">|</span>
+                                            <p class="m-0">Pesan 1 hari sebelumnya</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
-                    <!-- Bagian Informasi Harga dan Minimum -->
-                    <div class="d-flex flex-wrap gap-3 text-black"
-                         style="font-family: 'Calibri Light'; color: black">
-                        <p class="m-0">
-                            <span class="fw-bold text-dark">Kisaran Harga:</span> Rp 4.500 - 230.000
-                        </p>
-                        <span>|</span>
-                        <p class="m-0">
-                            <span class="fw-bold text-dark">Minimum:</span> 5 Pax
-                        </p>
-                        <span>|</span>
-                        <p class="m-0">Pesan 1 hari sebelumnya</p>
-                    </div>
-                </div>
-                <hr>
-
-                <div class="col-12 d-flex flex-column align-items-start gap-3">
-                    <!-- Bagian Gambar dan Deskripsi -->
-                    <div class="d-flex flex-column flex-md-row gap-3 position-relative">
-                        <!-- Gambar dengan rating -->
-                        <div class="position-relative">
-                            <img class="img-fluid img-thumbnail rounded-2"
-                                 style="width: 300px; height: 300px; object-fit: cover;"
-                                 src="https://img.foodspot.co.id/restaurant//bebekbkb/logo.jpg"
-                                 alt="Bebek BKB">
-                            <!-- Button Rating -->
-                            <span class="badge bg-success position-absolute m-2"
-                                  style="font-size: 0.9rem; padding: 5px 10px; border-radius: 10px; bottom: 20px; right: 0;">
-                ⭐ 5.0
-            </span>
-                        </div>
-                        <!-- Deskripsi -->
-                        <div style="max-width: 1000px;">
-                            <p class="text-danger fw-bold text-decoration-underline" style="font-size: 24px; font-weight: bolder;">Bebek GKB</p>
-                            <p style="font-family: 'Calibri Light'; color: #777; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
-                                Berencana menjadikan bebek sebagai lauk utama di acara Anda? Jika iya, BKB bisa jadi pilihan yang tepat. BKB atau Bebek Kepahiang Babase menyediakan sajian bebek khas Bengkulu. Berbeda dari restoran bebek lainnya yang cenderung kering dan krispi, bebek khas BKB sangatlah lembut, empuk, dan juicy. Tidak hanya tekstur, tampilan bebek BKB pun sangat khas, berwarna kehitaman dengan proses memasak hampir 24 jam. Proses memasak yang lama khas daerah Kepahiang ditambah aneka rempah dan bumbu menjadikan rasa bebek BKB gurih dan meresap hingga ke tulang.
-                            </p>
-                            <div class="top-menu">
-                                <p class="text-danger fw-bold">Top Menu</p>
-                                <div class="menu-items" style="color: black">
-                                    <!-- Menu 1 -->
-                                    <div class="menu-item">
-                                        <img style="width: 100px; height: 70px; object-fit: cover;" src="https://img.foodspot.co.id/restaurant//bebekbkb/2024/oct/nasi-tempong-bebek-djakarta.jpg" alt="Nasi Tempong Bebek">
-                                        <p class="menu-name">Nasi Tempong Bebek</p>
-                                        <p class="menu-price">Rp 58.410</p>
-                                    </div>
-                                    <!-- Menu 2 -->
-                                    <div class="menu-item">
-                                        <img style="width: 100px; height: 70px; object-fit: cover;" src="https://img.foodspot.co.id/restaurant//bebekbkb/2024/oct/nasi-tempong-bebek-djakarta.jpg" alt="Nasi Tempong Bebek">
-                                        <p class="menu-name">Nasi Tempong Ayam</p>
-                                        <p class="menu-price">Rp 51.810</p>
-                                    </div>
-                                    <!-- Menu 3 -->
-                                    <div class="menu-item">
-                                        <img style="width: 100px; height: 70px; object-fit: cover;" src="https://img.foodspot.co.id/restaurant//bebekbkb/2024/oct/nasi-tempong-bebek-djakarta.jpg" alt="Nasi Tempong Bebek">
-                                        <p class="menu-name">Nasi Tempong Ayam Pedas</p>
-                                        <p class="menu-price">Rp 51.810</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- Bagian Informasi Harga dan Minimum -->
-                    <div class="d-flex flex-wrap gap-3 text-black"
-                         style="font-family: 'Calibri Light'; color: black">
-                        <p class="m-0">
-                            <span class="fw-bold text-dark">Kisaran Harga:</span> Rp 4.500 - 230.000
-                        </p>
-                        <span>|</span>
-                        <p class="m-0">
-                            <span class="fw-bold text-dark">Minimum:</span> 5 Pax
-                        </p>
-                        <span>|</span>
-                        <p class="m-0">Pesan 1 hari sebelumnya</p>
-                    </div>
-                </div>
-                <hr>
-
-                <div class="col-12 d-flex flex-column align-items-start gap-3">
-                    <!-- Bagian Gambar dan Deskripsi -->
-                    <div class="d-flex flex-column flex-md-row gap-3 position-relative">
-                        <!-- Gambar dengan rating -->
-                        <div class="position-relative">
-                            <img class="img-fluid img-thumbnail rounded-2"
-                                 style="width: 300px; height: 300px; object-fit: cover;"
-                                 src="https://img.foodspot.co.id/restaurant//bebekbkb/logo.jpg"
-                                 alt="Bebek BKB">
-                            <!-- Button Rating -->
-                            <span class="badge bg-success position-absolute m-2"
-                                  style="font-size: 0.9rem; padding: 5px 10px; border-radius: 10px; bottom: 20px; right: 0;">
-                ⭐ 5.0
-            </span>
-                        </div>
-                        <!-- Deskripsi -->
-                        <div style="max-width: 1000px;">
-                            <p class="text-danger fw-bold text-decoration-underline" style="font-size: 24px; font-weight: bolder;">Bebek GKB</p>
-                            <p style="font-family: 'Calibri Light'; color: #777; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
-                                Berencana menjadikan bebek sebagai lauk utama di acara Anda? Jika iya, BKB bisa jadi pilihan yang tepat. BKB atau Bebek Kepahiang Babase menyediakan sajian bebek khas Bengkulu. Berbeda dari restoran bebek lainnya yang cenderung kering dan krispi, bebek khas BKB sangatlah lembut, empuk, dan juicy. Tidak hanya tekstur, tampilan bebek BKB pun sangat khas, berwarna kehitaman dengan proses memasak hampir 24 jam. Proses memasak yang lama khas daerah Kepahiang ditambah aneka rempah dan bumbu menjadikan rasa bebek BKB gurih dan meresap hingga ke tulang.
-                            </p>
-                            <div class="top-menu">
-                                <p class="text-danger fw-bold">Top Menu</p>
-                                <div class="menu-items" style="color: black">
-                                    <!-- Menu 1 -->
-                                    <div class="menu-item">
-                                        <img style="width: 100px; height: 70px; object-fit: cover;" src="https://img.foodspot.co.id/restaurant//bebekbkb/2024/oct/nasi-tempong-bebek-djakarta.jpg" alt="Nasi Tempong Bebek">
-                                        <p class="menu-name">Nasi Tempong Bebek</p>
-                                        <p class="menu-price">Rp 58.410</p>
-                                    </div>
-                                    <!-- Menu 2 -->
-                                    <div class="menu-item">
-                                        <img style="width: 100px; height: 70px; object-fit: cover;" src="https://img.foodspot.co.id/restaurant//bebekbkb/2024/oct/nasi-tempong-bebek-djakarta.jpg" alt="Nasi Tempong Bebek">
-                                        <p class="menu-name">Nasi Tempong Ayam</p>
-                                        <p class="menu-price">Rp 51.810</p>
-                                    </div>
-                                    <!-- Menu 3 -->
-                                    <div class="menu-item">
-                                        <img style="width: 100px; height: 70px; object-fit: cover;" src="https://img.foodspot.co.id/restaurant//bebekbkb/2024/oct/nasi-tempong-bebek-djakarta.jpg" alt="Nasi Tempong Bebek">
-                                        <p class="menu-name">Nasi Tempong Ayam Pedas</p>
-                                        <p class="menu-price">Rp 51.810</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- Bagian Informasi Harga dan Minimum -->
-                    <div class="d-flex flex-wrap gap-3 text-black"
-                         style="font-family: 'Calibri Light'; color: black">
-                        <p class="m-0">
-                            <span class="fw-bold text-dark">Kisaran Harga:</span> Rp 4.500 - 230.000
-                        </p>
-                        <span>|</span>
-                        <p class="m-0">
-                            <span class="fw-bold text-dark">Minimum:</span> 5 Pax
-                        </p>
-                        <span>|</span>
-                        <p class="m-0">Pesan 1 hari sebelumnya</p>
-                    </div>
-                </div>
-                <hr>
-
+                @endforeach
 
             </div>
+
+            <nav aria-label="..." class="d-flex justify-content-center">
+                <ul class="pagination">
+                    {{$users->appends(['search' => request()->get('search')])->links()}}
+                </ul>
+            </nav>
 
         </div>
 
