@@ -18,6 +18,11 @@
             color: #2F4CDD !important;
         }
 
+        .dataTables_paginate, .dataTables_info {
+            display: none;
+        }
+
+
     </style>
 
 </head>
@@ -696,7 +701,7 @@
 						<div class="table-responsive">
 							<table id="example5" class="display mb-4 dataTablesCard" style="min-width: 845px;">
 								<thead>
-									<tr>
+									<tr class="text-start">
 										<th>ID Order</th>
 										<th>Tanngal</th>
 										<th>Nama Customer</th>
@@ -707,29 +712,35 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>#5552351</td>
-										<td>26 March 2020, 12:42 AM</td>
-										<td>James WItcwicky</td>
-										<td>Corner Street 5th London</td>
-										<td>$164.52</td>
-										<td><span class="btn btn-sm light btn-warning fs-16">New Order</span></td>
-										<td>
-											<div class="dropdown ml-auto text-right">
-												<div class="btn-link" data-toggle="dropdown">
-													<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
-												</div>
-												<div class="dropdown-menu dropdown-menu-right">
-													<a class="dropdown-item" href="#"><i class="las la-check-square scale5 text-primary mr-2"></i> Accept Order</a>
-													<a class="dropdown-item" href="#"><i class="las la-times-circle scale5 text-danger mr-2"></i> Reject Order</a>
-												</div>
-											</div>
-										</td>
-									</tr>
-
+                                @foreach($results as $result)
+                                    <tr class="text-start">
+                                        <td class="text-truncate">{{$result->id_order}}</td>
+                                        <td>{{$result->tanggal}}</td>
+                                        <td>{{$result->nama_customer}}</td>
+                                        <td>{{$result->alamat}}</td>
+                                        <td>{{formatRupiah($result->amount)}}</td>
+                                        <td><span class="btn btn-sm light btn-warning fs-16">{{$result->status}}</span></td>
+                                        <td>
+                                            <div class="dropdown ml-auto text-right">
+                                                <div class="btn-link" data-toggle="dropdown">
+                                                    <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
+                                                </div>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="#"><i class="las la-check-square scale5 text-primary mr-2"></i> Accept Order</a>
+                                                    <a class="dropdown-item" href="#"><i class="las la-times-circle scale5 text-danger mr-2"></i> Reject Order</a>
+                                                    <a class="dropdown-item" href="#"><i class="las la-times-circle scale5 text-danger mr-2"></i> View Detail</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
 								</tbody>
 							</table>
 						</div>
+                        <div class="pagination pagination-gutter pagination-primary mx-auto">
+                            {{$results->appends(['search' => request()->get('search')])->links()}}
+                        </div>
+
                     </div>
 				</div>
             </div>

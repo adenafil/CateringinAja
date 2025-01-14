@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Balance;
 use App\Models\Menu;
 use App\Models\OrderDetail;
 use App\Models\Payment;
@@ -9,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class DashboardJasaCatering extends Controller
 {
@@ -17,7 +19,9 @@ class DashboardJasaCatering extends Controller
         $user_id = auth()->user()->id;
         $totalMenus = Menu::where('user_id', $user_id)->count();
         $totalRevenue = OrderDetail::join('menus', 'menus.id', '=', 'order_details.menu_id')
+            ->join('orders', 'orders.id', '=', 'order_details.order_id')
             ->where('menus.user_id', $user_id)
+            ->where('orders.status', '!=', 'Pending')
             ->sum('order_details.price');
         $totalOrders = OrderDetail::join('menus', 'menus.id', '=', 'order_details.menu_id')
             ->where('menus.user_id', $user_id)
@@ -28,8 +32,10 @@ class DashboardJasaCatering extends Controller
             ->where('menus.user_id', $user_id)
             ->distinct('payments.user_id')
             ->count('payments.user_id');
+        $totalBalance = Balance::query()->where('user_id', $user_id)->first();
 
-        return response()->view('dashboard.penjual.index', compact('totalMenus', 'totalRevenue', 'totalOrders', 'totalClients'));
+
+        return response()->view('dashboard.penjual.index', compact('totalMenus', 'totalRevenue', 'totalOrders', 'totalClients', 'totalBalance'));
     }
 
     public function addMenuView(): Response
@@ -210,7 +216,24 @@ class DashboardJasaCatering extends Controller
 
     public function order(): Response
     {
-        return response()->view('dashboard.penjual.order');
+        $results = DB::table('payments as p')
+            ->join('users as pembeli', 'pembeli.id', '=', 'p.user_id')
+            ->join('orders as o', 'o.payment_id', '=', 'p.id')
+            ->join('order_details as od', 'od.order_id', '=', 'o.id')
+            ->join('menus as penjual', 'penjual.id', '=', 'od.menu_id')
+            ->select(
+                'p.external_id as id_order',
+                'p.created_at as tanggal',
+                'pembeli.username as nama_customer',
+                'p.alamat',
+                'p.amount',
+                'p.status',
+                'penjual.user_id as penjual_id'
+            )
+            ->where('penjual.user_id', auth()->user()->id)
+            ->paginate(10);
+
+        return response()->view('dashboard.penjual.order', compact('results'));
     }
 
     public function widthdrawalForm()

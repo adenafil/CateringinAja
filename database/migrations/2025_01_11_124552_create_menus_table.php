@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('picture');
             $table->string('name')->unique();
-            $table->string('price');
+            $table->decimal('price', 15, 2)->default(0.00); // Best practice untuk menyimpan nominal Rupiah
             $table->string('min_order');
             $table->string('category');
             $table->text('description');

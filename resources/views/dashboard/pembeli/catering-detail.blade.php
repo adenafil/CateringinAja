@@ -721,7 +721,7 @@
                                         <div class="col-md-7 col-xxl-12">
                                             <div class="new-arrival-content position-relative">
                                                 <h4><a href="{{route('dashboard.pembeli.catering.detailToko.addToCart', [$catering, $menu])}}">{{$menu->name}}</a></h4>
-                                                <p class="price">Rp {{$menu->price}}</p>
+                                                <p class="price">{{formatRupiah($menu->price)}}</p>
                                                 <p>Ketersediaan : <span class="item"> {{$menu->status}} <i
                                                             @if($menu->status == "Tersedia")
                                                                 class="fa fa-check-circle text-success"></i></span></p>

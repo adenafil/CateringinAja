@@ -71,3 +71,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 -- change guest middleware and auth breeze to be custom middleware
 -- Fix deznav anchor over catering
 -- RATING, ORDER list either on penjual or pembeli dashboard, penarikan dana, find, home
+- add min order in adding up cart
+-- add remove order only when it is on pending state

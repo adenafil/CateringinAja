@@ -17,6 +17,7 @@
             color: #2F4CDD !important;
         }
 
+
     </style>
 
 </head>
@@ -765,7 +766,7 @@
                                                     <img src="/storage/{{$menu->picture}}" class="img-fluid rounded" style="width: 100px; height: 100px; object-fit: cover; object-position: center;">
                                                 </td>
                                                 <td>{{$menu->name}}</td>
-                                                <td>{{$menu->price}} IDR</td>
+                                                <td class="h6 font-weight-bold">{{formatRupiah($menu->price)}}</td>
                                                 @if($menu->status == 'Tersedia')
                                                     <td><span class="badge light badge-success">{{$menu->status}}</span></td>
                                                 @else

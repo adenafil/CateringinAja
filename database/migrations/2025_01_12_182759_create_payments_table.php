@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->text("external_id")->nullable(true);
-            $table->string("amount")->nullable(true);
+            $table->decimal('amount', 15, 2)->default(0.00); // Best practice untuk menyimpan nominal Rupiah
             $table->string("payer_email")->nullable(true);
             $table->string("description")->nullable(true);
             $table->text("checkout_link")->nullable(true);
             $table->string("status")->nullable(true);
+            $table->text("alamat")->nullable(true);
             $table->string('payment_method')->nullable(true);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');

@@ -724,7 +724,7 @@
                                                         <h6 class="my-0">{{$result->name}}</h6>
                                                         <small class="text-muted">Quantity: {{$result->quantity}}</small>
                                                     </div>
-                                                    <span class="text-muted">IDR {{$result->total_price}}.000.00</span>
+                                                    <span class="text-muted">{{formatRupiah($result->total_price)}}</span>
                                                 </li>
                                             @endforeach
 
@@ -737,7 +737,7 @@
 {{--                                            </li>--}}
                                             <li class="list-group-item d-flex justify-content-between">
                                                 <span>Total (IDR)</span>
-                                                <strong>IDR {{number_format((int)$total_price, 0, ',', '.')}}.000.00</strong>
+                                                <strong>{{formatRupiah($total_price)}}</strong>
                                             </li>
                                         </ul>
 
@@ -797,7 +797,7 @@
 
                                             <div class="mb-3">
                                                 <label for="address">Address</label>
-                                                <input type="text" class="form-control" id="address" placeholder="1234 Main St" required value="{{$user->alamat_toko}}">
+                                                <input name="alamat" type="text" class="form-control" id="address" placeholder="1234 Main St" required value="{{$user->alamat_toko}}">
                                                 <div class="invalid-feedback">
                                                     Please enter your shipping address.
                                                 </div>

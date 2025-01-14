@@ -757,7 +757,7 @@
                                         <div class="col-md-5 col-xxl-12">
                                             <div class="new-arrival-product mb-4 mb-xxl-4 mb-md-0">
                                                 <div class="new-arrivals-img-contnent">
-                                                    <img class="img-fluid" src="/storage/{{$menu->picture}}" alt="">
+                                                    <img class="img-fluid " src="/storage/{{$menu->picture}}" style="height: 300px; width: 100%; object-fit: cover;" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -784,45 +784,47 @@
                     @endforeach
                 </div>
 
-                <div class="row">
-                    <div class="col-lg-12 col-xl-12">
-                        <div class="card">
-                            <div class="card-header border-0 pb-0 d-sm-flex d-block">
-                                <div>
-                                    <h4 class="card-title mb-1 fs-28 font-w600">Review Anda</h4>
-                                    <p class="mb-0">Ini adalah review yang sudah anda buat </p>
-                                </div>
-                            </div>
-                            <div class="card-body p-0">
-                                <div class="media review-box">
-                                    <img class="mr-3 img-fluid btn-rounded" width="55" src="/dashboard-template/images/avatar/1.jpg" alt="DexignZone">
-                                    <div class="media-body">
-                                        <h4 class="mt-0 mb-0 text-black">{{auth()->user()->username}}</h4>
-                                        <ul class="review-meta mb-3 d-block d-sm-flex align-items-center">
-                                            <li class="mr-3"><small>Pembeli</small></li>
-                                            <li class="mr-3"><small>{{$review->created_at}}</small></li>
-                                        </ul>
-                                        <p class="mb-3 text-secondary">{{$review->comment}}</p>
-                                    </div>
-                                    <div class="media-footer align-self-center">
-                                        <div class="star-review text-md-center">
-                                            <span class="text-secondary">{{$review->rating}}.0</span>
-                                            @for($i =1; $i <= $review->rating; $i++)
-                                                <i class="fa fa-star text-primary"></i>
-                                            @endfor
-                                            @for($i =1; $i <= 5-$review->rating; $i++)
-                                                <i class="fa fa-star text-gray"></i>
-                                            @endfor
 
+                @if($review)
+                    <div class="row">
+                        <div class="col-lg-12 col-xl-12">
+                            <div class="card">
+                                <div class="card-header border-0 pb-0 d-sm-flex d-block">
+                                    <div>
+                                        <h4 class="card-title mb-1 fs-28 font-w600">Review Anda</h4>
+                                        <p class="mb-0">Ini adalah review yang sudah anda buat </p>
+                                    </div>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="media review-box">
+                                        <img class="mr-3 img-fluid btn-rounded" width="55" src="/dashboard-template/images/avatar/1.jpg" alt="DexignZone">
+                                        <div class="media-body">
+                                            <h4 class="mt-0 mb-0 text-black">{{auth()->user()->username}}</h4>
+                                            <ul class="review-meta mb-3 d-block d-sm-flex align-items-center">
+                                                <li class="mr-3"><small>Pembeli</small></li>
+                                                <li class="mr-3"><small>{{$review->created_at}}</small></li>
+                                            </ul>
+                                            <p class="mb-3 text-secondary">{{$review->comment}}</p>
+                                        </div>
+                                        <div class="media-footer align-self-center">
+                                            <div class="star-review text-md-center">
+                                                <span class="text-secondary">{{$review->rating}}.0</span>
+                                                @for($i =1; $i <= $review->rating; $i++)
+                                                    <i class="fa fa-star text-primary"></i>
+                                                @endfor
+                                                @for($i =1; $i <= 5-$review->rating; $i++)
+                                                    <i class="fa fa-star text-gray"></i>
+                                                @endfor
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
-
-                </div>
-
+                @endif
             </div>
         </div>
         <!--**********************************

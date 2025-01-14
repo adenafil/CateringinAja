@@ -743,7 +743,7 @@
                                                     </ul>
                                                     <span class="review-text">(34 reviews) / </span><a class="product-review" href="#">Write a review?</a>
                                                 </div>
-                                                <p class="price">Rp {{$menu->price}}</p>
+                                                <p class="price">{{formatRupiah($menu->price)}}</p>
                                                 <p>Ketersediaan : <span class="item"> {{$menu->status}} <i
                                                             @if($menu->status == "Tersedia")
                                                                 class="fa fa-check-circle text-success"></i></span></p>
@@ -770,7 +770,9 @@
                                                     @csrf
                                                     @method("PUT")
                                                     <div class="col-2 px-0">
-                                                        <input type="number" name="quantity" class="form-control input-btn input-number" value="{{$quantity}}">
+                                                        <input min="{{$menu->min_order}}" type="number" name="quantity" class="form-control input-btn input-number" value="{{$quantity}}" id="quantity-input">
+                                                        <div id="error-message" style="color: red; display: none;">Pesanan minimal adalah {{$menu->min_order}}.</div>
+
                                                     </div>
                                                     <!--Quanatity End-->
                                                     <div class="shopping-cart mt-3">
@@ -820,6 +822,25 @@
     <!-- Circle progress -->
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const quantityInput = document.getElementById('quantity-input');
+            const errorMessage = document.getElementById('error-message');
+
+            quantityInput.addEventListener('input', function () {
+                const minOrder = parseInt(quantityInput.getAttribute('min'));
+                const value = parseInt(quantityInput.value);
+
+                if (value < minOrder) {
+                    errorMessage.style.display = 'block';
+                    quantityInput.setCustomValidity(`Minimal Pesanan Adalah ${minOrder}. 😃`);
+                } else {
+                    errorMessage.style.display = 'none';
+                    quantityInput.setCustomValidity('');
+                }
+            });
+        });
+
+
         document.getElementById('logout-link').addEventListener('click', function(event) {
             event.preventDefault(); // Mencegah perilaku default dari elemen <a>
 

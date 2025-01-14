@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Balance;
 use App\Models\Menu;
 use App\Models\Order;
 use App\Models\OrderDetail;
@@ -57,7 +58,6 @@ class DashboardPembeliCatering extends Controller
         } else {
             $caterings = User::query()->where('role', 'penjual')->paginate(4);
         }
-
 
         return response()->view('dashboard.pembeli.catering', compact('caterings'));
     }
@@ -144,7 +144,7 @@ class DashboardPembeliCatering extends Controller
 
     public function checkout(Request $request) {
         $results = json_decode($request->input('results'), true); // Decode JSON
-        $total_price =  (int) ($request->input('total_price') . ".000") * 1000;
+        $total_price =  $request->input('total_price');
         try {
             $payment = new Payment;
             $payment->user_id = auth()->user()->id;
@@ -153,6 +153,7 @@ class DashboardPembeliCatering extends Controller
             $payment->payer_email = $request->input('payer_email');
             $payment->description = $request->input('description');
             $payment->status = 'pending';
+            $payment->alamat = $request->input('alamat');
             $createInvoice = new CreateInvoiceRequest([
                 'external_id' => $payment->external_id,
                 'amount' => $total_price,
@@ -213,6 +214,28 @@ class DashboardPembeliCatering extends Controller
         $status = strtolower($data['status']);
         $payment_method = $data['payment_method'];
 
+        $user = DB::table('payments as p')
+            ->join('orders as o', 'o.payment_id', '=', 'p.id')
+            ->join('order_details as od', 'od.order_id', '=', 'o.id')
+            ->join('menus as m', 'm.id', '=', 'od.menu_id')
+            ->where('p.external_id', $external_id)
+            ->select('m.user_id')
+            ->first();
+
+
+        $balance = Balance::query()->where('user_id', $user->user_id)->first();
+        if ($status == 'paid') {
+            if ($balance) {
+                $balance->amount += $data['amount'];
+                $balance->save();
+            } else {
+                Balance::upsert([
+                    'user_id' => $user->user_id,
+                    'amount' => $data['amount'],
+                ], ['user_id']);
+            }
+
+        }
 
         $payment = Payment::where('external_id', $external_id)->first();
         $payment->status = $status;
@@ -245,19 +268,18 @@ class DashboardPembeliCatering extends Controller
             'p.payment_method',
             'p.status',
             'p.id as payment_id',
-            'r.rating',
-            'r.comment',
-            DB::raw('SUM(od.quantity * m.price) AS total_amount')
+            DB::raw('SUM(od.quantity * m.price) AS total_amount'),
+            DB::raw('COALESCE(r.comment, "") AS review_text') // Menggunakan COALESCE untuk kolom comment
         )
             ->from('payments as p')
             ->join('orders as o', 'o.payment_id', '=', 'p.id')
             ->join('order_details as od', 'od.order_id', '=', 'o.id')
             ->join('menus as m', 'm.id', '=', 'od.menu_id')
             ->join('users as penjual', 'penjual.id', '=', 'm.user_id')
-            ->join('reviews as r', 'r.payment_id', '=', 'p.id')
-            ->groupBy('p.id', 'penjual.nama_toko')
+            ->leftJoin('reviews as r', 'r.payment_id', '=', 'p.id') // Menggunakan LEFT JOIN untuk reviews
+            ->where('o.user_id', auth()->user()->id)
+            ->groupBy('p.id', 'penjual.nama_toko', 'r.comment') // Menambahkan r.comment ke GROUP BY
             ->paginate(10); // Sesuaikan jumlah item per halaman sesuai kebutuhan
-
 
         return response()->view('dashboard.pembeli.order-table', compact('payments'));
     }

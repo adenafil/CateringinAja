@@ -20,6 +20,7 @@ class Payment extends Model
         'payer_email',
         'description',
         'checkout_link',
+        'alamat',
         'status',
         'payment_method'
     ];

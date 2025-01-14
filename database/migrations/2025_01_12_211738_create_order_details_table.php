@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('menu_id');
             $table->integer('quantity');
-            $table->string('price');
+            $table->decimal('price', 15, 2)->default(0.00); // Best practice untuk menyimpan nominal Rupiah
             $table->timestamps();
 
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
