@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::controller(LandingPage::class)->group(function () {
-    Route::get('/', 'index');
+    Route::get('/', 'index')->name('home');
     Route::get('/find', 'find')->name('find');
     Route::get('/about/{user}', 'about')->name('about');
 });

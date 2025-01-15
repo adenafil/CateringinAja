@@ -266,13 +266,13 @@
                                 Quick Links
                             </h6>
                             <p>
-                                <a href="#!" class="text-reset">Home</a>
+                                <a href="{{route('home')}}" class="text-reset">Home</a>
                             </p>
                             <p>
-                                <a href="#!" class="text-reset">Tentang Kami</a>
+                                <a href="https://cateringinaja.my.id/#about-anchor" class="text-reset">Tentang Kami</a>
                             </p>
                             <p>
-                                <a href="#!" class="text-reset">Temukan Catering</a>
+                                <a href="{{route('find')}}" class="text-reset">Temukan Catering</a>
                             </p>
                         </div>
                         <!-- Grid column -->
