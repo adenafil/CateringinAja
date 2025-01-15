@@ -91,7 +91,7 @@
         <div class="container-fluid nav-bar">
             <div class="container">
                 <nav class="navbar navbar-light navbar-expand-lg py-4">
-                    <a href="index.blade.php" class="navbar-brand">
+                    <a href="index.html" class="navbar-brand">
                         <h1 class="text-primary fw-bold mb-0"><span><img src="/landingpage/img/logo-only-cateringinaja.png" style="width: 70px"></span> Cateringin<span class="text-dark">Aja</span> </h1>
                     </a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -99,12 +99,38 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="/" class="nav-item nav-link ">Home</a>
-                            <a href="/#about-anchor" class="nav-item nav-link">Tentang Kami</a>
-                            <a href="service.html" class="nav-item nav-link active">Temukan Katering</a>
+                            <a href="/" class="nav-item nav-link active">Home</a>
+                            <a href="#about-anchor" class="nav-item nav-link">Tentang Kami</a>
+                            <a href="{{route('find')}}" class="nav-item nav-link">Temukan Katering</a>
                         </div>
-                        <button class="btn-search btn btn-primary btn-md-square me-4 rounded-circle d-none d-lg-inline-flex" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></button>
-                        <a href="" class="btn btn-primary py-2 px-4 d-none d-xl-inline-block rounded-pill">Login</a>
+                        <button class="btn-search btn btn-primary btn-md-square me-4 rounded-circle" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></button>
+
+                        <!-- Login Dropdown -->
+                        <div class="nav-item dropdown login-dropdown">
+                            <a class="btn btn-primary rounded-pill px-4 py-2 me-2 mt-2 mt-lg-0" style="min-width: 96px;"
+                               data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                Login
+                            </a>
+                            <div class="dropdown-menu login-options">
+                                <a class="dropdown-item fw-bold" href="{{route('login.penjual')}}">Penyedia Catering</a>
+                                <a class="dropdown-item fw-bold" href="{{route('login.pembeli')}}">Pembeli</a>
+                            </div>
+                        </div>
+
+                        {{--Register Dropdown--}}
+                        <div class="nav-item dropdown login-dropdown">
+                            <a class="btn btn-outline-primary rounded-pill px-4 py-2 me-2 mt-2 mt-lg-0" style="min-width: 96px;"
+                               data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                Daftar
+                            </a>
+                            <div class="dropdown-menu login-options">
+                                <a class="dropdown-item fw-bold" href="{{route('register.penjual')}}">Penyedia Catering</a>
+                                <a class="dropdown-item fw-bold" href="{{route('register.pembeli')}}">Pembeli</a>
+                            </div>
+                        </div>
+
                     </div>
                 </nav>
             </div>
