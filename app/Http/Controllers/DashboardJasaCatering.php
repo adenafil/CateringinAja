@@ -58,7 +58,7 @@ class DashboardJasaCatering extends Controller
             'min_order' => 'required|numeric|min:1', // Pastikan minimal order tidak negatif atau nol
             'category' => 'required|in:Makanan,Minuman',
             'description' => 'required',
-            'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|webp|max:2048',
         ], [
             'name.required' => 'Nama menu harus diisi.',
             'name.unique' => 'Nama menu sudah digunakan. Silakan gunakan nama lain.', // Pesan error untuk unique
@@ -73,7 +73,7 @@ class DashboardJasaCatering extends Controller
             'description.required' => 'Deskripsi harus diisi.',
             'picture.required' => 'Gambar harus diupload.',
             'picture.image' => 'File harus berupa gambar.',
-            'picture.mimes' => 'Gambar harus berformat jpeg, png, jpg, gif, atau svg.',
+            'picture.mimes' => 'Gambar harus berformat jpeg, png, jpg, webp gif, atau svg.',
             'picture.max' => 'Ukuran gambar tidak boleh lebih dari 2MB.',
         ]);
 
