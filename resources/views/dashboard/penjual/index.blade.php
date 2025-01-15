@@ -823,15 +823,36 @@
     <script>
         document.getElementById('logout-link').addEventListener('click', function(event) {
             event.preventDefault(); // Mencegah perilaku default dari elemen <a>
+            const logoutLink = event.target;
+            logoutLink.textContent = 'Logging out...'; // Opsional: Tampilkan indikator loading
 
-            axios.post('https://cateringinaja.my.id/logout', {})
+            axios.post('https://cateringinaja.my.id/logout', {}, {
+                headers: {
+                    'X-CSRF-TOKEN': 'your-csrf-token-here' // Jika diperlukan
+                }
+            })
                 .then(response => {
-                    window.location.href = '/';
+                    if (response.status === 200) { // Sesuaikan dengan status code yang diharapkan
+                        window.location.href = '/';
+                    } else {
+                        console.error('Logout failed:', response.data);
+                        alert('Logout failed. Please try again.');
+                    }
                 })
                 .catch(error => {
                     console.error('Logout failed:', error);
-                    alert('Logout failed. Please try again.');
-                });        });
+                    if (error.response) {
+                        alert(`Logout failed: ${error.response.data.message || 'Unknown error'}`);
+                    } else if (error.request) {
+                        alert('Logout failed: No response from server. Please check your connection.');
+                    } else {
+                        alert('Logout failed: Please try again.');
+                    }
+                })
+                .finally(() => {
+                    logoutLink.textContent = 'Logout'; // Opsional: Kembalikan teks tombol
+                });
+        });
 
         document.addEventListener('DOMContentLoaded', function() {
             const navItems = document.querySelectorAll('li');
