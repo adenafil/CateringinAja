@@ -731,8 +731,8 @@
                                                 <li><i class="fa fa-star"></i></li>
                                                 <li><i class="fa fa-star"></i></li>
                                                 <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star-half-empty"></i></li>
-                                                <li><i class="fa fa-star-half-empty"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star-o"></i></li>
                                             </ul>
                                             <a class="btn btn-sm btn-primary mt-2" href="{{route('dashboard.pembeli.catering.checkout', $cart->id)}}">Check Out</a>
                                             <!-- Form untuk menghapus item dari keranjang -->

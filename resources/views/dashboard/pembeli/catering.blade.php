@@ -729,8 +729,8 @@
                                                 <li><i class="fa fa-star"></i></li>
                                                 <li><i class="fa fa-star"></i></li>
                                                 <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star-half-empty"></i></li>
-                                                <li><i class="fa fa-star-half-empty"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
                                             </ul>
                                             {{--                                        <span class="price">$761.00</span>--}}
                                             <a class="btn btn-sm btn-primary mt-2" href="{{route('dashboard.pembeli.catering.detailToko', $catering)}}">View</a>

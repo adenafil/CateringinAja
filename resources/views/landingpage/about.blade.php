@@ -196,7 +196,13 @@
                     @foreach($reviews as $review)
                         <div class="testimonial-item rounded bg-light">
                             <div class="d-flex mb-3">
-                                <img src="/landingpage/img/testimonial-1.jpg" class="img-fluid rounded-circle flex-shrink-0" alt="">
+                                @if($review->avatar)
+
+                                    <img src="/storage/{{$review->avatar}}" class="img-fluid rounded-circle flex-shrink-0" alt="">
+                                @else
+                                    <img src="https://www.dcrc.co/wp-content/uploads/2019/04/blank-head-profile-pic-for-a-man.jpg" class="img-fluid rounded-circle flex-shrink-0" alt="" style="object-fit: cover;">
+
+                                @endif
                                 <div class="position-absolute" style="top: 15px; right: 20px;">
                                     <i class="fa fa-quote-right fa-2x"></i>
                                 </div>

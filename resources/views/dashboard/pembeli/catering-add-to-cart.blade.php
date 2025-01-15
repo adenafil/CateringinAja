@@ -733,16 +733,6 @@
                                             <!--Product details-->
                                             <div class="new-arrival-content pr">
                                                 <h4>{{$menu->name}}</h4>
-                                                <div class="star-rating mb-2">
-                                                    <ul class="produtct-detail-tag">
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                    </ul>
-                                                    <span class="review-text">(34 reviews) / </span><a class="product-review" href="#">Write a review?</a>
-                                                </div>
                                                 <p class="price">{{formatRupiah($menu->price)}}</p>
                                                 <p>Ketersediaan : <span class="item"> {{$menu->status}} <i
                                                             @if($menu->status == "Tersedia")
