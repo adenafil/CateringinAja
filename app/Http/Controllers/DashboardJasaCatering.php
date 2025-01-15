@@ -6,6 +6,8 @@ use App\Models\Balance;
 use App\Models\Menu;
 use App\Models\OrderDetail;
 use App\Models\Payment;
+use App\Models\PaymentLog;
+use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -217,6 +219,7 @@ class DashboardJasaCatering extends Controller
     public function order(): Response
     {
         $results = Payment::select([
+            'p.id as payment_id',
             'p.external_id as id_order',
             'p.created_at as tanggal',
             'pembeli.username as nama_customer',
@@ -235,6 +238,21 @@ class DashboardJasaCatering extends Controller
             ->paginate(10);
 
         return response()->view('dashboard.penjual.order', compact('results'));
+    }
+
+    public function orderDetail($payment_id): Response
+    {
+        $logs = PaymentLog::query()->where('payment_id', $payment_id)->get();
+        $menus = Menu::select('menus.id', 'menus.picture', 'menus.name', 'menus.price', 'menus.min_order', 'menus.category', 'menus.description', 'menus.status', 'menus.user_id')
+            ->join('order_details as od', 'od.menu_id', '=', 'menus.id')
+            ->join('orders as o', 'o.id', '=', 'od.order_id')
+            ->join('payments as p', 'p.id', '=', 'o.payment_id')
+            ->where('p.id', $payment_id)
+            ->get();
+
+        $review = Review::query()->where('payment_id', $payment_id)->first();
+
+        return response()->view('dashboard.penjual.order-detail', compact('menus', 'logs', 'review'));
     }
 
     public function widthdrawalForm()

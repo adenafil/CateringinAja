@@ -31,6 +31,7 @@ Route::middleware(['auth', 'seller'])->group(function () {
     Route::get('/catering/dashboard/profile', [DashboardJasaCatering::class, 'profile'])->name('dashboard.profile');
     Route::patch('/catering/dashboard/profile', [DashboardJasaCatering::class, 'postProfile'])->name('dashboard.profile.post');
     Route::get('/catering/dashboard/order', [DashboardJasaCatering::class, 'order'])->name('dashboard.order');
+    Route::get('/catering/dashboard/order/detail/{payment_id}', [DashboardJasaCatering::class, 'orderDetail'])->name('dashboard.order.detail');
     Route::get('/catering/dashboard/withdrawal/form', [DashboardJasaCatering::class, 'widthdrawalForm'])->name('dashboard.widthdrawalForm.form');
     Route::get('/catering/dashboard/withdrawal/history', [DashboardJasaCatering::class, 'widthdrawalHistory'])->name('dashboard.widthdrawalHistory');
 });

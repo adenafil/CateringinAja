@@ -8,24 +8,18 @@
     <title>Eatio - Restaurant Food Order Bootstrap Admin Dashboard</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/dashboard-template/images/favicon.png">
-	<link href="/dashboard-template/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="/dashboard-template/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    	<link href="/dashboard-template/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="/dashboard-template/css/style.css" rel="stylesheet">
-	<link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
     <style>
         /* CSS untuk mengubah warna teks saat di-hover */
         .nav-text-hover {
             color: #2F4CDD !important;
         }
 
-        .dataTables_paginate, .dataTables_info {
-            display: none;
-        }
-
-
     </style>
 
 </head>
+
 <body>
 
     <!--*******************
@@ -41,6 +35,7 @@
     <!--*******************
         Preloader end
     ********************-->
+
 
     <!--**********************************
         Main wrapper start
@@ -569,7 +564,10 @@
             Chat box End
         ***********************************-->
 
-		<!--**********************************
+
+
+
+        <!--**********************************
             Header start
         ***********************************-->
         <div class="header">
@@ -630,7 +628,6 @@
         <!--**********************************
             Sidebar start
         ***********************************-->
-        ***********************************-->
         <div class="deznav">
             <div class="deznav-scroll">
                 <ul class="metismenu" id="menu">
@@ -684,70 +681,151 @@
             Sidebar end
         ***********************************-->
 
-		<!--**********************************
+        <!--**********************************
             Content body start
         ***********************************-->
         <div class="content-body">
-            <!-- row -->
-			<div class="container-fluid">
-				<div class="form-head d-flex mb-3 align-items-start">
-					<div class="mr-auto d-none d-lg-block">
-						<h2 class="text-black font-w600 mb-0">Orders</h2>
-						<p class="mb-0">Kelola Orderan Anda</p>
-					</div>
-				</div>
+            <div class="container-fluid">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Pesanan</h4>
+                            <p class="mb-0">Your business dashboard template</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Catering</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Pesanan</a></li>
+                        </ol>
+                    </div>
+                </div>
+
                 <div class="row">
-					<div class="col-12">
-						<div class="table-responsive">
-							<table id="example5" class="display mb-4 dataTablesCard" style="min-width: 845px;">
-								<thead>
-									<tr class="text-start">
-										<th>ID Order</th>
-										<th>Tanngal</th>
-										<th>Nama Customer</th>
-										<th>Alamat</th>
-										<th>Nominal</th>
-										<th>Status Order</th>
-										<th></th>
-									</tr>
-								</thead>
-								<tbody>
-                                @foreach($results as $result)
-                                    <tr class="text-start">
-                                        <td class="text-truncate">{{$result->id_order}}</td>
-                                        <td>{{$result->tanggal}}</td>
-                                        <td>{{$result->nama_customer}}</td>
-                                        <td>{{$result->alamat}}</td>
-                                        <td>{{formatRupiah($result->amount)}}</td>
-                                        <td><span class="btn btn-sm light btn-warning fs-16">{{$result->status}}</span></td>
-                                        <td>
-                                            <div class="dropdown ml-auto text-right">
-                                                <div class="btn-link" data-toggle="dropdown">
-                                                    <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
-                                                </div>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="#"></i> Accept Order</a>
-                                                    <a class="dropdown-item" href="#">Reject Order</a>
-                                                    <a class="dropdown-item" href="{{route('dashboard.order.detail', $result->payment_id)}}">View Detail</a>
+                    <div class="col-xl-12 col-lg-6">
+                        <div class="card">
+                            <div class="card-header border-0 pb-0">
+                                <h4 class="card-title">History Order</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="widget-timeline-icon">
+                                    <ul class="timeline">
+                                        @foreach($logs as $log)
+                                            <li>
+                                                <div class="icon bg-primary"></div>
+                                                <a class="timeline-panel text-muted" href="#">
+                                                    <h4 class="mb-2 text-uppercase">{{$log->status}}</h4>
+                                                    <p class="fs-15 mb-0 ">{{$log->created_at}}</p>
+                                                </a>
+                                            </li>
+                                        @endforeach
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0 mt-3">
+                        <div class="welcome-text">
+                            <h4>Menu Yang Anda Order </h4>
+{{--                            <p class="mb-0">Your business dashboard template</p>--}}
+                        </div>
+                    </div>
+{{--                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">--}}
+{{--                        <ol class="breadcrumb">--}}
+{{--                            <li class="breadcrumb-item"><a href="javascript:void(0)">Catering</a></li>--}}
+{{--                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Nama Toko</a></li>--}}
+{{--                        </ol>--}}
+{{--                    </div>--}}
+                </div>
+
+
+                <div class="row">
+                    @foreach($menus as $menu)
+                        <div class="col-lg-12 col-xl-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row m-b-30">
+                                        <div class="col-md-5 col-xxl-12">
+                                            <div class="new-arrival-product mb-4 mb-xxl-4 mb-md-0">
+                                                <div class="new-arrivals-img-contnent">
+                                                    <img class="img-fluid " src="/storage/{{$menu->picture}}" style="height: 300px; width: 100%; object-fit: cover;" alt="">
                                                 </div>
                                             </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-								</tbody>
-							</table>
-						</div>
-                        <div class="pagination pagination-gutter pagination-primary mx-auto">
-                            {{$results->appends(['search' => request()->get('search')])->links()}}
+                                        </div>
+                                        <div class="col-md-7 col-xxl-12">
+                                            <div class="new-arrival-content position-relative">
+                                                <h4>{{$menu->name}}</h4>
+                                                <p class="price">Rp {{number_format((int)$menu->price, 0, ',', '.')}}.000</p>
+                                                <p>Ketersediaan : <span class="item"> {{$menu->status}} <i
+                                                            @if($menu->status == "Tersedia")
+                                                                class="fa fa-check-circle text-success"></i></span></p>
+                                                @else
+                                                    class="fa fa-times text-danger"></i></span></p>
+                                                @endif
+                                                <p>Category: <span class="item">{{$menu->category}}</span></p>
+                                                <p class="text-content ">{{$menu->description}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    @endforeach
+                </div>
+
+
+                @if($review)
+                    <div class="row">
+                        <div class="col-lg-12 col-xl-12">
+                            <div class="card">
+                                <div class="card-header border-0 pb-0 d-sm-flex d-block">
+                                    <div>
+                                        <h4 class="card-title mb-1 fs-28 font-w600">Review Dari Pembeli</h4>
+                                        <p class="mb-0">Ini adalah review dari pemebli anda</p>
+                                    </div>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="media review-box">
+                                        <img class="mr-3 img-fluid btn-rounded" width="55" src="/dashboard-template/images/avatar/1.jpg" alt="DexignZone">
+                                        <div class="media-body">
+                                            <h4 class="mt-0 mb-0 text-black">{{auth()->user()->username}}</h4>
+                                            <ul class="review-meta mb-3 d-block d-sm-flex align-items-center">
+                                                <li class="mr-3"><small>Pembeli</small></li>
+                                                <li class="mr-3"><small>{{$review->created_at}}</small></li>
+                                            </ul>
+                                            <p class="mb-3 text-secondary">{{$review->comment}}</p>
+                                        </div>
+                                        <div class="media-footer align-self-center">
+                                            <div class="star-review text-md-center">
+                                                <span class="text-secondary">{{$review->rating}}.0</span>
+                                                @for($i =1; $i <= $review->rating; $i++)
+                                                    <i class="fa fa-star text-primary"></i>
+                                                @endfor
+                                                @for($i =1; $i <= 5-$review->rating; $i++)
+                                                    <i class="fa fa-star text-gray"></i>
+                                                @endfor
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
-				</div>
+                @endif
             </div>
         </div>
         <!--**********************************
             Content body end
         ***********************************-->
+
 
 
     </div>
@@ -758,35 +836,20 @@
     <!--**********************************
         Scripts
     ***********************************-->
+    <!-- Required vendors -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <!-- Required vendors -->
+
     <script src="/dashboard-template/vendor/global/global.min.js"></script>
 	<script src="/dashboard-template/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="/dashboard-template/vendor/chart.js/Chart.bundle.min.js"></script>
     <script src="/dashboard-template/js/custom.min.js"></script>
 	<script src="/dashboard-template/js/deznav-init.js"></script>
+	<!-- Apex Chart -->
+	<script src="/dashboard-template/vendor/apexchart/apexchart.js"></script>
 
-	<!-- Datatable -->
-    <script src="/dashboard-template/vendor/datatables/js/jquery.dataTables.min.js"></script>
-
-	<script>
-	(function($) {
-
-		var table = $('#example5').DataTable({
-			searching: false,
-			paging:true,
-			select: false,
-			//info: false,
-			lengthChange:false
-
-		});
-		$('#example tbody').on('click', 'tr', function () {
-			var data = table.row( this ).data();
-
-		});
-
-	})(jQuery);
-	</script>
+    <script src="/dashboard-template/vendor/highlightjs/highlight.pack.min.js"></script>
+    <!-- Circle progress -->
 
     <script>
         document.getElementById('logout-link').addEventListener('click', function(event) {
@@ -846,5 +909,7 @@
             });
         });    </script>
 
+
 </body>
+
 </html>
