@@ -266,7 +266,7 @@
                                 Quick Links
                             </h6>
                             <p>
-                                <a href="{{route('home')}}" class="text-reset">Home</a>
+                                <a href="/" class="text-reset">Home</a>
                             </p>
                             <p>
                                 <a href="https://cateringinaja.my.id/#about-anchor" class="text-reset">Tentang Kami</a>
