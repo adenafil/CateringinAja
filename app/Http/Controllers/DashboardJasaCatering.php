@@ -216,20 +216,21 @@ class DashboardJasaCatering extends Controller
 
     public function order(): Response
     {
-        $results = DB::table('payments as p')
+        $results = Payment::select([
+            'p.external_id as id_order',
+            'p.created_at as tanggal',
+            'pembeli.username as nama_customer',
+            'p.alamat',
+            'p.amount',
+            'p.status',
+            'penjual.user_id as penjual_id'
+        ])
+            ->from('payments as p')
             ->join('users as pembeli', 'pembeli.id', '=', 'p.user_id')
             ->join('orders as o', 'o.payment_id', '=', 'p.id')
             ->join('order_details as od', 'od.order_id', '=', 'o.id')
             ->join('menus as penjual', 'penjual.id', '=', 'od.menu_id')
-            ->select(
-                'p.external_id as id_order',
-                'p.created_at as tanggal',
-                'pembeli.username as nama_customer',
-                'p.alamat',
-                'p.amount',
-                'p.status',
-                'penjual.user_id as penjual_id'
-            )
+            ->groupBy('od.order_id', 'penjual.user_id')
             ->where('penjual.user_id', auth()->user()->id)
             ->paginate(10);
 
