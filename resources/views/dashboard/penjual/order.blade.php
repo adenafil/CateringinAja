@@ -698,7 +698,7 @@
 				</div>
                 <div class="row">
 					<div class="col-12">
-						<div class="table-responsive">
+						<div class="table-responsive py-5">
 							<table id="example5" class="display mb-4 dataTablesCard" style="min-width: 845px;">
 								<thead>
 									<tr class="text-start">
@@ -725,14 +725,45 @@
                                                 <div class="btn-link" data-toggle="dropdown">
                                                     <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
                                                 </div>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="#"></i> Accept Order</a>
-                                                    <a class="dropdown-item" href="#">Reject Order</a>
-                                                    <a class="dropdown-item" href="{{route('dashboard.order.detail', $result->payment_id)}}">View Detail</a>
+                                                <div class="dropdown-menu dropdown-menu-right" style="overflow-y: hidden;">
+                                                    @php $payment = \App\Models\Payment::query()->where("id", $result->payment_id)->first();@endphp
+                                                    <form action="{{ route('dashboard.order.accepted', $payment) }}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <button type="submit" class="dropdown-item">Atur Status Order Sebagai Diterima</button>
+                                                    </form>
+
+                                                    <form action="{{ route('dashboard.order.rejected', $payment) }}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <button type="submit" class="dropdown-item">Atur Status Order Sebagai Ditolak</button>
+                                                    </form>
+
+                                                    <form action="{{ route('dashboard.order.created', $payment) }}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <button type="submit" class="dropdown-item">Atur Status Order Sebagai Sedang Dibuat</button>
+                                                    </form>
+
+                                                    <form action="{{ route('dashboard.order.deliverd', $payment) }}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <button type="submit" class="dropdown-item">Atur Status Order Sebagai Sedang Diantar</button>
+                                                    </form>
+
+                                                    <form action="{{ route('dashboard.order.done', $payment) }}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <button type="submit" class="dropdown-item">Atur Status Order Sebagai Selesai</button>
+                                                    </form>
+
+
+                                                    <a class="dropdown-item" href="{{route('dashboard.order.detail', $result->payment_id)}}">Lihat Detail</a>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
+
                                 @endforeach
 								</tbody>
 							</table>
@@ -762,7 +793,7 @@
 
     <!-- Required vendors -->
     <script src="/dashboard-template/vendor/global/global.min.js"></script>
-	<script src="/dashboard-template/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+{{--	<script src="/dashboard-template/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>--}}
     <script src="/dashboard-template/js/custom.min.js"></script>
 	<script src="/dashboard-template/js/deznav-init.js"></script>
 
@@ -847,4 +878,7 @@
         });    </script>
 
 </body>
+
+@include('sweetalert::alert')
+
 </html>

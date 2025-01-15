@@ -31,6 +31,12 @@ Route::middleware(['auth', 'seller'])->group(function () {
     Route::get('/catering/dashboard/profile', [DashboardJasaCatering::class, 'profile'])->name('dashboard.profile');
     Route::patch('/catering/dashboard/profile', [DashboardJasaCatering::class, 'postProfile'])->name('dashboard.profile.post');
     Route::get('/catering/dashboard/order', [DashboardJasaCatering::class, 'order'])->name('dashboard.order');
+    Route::patch('/catering/dashboard/order/accepted/{payment}', [DashboardJasaCatering::class, 'setOrderAsAccepted'])->name('dashboard.order.accepted');
+    Route::patch('/catering/dashboard/order/rejected/{payment}', [DashboardJasaCatering::class, 'setOrderAsRejected'])->name('dashboard.order.rejected');
+    Route::patch('/catering/dashboard/order/completed/{payment}', [DashboardJasaCatering::class, 'setOrderAsCompleted'])->name('dashboard.order.completed');
+    Route::patch('/catering/dashboard/order/created/{payment}', [DashboardJasaCatering::class, 'setOrderAsCreated'])->name('dashboard.order.created');
+    Route::patch('/catering/dashboard/order/deliverd/{payment}', [DashboardJasaCatering::class, 'setOrderAsDeliverd'])->name('dashboard.order.deliverd');
+    Route::patch('/catering/dashboard/order/done/{payment}', [DashboardJasaCatering::class, 'setOrderAsDone'])->name('dashboard.order.done');
     Route::get('/catering/dashboard/order/detail/{payment_id}', [DashboardJasaCatering::class, 'orderDetail'])->name('dashboard.order.detail');
     Route::get('/catering/dashboard/withdrawal/form', [DashboardJasaCatering::class, 'widthdrawalForm'])->name('dashboard.widthdrawalForm.form');
     Route::get('/catering/dashboard/withdrawal/history', [DashboardJasaCatering::class, 'widthdrawalHistory'])->name('dashboard.widthdrawalHistory');

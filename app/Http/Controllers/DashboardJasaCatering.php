@@ -258,6 +258,77 @@ class DashboardJasaCatering extends Controller
         return response()->view('dashboard.penjual.order-detail', compact('menus', 'logs', 'review'));
     }
 
+    public function setOrderAsAccepted(Request $request, Payment $payment): RedirectResponse
+    {
+        $payment->update(['status' => "Orderan Diterima"]);
+        PaymentLog::create([
+            'payment_id' => $payment->id,
+            'status' => "Orderan Diterima",
+        ]);
+
+        alert()->success('Success!','Status Updated Successfully');
+        return back();
+    }
+
+    public function setOrderAsRejected(Request $request, Payment $payment): RedirectResponse
+    {
+        $payment->update(['status' => "Orderan Ditolak"]);
+        PaymentLog::create([
+            'payment_id' => $payment->id,
+            'status' => "Orderan Ditolak",
+        ]);
+        alert()->success('Success!','Status Updated Successfully');
+        return back();
+    }
+
+    public function setOrderAsCompleted(Request $request, Payment $payment): RedirectResponse
+    {
+        $payment->update(['status' => "Orderan Selesai"]);
+        PaymentLog::create([
+            'payment_id' => $payment->id,
+            'status' => "Orderan Selesai",
+        ]);
+
+        alert()->success('Success!','Status Updated Successfully');
+        return back();
+    }
+
+    public function setOrderAsCreated(Request $request, Payment $payment): RedirectResponse
+    {
+        $payment->update(['status' => "Orderan Sedang Dibuat"]);
+        PaymentLog::create([
+            'payment_id' => $payment->id,
+            'status' => "Orderan Sedang Dibuat",
+        ]);
+        alert()->success('Success!','Status Updated Successfully');
+        return back();
+    }
+
+    public function setOrderAsDeliverd(Request $request, Payment $payment): RedirectResponse
+    {
+        $payment->update(['status' => "Orderan Sedang Diantar"]);
+        PaymentLog::create([
+            'payment_id' => $payment->id,
+            'status' => "Orderan Sedang Diantar",
+        ]);
+        alert()->success('Success!','Status Updated Successfully');
+        return back();
+    }
+
+    public function setOrderAsDone(Request $request, Payment $payment): RedirectResponse
+    {
+        $payment->update(['status' => "Orderan Sudah Selesai"]);
+        PaymentLog::create([
+            'payment_id' => $payment->id,
+            'status' => "Orderan Sudah Selesai",
+        ]);
+        alert()->success('Success!','Status Updated Successfully');
+        return back();
+    }
+
+
+
+
     public function widthdrawalForm()
     {
         return response()->view('dashboard.penjual.withdrawal-form');
