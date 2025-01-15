@@ -9,21 +9,35 @@ use Illuminate\Http\Response;
 
 class LandingPage extends Controller
 {
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        $users = User::query()
-            ->where('role', 'penjual')
-            ->take(3)
-            ->get();
+        if ($request->has('search')) {
+            $users = User::query()->where('role','penjual')
+                ->where('nama_toko', 'like', '%' . $request->get('search') . '%')
+                    ->paginate(3);
+        } else {
+            $users = User::query()
+                ->where('role', 'penjual')
+                ->take(3)
+                ->get();
+        }
+
 
         return response()->view('landingpage.index', compact('users'));
     }
 
-    public function find(): Response
+    public function find(Request $request): Response
     {
-        $users = User::query()
-            ->where('role', 'penjual')
-            ->paginate(3);
+        if ($request->has('search')) {
+            $users = User::query()->where('role','penjual')
+                ->where('nama_toko', 'like', '%' . $request->get('search') . '%')
+                ->paginate(3);
+        } else {
+            $users = User::query()
+                ->where('role', 'penjual')
+                ->take(3)
+                ->paginate();
+        }
         return response()->view('landingpage.list', compact('users'));
     }
 
