@@ -775,7 +775,7 @@
                                             <textarea name="deskripsi_toko" id="" cols="30" rows="5" class="form-control" placeholder="Deskripsi Toko">{{$user->deskripsi_toko}}</textarea>
                                         </div>
 
-                                        <button type="submit" class="btn btn-sm btn-primary">Tambah</button>
+                                        <button type="submit" class="btn btn-sm btn-primary">Simpan Perubahan</button>
 
                                     </form>
                                 </div>
