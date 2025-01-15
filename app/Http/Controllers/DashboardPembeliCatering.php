@@ -10,6 +10,7 @@ use App\Models\Payment;
 use App\Models\PaymentLog;
 use App\Models\Review;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -111,10 +112,10 @@ class DashboardPembeliCatering extends Controller
             ->select(
                 'u.id', 'u.username', 'u.name', 'u.email', 'u.role', 'u.avatar',
                 'u.nama_toko', 'u.area_antar', 'u.no_handphone', 'u.no_whatsapp',
-                'u.deskripsi_toko', 'u.link_google_map_embed', 'u.kisaran_harga'
+                'u.deskripsi_toko', 'u.link_google_map_embed', 'u.kisaran_harga', 'c.id as cart_id',
             )
             ->where('c.user_id', \auth()->user()->id) // Filter berdasarkan user_id pembeli
-            ->groupBy('u.id')
+            ->groupBy('u.id', 'c.id') // Add c.id to the GROUP BY clause
             ->paginate(4);
 
         return response()->view('dashboard.pembeli.cart', compact('carts'));
@@ -140,6 +141,16 @@ class DashboardPembeliCatering extends Controller
         $user = \auth()->user();
 
         return response()->view('dashboard.pembeli.catering-checkout', compact('results', 'user', 'total_price'));
+    }
+
+    public function deleteCart($cart_id): RedirectResponse
+    {
+        $cart = DB::table('carts')->where('id', $cart_id)->first();
+        if ($cart) {
+            DB::table('carts')->where('id', $cart_id)->delete();
+        }
+        alert()->success('Success!','Menu Deleted From Your Cart Successfully');
+        return back();
     }
 
     public function checkout(Request $request) {

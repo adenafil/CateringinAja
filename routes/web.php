@@ -51,6 +51,7 @@ Route::middleware(['auth', 'buyer'])->group(function () {
     Route::get('/user/dashboard/catering/{catering}/{menu}', [DashboardPembeliCatering::class, 'addToCartView'])->name('dashboard.pembeli.catering.detailToko.addToCart');
     Route::put('/user/dashboard/catering/{catering}/{menu}', [DashboardPembeliCatering::class, 'putCart'])->name('dashboard.pembeli.catering.detailToko.addToCart.put');
     Route::get('/user/dashboard/cart', [DashboardPembeliCatering::class, 'cartView'])->name('dashboard.pembeli.catering.cart');
+    Route::delete('/user/dashboard/cart/{cart_id}', [DashboardPembeliCatering::class, 'deleteCart'])->name('dashboard.pembeli.catering.cart.delete');
     Route::get('/user/dashboard/cart/{seller_id}/checkout', [DashboardPembeliCatering::class, 'checkoutView'])->name('dashboard.pembeli.catering.checkout');
     Route::post('/user/dashboard/cart/checkout', [DashboardPembeliCatering::class, 'checkout'])->name('dashboard.pembeli.catering.checkout.post');
     Route::get('/user/dashboard/order', [DashboardPembeliCatering::class, 'orderView'])->name('dashboard.pembeli.catering.order');

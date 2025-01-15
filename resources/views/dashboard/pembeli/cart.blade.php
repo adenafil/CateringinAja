@@ -735,7 +735,12 @@
                                                 <li><i class="fa fa-star-half-empty"></i></li>
                                             </ul>
                                             <a class="btn btn-sm btn-primary mt-2" href="{{route('dashboard.pembeli.catering.checkout', $cart->id)}}">Check Out</a>
-                                            <button class="btn btn-sm btn-danger mt-2">Remove</button>
+                                            <!-- Form untuk menghapus item dari keranjang -->
+                                            <form action="{{ route('dashboard.pembeli.catering.cart.delete', $cart->cart_id) }}" method="POST" style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger mt-2">Remove</button>
+                                            </form>
                                             {{--                                        <span class="price">$761.00</span>--}}
                                         </div>
                                     </div>
@@ -855,5 +860,8 @@
         });    </script>
 
 </body>
+
+
+@include('sweetalert::alert')
 
 </html>
