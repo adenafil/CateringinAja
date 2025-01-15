@@ -13,6 +13,7 @@
     <link href="/dashboard-template/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="/dashboard-template/css/style.css" rel="stylesheet">
 	<link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <style>
         /* CSS untuk mengubah warna teks saat di-hover */
