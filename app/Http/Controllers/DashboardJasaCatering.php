@@ -20,9 +20,9 @@ class DashboardJasaCatering extends Controller
         $totalMenus = Menu::where('user_id', $user_id)->count();
         $totalRevenue = OrderDetail::join('menus', 'menus.id', '=', 'order_details.menu_id')
             ->join('orders', 'orders.id', '=', 'order_details.order_id')
-            ->where('menus.user_id', $user_id)
+            ->where('menus.user_id', 1)
             ->where('orders.status', '!=', 'Pending')
-            ->sum('order_details.price');
+            ->sum(DB::raw('menus.price * order_details.quantity'));
         $totalOrders = OrderDetail::join('menus', 'menus.id', '=', 'order_details.menu_id')
             ->where('menus.user_id', $user_id)
             ->count();
