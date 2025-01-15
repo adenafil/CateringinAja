@@ -113,7 +113,7 @@
                                 <i class="fas fa-mail-bulk text-primary me-2"></i>{{$user->email}}
                             </div>
                         </div>
-                        <a href="" class="btn btn-primary py-3 px-5 rounded-pill">See More<i class="fas fa-arrow-right ps-2"></i></a>
+                        <a href="{{route('dashboard.pembeli.catering.detailToko', $user)}}" class="btn btn-primary py-3 px-5 rounded-pill">See More<i class="fas fa-arrow-right ps-2"></i></a>
                     </div>
                 </div>
             </div>
