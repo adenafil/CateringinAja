@@ -824,12 +824,13 @@
     <script>
         document.getElementById('logout-link').addEventListener('click', function(event) {
             event.preventDefault(); // Mencegah perilaku default dari elemen <a>
-            const logoutLink = event.target;
-            logoutLink.textContent = 'Logging out...'; // Opsional: Tampilkan indikator loading
+
+            // Ambil CSRF token dari meta tag
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
             axios.post('https://cateringinaja.my.id/logout', {}, {
                 headers: {
-                    'X-CSRF-TOKEN': 'your-csrf-token-here' // Jika diperlukan
+                    'X-CSRF-TOKEN': csrfToken // Sertakan CSRF token di header
                 }
             })
                 .then(response => {
@@ -849,9 +850,6 @@
                     } else {
                         alert('Logout failed: Please try again.');
                     }
-                })
-                .finally(() => {
-                    logoutLink.textContent = 'Logout'; // Opsional: Kembalikan teks tombol
                 });
         });
 
