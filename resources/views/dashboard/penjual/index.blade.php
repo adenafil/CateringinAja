@@ -771,7 +771,7 @@
 									</span>
                                     <div class="media-body text-white text-right">
                                         <p class="mb-1">Pendapatan</p>
-                                        <h3 class="text-white">{{formatRupiah($totalBalance->amount ?? 0)}}</h3>
+                                        <h3 class="text-white">{{formatRupiah($totalBalance->amount ?? 0 )}}</h3>
                                         <a class="text-white" href="{{route('dashboard.widthdrawalForm.form')}}" style="text-decoration: underline">Tarik Pendapatan Anda Di Sini</a>
                                     </div>
 
@@ -824,17 +824,14 @@
         document.getElementById('logout-link').addEventListener('click', function(event) {
             event.preventDefault(); // Mencegah perilaku default dari elemen <a>
 
-            // Kirim request POST menggunakan Axios
-            axios.post('{{ route("logout") }}', {})
+            axios.post('https://cateringinaja.my.id/logout', {})
                 .then(response => {
-                    // Redirect atau lakukan sesuatu setelah logout berhasil
-                    window.location.href = '/'; // Contoh: Redirect ke halaman home
+                    window.location.href = '/';
                 })
                 .catch(error => {
                     console.error('Logout failed:', error);
                     alert('Logout failed. Please try again.');
-                });
-        });
+                });        });
 
         document.addEventListener('DOMContentLoaded', function() {
             const navItems = document.querySelectorAll('li');
