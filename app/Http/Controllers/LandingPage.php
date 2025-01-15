@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -28,6 +29,16 @@ class LandingPage extends Controller
 
     public function about(User $user): Response
     {
-        return response()->view('landingpage.about', compact('user'));
+        $reviews = Review::select('pembeli.avatar', 'reviews.comment', 'reviews.rating', 'pembeli.username')
+            ->join('payments', 'payments.id', '=', 'reviews.id')
+            ->join('orders', 'orders.payment_id', '=', 'payments.id')
+            ->join('order_details', 'order_details.order_id', '=', 'orders.id')
+            ->join('menus', 'menus.id', '=', 'order_details.menu_id')
+            ->join('users as pembeli', 'pembeli.id', '=', 'payments.user_id')
+            ->where('menus.user_id', $user->id)
+            ->groupBy('order_details.order_id')
+            ->get();
+
+        return response()->view('landingpage.about', compact('user', 'reviews'));
     }
 }
